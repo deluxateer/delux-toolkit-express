@@ -1,13 +1,15 @@
-const path = require('path');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 module.exports = {
   entry: {
-    app: './src/js/index.js'
+    app: './js/index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
+  context: path.resolve(__dirname, '../src'),
   mode: 'development',
   module: {
     rules: [{
@@ -18,5 +20,10 @@ module.exports = {
         presets: ['@babel/preset-env']
       }
     }]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './index.html'
+    })
+  ]
 }

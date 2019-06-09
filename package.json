@@ -4,7 +4,8 @@
   "description": "A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bundles, launches a live server, etc.",
   "scripts": {
     "gulp-test": "gulp test",
-    "build": "webpack"
+    "scss": "gulp scss",
+    "prod": "NODE_ENV=production gulp prod"
   },
   "repository": {
     "type": "git",
@@ -21,7 +22,12 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/register": "^7.4.4",
     "babel-loader": "^8.0.6",
+    "css-loader": "^2.1.1",
     "gulp": "^4.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
     "webpack-cli": "^3.3.3",
     "webpack-stream": "^5.2.1"
   }
