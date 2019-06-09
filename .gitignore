@@ -1,1 +1,7 @@
+# npm modules and related files
 node_modules/
+package-lock.json
+
+# static generated assets
+dist/*.css
+dist/*.js
