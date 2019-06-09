@@ -2,9 +2,9 @@
   "name": "delux-toolkit",
   "version": "1.0.0",
   "description": "A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bundles, launches a live server, etc.",
-  "main": "index.js",
   "scripts": {
-    "gulp-test": "gulp test"
+    "gulp-test": "gulp test",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/deluxateer/delux-toolkit#readme",
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
     "gulp": "^4.0.2",
+    "webpack-cli": "^3.3.3",
     "webpack-stream": "^5.2.1"
   }
 }

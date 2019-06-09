@@ -1,11 +1,10 @@
 const {src, dest, series, parallel, watch} = require('gulp');
+const webpack = require('webpack-stream');
 
-function test() {
-  console.log('gulp task is running')
-  return (
-    src('src/js/**/*.js')
-      .pipe(dest('dist/'))
-  );
-}
+const webpack = () => (
+  src('src/js/**/*.js')
+    .pipe(webpack(require('./webpack.config')))
+    .pipe(dest('dist/'))
+);
 
-exports.test = test;
+exports.webpack = webpack;
