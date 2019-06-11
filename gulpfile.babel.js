@@ -1,11 +1,39 @@
+import path from 'path';
 import {src, dest, series, parallel, watch} from 'gulp';
+import del from 'del';
 import webpack from 'webpack-stream';
+
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 // import {test} from './tasks/test';
 
+const views = () => (
+  // src('src/views/index.html')
+  //   .pipe(webpack({
+  //     entry: './js/index.js',
+  //     output: {
+  //       path: path.resolve(__dirname, 'dist'),
+  //       filename: 'garbage.js',
+  //     },
+  //     context: path.resolve(__dirname, './src'),
+  //     mode: 'development',
+  //     // module: {
+  //     //   rules: [{
+  //     //     test: /\.html$/,
+  //     //     loader: 'babel-loader',
+  //     //   }]
+  //     // },
+  //     plugins: [
+  //       new HtmlWebpackPlugin({
+  //         template: './views/index.html'
+  //       })
+  //     ]
+  //   }))
+);
+
 const test = () => (
-  src('src/js/**/*.js')
+  src('src/js/index.js')
     .pipe(webpack(require('./tasks/webpack.config')))
     .pipe(dest('dist/'))
 );
@@ -49,4 +77,5 @@ const scss = () => (
     .pipe(dest('dist/'))
 );
 
+exports.views = views;
 exports.scss = scss;
