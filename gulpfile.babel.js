@@ -2,23 +2,22 @@ import path from 'path';
 import {src, dest, series, parallel, watch} from 'gulp';
 import webpack from 'webpack-stream';
 const browserSync = require('browser-sync').create();
+import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
-import rename from 'gulp-rename';
+import cssnano from 'cssnano';
 
 const styles = () => {
   const postCssPlugins = [
-    autoprefixer()
+    autoprefixer(),
+    cssnano()
   ];
   return (
-    // src('src/scss/index.scss')
     src(path.resolve(__dirname, "src", "scss", "index.scss"))
     .pipe(sourcemaps.init({ loadMaps: true, largeFile: true }))
-    .pipe(sass({
-      // outputStyle: 'compressed'
-    }).on('error', sass.logError))
+    .pipe(sass().on('error', sass.logError))
     .pipe(postcss(postCssPlugins))
     .pipe(rename("styles.min.css"))
     .pipe(sourcemaps.write())
