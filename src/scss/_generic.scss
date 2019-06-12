@@ -5,5 +5,13 @@ body {
 .wow {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: initial;
+  grid-gap: 1rem;
   border-radius: 4px;
+}
+
+.wam {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

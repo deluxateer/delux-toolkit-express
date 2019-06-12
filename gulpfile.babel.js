@@ -6,12 +6,30 @@ import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
-import autoprefixer from 'autoprefixer';
+import postcssPresetEnv from 'postcss-preset-env';
+// import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
+import gulpStylelint from 'gulp-stylelint';
+
+const lintScss = () => (
+  src(path.resolve(__dirname, "src", "scss", "**", "*"))
+    .pipe(gulpStylelint({
+      failAfterError: true,
+      reportOutputDir: 'reports/',
+      reporters: [
+        {formatter: 'verbose', console: true, save: 'report.txt'},
+        // {formatter: 'json', save: 'report.json'}
+      ],
+      debug: true
+    }))
+    // .pipe(dest(path.resolve(__dirname, "src", "scss")))
+);
 
 const styles = () => {
   const postCssPlugins = [
-    autoprefixer(),
+    postcssPresetEnv({
+      autoprefixer: { grid: "autoplace" }
+    }),
     cssnano()
   ];
   return (
@@ -51,5 +69,6 @@ const js = () => (
     .pipe(dest('dist/'))
 );
 
+exports.lintScss = lintScss;
 exports.styles = styles;
 exports.js = js;
