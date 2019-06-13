@@ -7,7 +7,6 @@ import sourcemaps from 'gulp-sourcemaps';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
-// import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import gulpStylelint from 'gulp-stylelint';
 
@@ -20,15 +19,15 @@ const lintScss = () => (
         {formatter: 'verbose', console: true, save: 'report.txt'},
         // {formatter: 'json', save: 'report.json'}
       ],
-      debug: true
+      debug: true,
+      // fix: true
     }))
-    // .pipe(dest(path.resolve(__dirname, "src", "scss")))
 );
 
-const styles = () => {
+const processScss = () => {
   const postCssPlugins = [
     postcssPresetEnv({
-      autoprefixer: { grid: "autoplace" }
+      autoprefixer: { grid: true }
     }),
     cssnano()
   ];
@@ -69,6 +68,6 @@ const js = () => (
     .pipe(dest('dist/'))
 );
 
-exports.lintScss = lintScss;
-exports.styles = styles;
+
+exports.styles = series(lintScss, processScss);
 exports.js = js;
