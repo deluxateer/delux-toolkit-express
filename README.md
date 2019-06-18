@@ -25,3 +25,8 @@ concatenating js files
 * adding a css-loader
   * https://webpack.js.org/guides/asset-management#loading-css
   * sass-loaders are available too...
+
+## Issues
+* gulp-eslint will not:
+  * target all js files in all subdirectories except node_modules and dist/
+  * the gulp src path needs to be refined

@@ -1,4 +1,6 @@
-export const person = {
+const person = {
   name: 'Deluxateer',
-  occupation: 'developer'
-}
+  occupation: 'developer',
+};
+
+export default person;

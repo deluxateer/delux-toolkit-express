@@ -4,9 +4,11 @@
   "description": "A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bundles, launches a live server, etc.",
   "scripts": {
     "views": "gulp views",
-    "js": "gulp js",
     "lintscss": "gulp lintScss",
     "styles": "gulp styles",
+    "lintjs": "./node_modules/.bin/eslint \"**/*.js\"",
+    "gulp-lintjs": "gulp lintjs",
+    "js": "gulp js",
     "prod": "NODE_ENV=production gulp prod"
   },
   "repository": {
@@ -28,8 +30,10 @@
     "cssnano": "^4.1.10",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.17.3",
     "gulp": "^4.0.2",
+    "gulp-eslint": "^5.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",

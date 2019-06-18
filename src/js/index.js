@@ -1,11 +1,10 @@
-import { person } from './lib';
+import person from './lib';
 
-let test = () => console.log(person.name);
+const test = () => console.log(person.name);
 test();
 
 function getPosts() {
-  const data = fetch('https://jsonplaceholder.typicode.com/posts').then(response => response.json()).then(data => console.log(data));
-  // return data;
+  fetch('https://jsonplaceholder.typicode.com/posts').then(response => response.json()).then(data => console.log(data));
 }
 
 // getPosts().then(posts => console.log(posts));

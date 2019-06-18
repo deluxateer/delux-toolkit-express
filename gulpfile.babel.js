@@ -1,5 +1,6 @@
 import path from 'path';
-import { src, dest, series, parallel, watch } from 'gulp'; // eslint-disable-line
+// eslint-disable-next-line
+import { src, dest, series, parallel, watch } from 'gulp';
 import webpack from 'webpack-stream';
 import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
@@ -8,8 +9,10 @@ import postcss from 'gulp-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
 import cssnano from 'cssnano';
 import gulpStylelint from 'gulp-stylelint';
+import eslint from 'gulp-eslint';
 
 const browserSync = require('browser-sync').create();
+// const exec = require('child_process').exec;
 
 const lintScss = () => (
   src(path.resolve(__dirname, 'src', 'scss', '**', '*'))
@@ -43,6 +46,19 @@ const processScss = () => {
   );
 };
 
+const lintJs = () => (
+  // exec('npm run lintjs', function(err, stdout, stderr) {
+  //   console.log(stdout);
+  //   console.log(stderr);
+  //   cb(err);
+  // })
+  // src([path.resolve(__dirname, '*.js')])
+  src(['*.js', 'src/**/*.js'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError())
+); // try running an npm run script command here
+
 const js = () => (
   src('src/js/index.js')
     .pipe(webpack({
@@ -63,6 +79,11 @@ const js = () => (
           query: {
             presets: ['@babel/preset-env'],
           },
+        // }, {
+        //   enforce: 'pre',
+        //   test: /\.js$/,
+        //   exclude: '/node_modules',
+        //   loader: "eslint-loader",
         }],
       },
     }))
@@ -71,4 +92,5 @@ const js = () => (
 
 
 exports.styles = series(lintScss, processScss);
+exports.lintjs = lintJs;
 exports.js = js;
