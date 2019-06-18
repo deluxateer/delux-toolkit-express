@@ -1,7 +1,6 @@
 import path from 'path';
-import {src, dest, series, parallel, watch} from 'gulp';
+import { src, dest, series, parallel, watch } from 'gulp'; // eslint-disable-line
 import webpack from 'webpack-stream';
-const browserSync = require('browser-sync').create();
 import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
 import sass from 'gulp-sass';
@@ -10,13 +9,15 @@ import postcssPresetEnv from 'postcss-preset-env';
 import cssnano from 'cssnano';
 import gulpStylelint from 'gulp-stylelint';
 
+const browserSync = require('browser-sync').create();
+
 const lintScss = () => (
-  src(path.resolve(__dirname, "src", "scss", "**", "*"))
+  src(path.resolve(__dirname, 'src', 'scss', '**', '*'))
     .pipe(gulpStylelint({
       failAfterError: true,
       reportOutputDir: 'reports/',
       reporters: [
-        {formatter: 'verbose', console: true, save: 'report.txt'},
+        { formatter: 'verbose', console: true, save: 'report.txt' },
         // {formatter: 'json', save: 'report.json'}
       ],
       debug: true,
@@ -27,18 +28,18 @@ const lintScss = () => (
 const processScss = () => {
   const postCssPlugins = [
     postcssPresetEnv({
-      autoprefixer: { grid: true }
+      autoprefixer: { grid: true },
     }),
-    cssnano()
+    cssnano(),
   ];
   return (
-    src(path.resolve(__dirname, "src", "scss", "index.scss"))
-    .pipe(sourcemaps.init({ loadMaps: true, largeFile: true }))
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss(postCssPlugins))
-    .pipe(rename("styles.min.css"))
-    .pipe(sourcemaps.write())
-    .pipe(dest(path.resolve(__dirname, "dist", "css")))
+    src(path.resolve(__dirname, 'src', 'scss', 'index.scss'))
+      .pipe(sourcemaps.init({ loadMaps: true, largeFile: true }))
+      .pipe(sass().on('error', sass.logError))
+      .pipe(postcss(postCssPlugins))
+      .pipe(rename('styles.min.css'))
+      .pipe(sourcemaps.write())
+      .pipe(dest(path.resolve(__dirname, 'dist', 'css')))
   );
 };
 
@@ -47,7 +48,7 @@ const js = () => (
     .pipe(webpack({
       context: path.resolve(__dirname, './src'),
       entry: {
-        app: './js/index.js'
+        app: './js/index.js',
       },
       output: {
         path: path.resolve(__dirname, 'dist'),
@@ -60,10 +61,10 @@ const js = () => (
           exclude: '/node_modules',
           loader: 'babel-loader',
           query: {
-            presets: ['@babel/preset-env']
-          }
-        }]
-      }
+            presets: ['@babel/preset-env'],
+          },
+        }],
+      },
     }))
     .pipe(dest('dist/'))
 );
