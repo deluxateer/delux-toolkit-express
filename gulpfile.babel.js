@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 // eslint-disable-next-line
 import { src, dest, series, parallel, watch } from 'gulp';
 import webpack from 'webpack-stream';
@@ -12,7 +13,6 @@ import gulpStylelint from 'gulp-stylelint';
 import eslint from 'gulp-eslint';
 
 const browserSync = require('browser-sync').create();
-// const exec = require('child_process').exec;
 
 // const views = () => (
 //   src(path.resolve(__dirname, 'src', 'views', '*.html'))
@@ -26,7 +26,11 @@ const lintScss = () => (
       failAfterError: true,
       reportOutputDir: 'reports/',
       reporters: [
-        { formatter: 'verbose', console: true, save: 'report.txt' },
+        {
+          formatter: 'verbose',
+          console: true,
+          save: 'report-styles.txt',
+        },
         // {formatter: 'json', save: 'report.json'}
       ],
       debug: true,
@@ -53,28 +57,23 @@ const processScss = () => {
 };
 
 const lintJs = () => (
-  // exec('npm run lintjs', function(err, stdout, stderr) {
-  //   console.log(stdout);
-  //   console.log(stderr);
-  //   cb(err);
-  // })
-  // src([path.resolve(__dirname, '*.js')])
   src(['*.js', 'src/**/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
+    .pipe(eslint.format('visualstudio', fs.createWriteStream('reports/report-js.txt')))
     .pipe(eslint.failAfterError())
-); // try running an npm run script command here
+);
 
-const js = () => (
+const processJs = () => (
   src(path.resolve(__dirname, 'src', 'js', 'index.js'))
-    // .pipe(sourcemaps.init())
     .pipe(webpack({
       context: path.resolve(__dirname, 'src'),
       entry: {
-        app: path.resolve(__dirname, 'src', 'js', 'index.js')
+        app: path.resolve(__dirname, 'src', 'js', 'index.js'),
       },
       output: { filename: 'bundle.js' },
       mode: 'development',
+      devtool: 'source-map',
       module: {
         rules: [{
           test: /\.js$/,
@@ -83,42 +82,39 @@ const js = () => (
           query: {
             presets: ['@babel/preset-env'],
           },
-        // }, {
-        //   enforce: 'pre',
-        //   test: /\.js$/,
-        //   exclude: '/node_modules',
-        //   loader: "eslint-loader",
         }],
       },
     }))
-    // .pipe(sourcemaps.write())
     .pipe(dest(path.resolve(__dirname, 'dist', 'js')))
 );
+
+const styles = series(lintScss, processScss);
+const js = series(lintJs, processJs);
 
 const watchTask = () => {
   browserSync.init({
     server: 'dist',
     open: 'external',
-    port: 9000
+    port: 9000,
   });
   watch('src/scss/**/*.scss', styles);
   watch('src/js/*.js', js);
   watch(['dist/css/*', 'dist/js/*', 'dist/*.html']).on('change', browserSync.reload);
-}
+};
 
 const build = (
   series(
     parallel(
       // views,
-      series(lintScss, processScss),
-      js
+      styles,
+      js,
     ),
-    watch
+    watchTask,
   )
 );
 
 // exports.views = views;
-exports.styles = series(lintScss, processScss);
+exports.styles = styles;
 exports.lintjs = lintJs;
 exports.js = js;
 exports.watch = watchTask;
