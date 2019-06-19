@@ -31,10 +31,10 @@ const lintScss = () => (
           console: true,
           save: 'report-styles.txt',
         },
-        // {formatter: 'json', save: 'report.json'}
+        // {formatter: 'json', save: 'report.json'},
       ],
       debug: true,
-      // fix: true
+      // fix: true,
     }))
 );
 
@@ -56,13 +56,17 @@ const processScss = () => {
   );
 };
 
-const lintJs = () => (
-  src(['*.js', 'src/**/*.js'])
+const lintJs = () => {
+  // create report directory if it doesn't already exist
+  if (!fs.existsSync('reports/')) {
+    fs.mkdirSync('reports/');
+  }
+  return src(['*.js', 'src/**/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.format('visualstudio', fs.createWriteStream('reports/report-js.txt')))
-    .pipe(eslint.failAfterError())
-);
+    .pipe(eslint.failAfterError());
+};
 
 const processJs = () => (
   src(path.resolve(__dirname, 'src', 'js', 'index.js'))
@@ -72,7 +76,7 @@ const processJs = () => (
         app: path.resolve(__dirname, 'src', 'js', 'index.js'),
       },
       output: { filename: 'bundle.js' },
-      mode: 'development',
+      mode: 'production',
       devtool: 'source-map',
       module: {
         rules: [{
@@ -98,6 +102,7 @@ const watchTask = () => {
     port: 9000,
   });
   watch('src/scss/**/*.scss', styles);
+  watch('*.js', lintJs);
   watch('src/js/*.js', js);
   watch(['dist/css/*', 'dist/js/*', 'dist/*.html']).on('change', browserSync.reload);
 };

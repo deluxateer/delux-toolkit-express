@@ -1,12 +1,12 @@
 import person from './lib';
 
-const test = () => console.log(person.name);
+const test = () => person.name.toUpperCase();
 test();
 
 function getPosts() {
-  fetch('https://jsonplaceholder.typicode.com/posts').then(response => response.json()).then(data => console.log(data));
+  fetch('https://jsonplaceholder.typicode.com/posts').then(response => response.json()).then(data => data.reverse());
 }
 
 // getPosts().then(posts => console.log(posts));
 getPosts();
-console.log('all logging is complete.');
+// console.log('all logging is complete.');

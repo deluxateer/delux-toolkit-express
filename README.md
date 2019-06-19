@@ -30,3 +30,4 @@ concatenating js files
 * gulp-eslint will not:
   * target all js files in all subdirectories except node_modules and dist/
   * the gulp src path needs to be refined
+* the path of the watch task for watching eslinting for all js files needs to be refined
