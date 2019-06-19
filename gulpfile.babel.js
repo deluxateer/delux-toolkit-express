@@ -2,22 +2,26 @@ import path from 'path';
 import fs from 'fs';
 // eslint-disable-next-line
 import { src, dest, series, parallel, watch } from 'gulp';
-import webpack from 'webpack-stream';
-import rename from 'gulp-rename';
+import pug from 'gulp-pug';
+import gulpStylelint from 'gulp-stylelint';
 import sourcemaps from 'gulp-sourcemaps';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
 import cssnano from 'cssnano';
-import gulpStylelint from 'gulp-stylelint';
+import rename from 'gulp-rename';
+import webpack from 'webpack-stream';
 import eslint from 'gulp-eslint';
 
 const browserSync = require('browser-sync').create();
 
-// const views = () => (
-//   src(path.resolve(__dirname, 'src', 'views', '*.html'))
-//     .pipe(dest(path.resolve(__dirname, 'dist')))
-// );
+const views = () => (
+  src(path.resolve(__dirname, 'src', 'views', '*.pug'))
+    .pipe(pug({
+      doctype: 'html',
+    }))
+    .pipe(dest(path.resolve(__dirname, 'dist')))
+);
 
 
 const lintScss = () => (
@@ -101,6 +105,7 @@ const watchTask = () => {
     open: 'external',
     port: 9000,
   });
+  watch('src/views/**/*.pug', views);
   watch('src/scss/**/*.scss', styles);
   watch('*.js', lintJs);
   watch('src/js/*.js', js);
@@ -110,7 +115,7 @@ const watchTask = () => {
 const build = (
   series(
     parallel(
-      // views,
+      views,
       styles,
       js,
     ),
@@ -118,7 +123,7 @@ const build = (
   )
 );
 
-// exports.views = views;
+exports.views = views;
 exports.styles = styles;
 exports.lintjs = lintJs;
 exports.js = js;
