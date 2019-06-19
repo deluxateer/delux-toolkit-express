@@ -1,3 +1,12 @@
+mixin card(cardData)
+  .card
+    .card-body
+      p=`Hello ${cardData.name}`
+      p=cardData.occupation
+      p=cardData.age
+    .card-footer
+      p="Member of Dank, Inc."
+
 doctype html
 html(lang="en")
   head
@@ -7,8 +16,33 @@ html(lang="en")
     link(rel="stylesheet" href="css/styles.min.css")
   body
     header
+      nav.my-nav
+        ul
+          each item in ["Logo", "How It Works", "About", "Contact"]
+            if item == "Logo"
+              li.brand-item
+                a(href="#", style="color: red;")= item
+            else
+              li.nav-item
+                a(href="#")= item
     main
-      h1 Hello There!
-    footer
+      section.hero
+        .container
+          h1 Hello There!
+          p.hero-text.
+            Buy now while you still can!
+      section.form-test
+        form#myForm
+          div
+            label(for="login") Login: 
+            input#login(type="text")
+          div
+            label(for="password") Password: 
+            input#password(type="password")
+          btn(type="submit") Login
+      section.dynamicTest
+        +card({ name: "Steve", occupation: "Developer", age: 999 })
+    - const styles = { "background-color": "goldenrod" }
+    footer(style=styles)
+      p.copyright TestSite, All Rights Reserved.
     script(src="js/bundle.js")
-    
