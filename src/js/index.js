@@ -9,3 +9,4 @@ function getPosts() {
 
 // getPosts().then(posts => console.log(posts));
 getPosts();
+console.log('all logging is complete.');

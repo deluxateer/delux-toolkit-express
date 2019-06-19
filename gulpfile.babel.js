@@ -14,6 +14,12 @@ import eslint from 'gulp-eslint';
 const browserSync = require('browser-sync').create();
 // const exec = require('child_process').exec;
 
+// const views = () => (
+//   src(path.resolve(__dirname, 'src', 'views', '*.html'))
+//     .pipe(dest(path.resolve(__dirname, 'dist')))
+// );
+
+
 const lintScss = () => (
   src(path.resolve(__dirname, 'src', 'scss', '**', '*'))
     .pipe(gulpStylelint({
@@ -60,16 +66,14 @@ const lintJs = () => (
 ); // try running an npm run script command here
 
 const js = () => (
-  src('src/js/index.js')
+  src(path.resolve(__dirname, 'src', 'js', 'index.js'))
+    // .pipe(sourcemaps.init())
     .pipe(webpack({
-      context: path.resolve(__dirname, './src'),
+      context: path.resolve(__dirname, 'src'),
       entry: {
-        app: './js/index.js',
+        app: path.resolve(__dirname, 'src', 'js', 'index.js')
       },
-      output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
-      },
+      output: { filename: 'bundle.js' },
       mode: 'development',
       module: {
         rules: [{
@@ -87,10 +91,36 @@ const js = () => (
         }],
       },
     }))
-    .pipe(dest('dist/'))
+    // .pipe(sourcemaps.write())
+    .pipe(dest(path.resolve(__dirname, 'dist', 'js')))
 );
 
+const watchTask = () => {
+  browserSync.init({
+    server: 'dist',
+    open: 'external',
+    port: 9000
+  });
+  watch('src/scss/**/*.scss', styles);
+  watch('src/js/*.js', js);
+  watch(['dist/css/*', 'dist/js/*', 'dist/*.html']).on('change', browserSync.reload);
+}
 
+const build = (
+  series(
+    parallel(
+      // views,
+      series(lintScss, processScss),
+      js
+    ),
+    watch
+  )
+);
+
+// exports.views = views;
 exports.styles = series(lintScss, processScss);
 exports.lintjs = lintJs;
 exports.js = js;
+exports.watch = watchTask;
+
+exports.default = build;

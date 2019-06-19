@@ -9,6 +9,8 @@
     "lintjs": "./node_modules/.bin/eslint \"**/*.js\"",
     "gulp-lintjs": "gulp lintjs",
     "js": "gulp js",
+    "watch": "gulp watch",
+    "build": "gulp",
     "prod": "NODE_ENV=production gulp prod"
   },
   "repository": {
