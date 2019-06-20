@@ -31,3 +31,4 @@ concatenating js files
   * target all js files in all subdirectories except node_modules and dist/
   * the gulp src path needs to be refined
 * the path of the watch task for watching eslinting for all js files needs to be refined
+* there isn't a way to cleanly write the output of pug-lint to a file

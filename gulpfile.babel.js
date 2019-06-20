@@ -2,6 +2,8 @@ import path from 'path';
 import fs from 'fs';
 // eslint-disable-next-line
 import { src, dest, series, parallel, watch } from 'gulp';
+import pugLinter from 'gulp-pug-linter';
+import pugLintStylish from 'puglint-stylish';
 import pug from 'gulp-pug';
 import gulpStylelint from 'gulp-stylelint';
 import sourcemaps from 'gulp-sourcemaps';
@@ -17,6 +19,10 @@ const browserSync = require('browser-sync').create();
 
 const views = () => (
   src(path.resolve(__dirname, 'src', 'views', '*.pug'))
+    .pipe(pugLinter({
+      failAfterError: true,
+      reporter: pugLintStylish,
+    }))
     .pipe(pug({
       doctype: 'html',
     }))

@@ -1,30 +1,30 @@
 mixin card(cardData)
   .card
     .card-body
-      p=`Hello ${cardData.name}`
-      p=cardData.occupation
-      p=cardData.age
+      p= `Hello ${cardData.name}`
+      p= cardData.occupation
+      p= cardData.age
     .card-footer
-      p="Member of Dank, Inc."
+      p= 'Member of Dank, Inc.'
 
 doctype html
-html(lang="en")
+html(lang='en')
   head
-    meta(charset="utf-8")
-    meta(name="viewport" content="width=device-width,initial-scale=1.0")
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1.0')
     title My First Pug Template
-    link(rel="stylesheet" href="css/styles.min.css")
+    link(rel='stylesheet' href='css/styles.min.css')
   body
     header
       nav.my-nav
         ul
-          each item in ["Logo", "How It Works", "About", "Contact"]
-            if item == "Logo"
+          each item in ['Logo', 'How It Works', 'About', 'Contact']
+            if item === 'Logo'
               li.brand-item
-                a(href="#", style="color: red;")= item
+                a(href='#', style='color: red;')= item
             else
               li.nav-item
-                a(href="#")= item
+                a(href='#')= item
     main
       section.hero
         .container
@@ -34,15 +34,15 @@ html(lang="en")
       section.form-test
         form#myForm
           div
-            label(for="login") Login: 
-            input#login(type="text")
+            label(for='login') Login: 
+            input#login(type='text')
           div
-            label(for="password") Password: 
-            input#password(type="password")
-          btn(type="submit") Login
+            label(for='password') Password: 
+            input#password(type='password')
+          btn(type='submit') Login
       section.dynamicTest
-        +card({ name: "Steve", occupation: "Developer", age: 999 })
-    - const styles = { "background-color": "goldenrod" }
+        +card({ name: 'Steve', occupation: 'Developer', age: 999 })
+    - const styles = { 'background-color': 'goldenrod' }
     footer(style=styles)
       p.copyright TestSite, All Rights Reserved.
-    script(src="js/bundle.js")
+    script(src='js/bundle.js')
