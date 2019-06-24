@@ -1,1 +1,84 @@
-//- head code
+//-
+  Variable data for head:
+    * Title => string
+    * set facebook and twitter cards => boolean
+    * description (meta, twitter, facebook) => string
+    * keywords => string
+    * author => string (optional)
+    * google analytics code => string (optional)
+    * canonical link url => string (optional)
+    * web app manifest path => string (optional)
+    * stylesheet path => string [array]
+    * favicon path => string
+    * twitter/facebook image url => string
+    * twitter website handle => string
+    * twitter content creator handle => string
+    * webpage url => string
+    * facebook site name => string
+mixin head(headProps)
+  -
+    const {
+      title,
+      setFacebookAndTwitterCards,
+      description,
+      keywords,
+      author,
+      googleAnalyticsCode,
+      canonicalLinkURL,
+      webAppManifestPath,
+      styleSheetPaths,
+      faviconPath,
+      twitterFacebookImageURL,
+      websiteTwitterHandle,
+      contentCreatorTwitterHandle,
+      webpageURL,
+      facebookSiteName
+    } = headProps;
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="IE=Edge")
+    if title
+      title #{title}
+    else
+      - throw "Title (required) has not been provided."
+    if description
+      meta(name="description" content=description)
+    else
+      - throw "Description (required) has not been provided."
+    if keywords
+      meta(name="keywords" content=keywords)
+    else
+      - throw "Keywords (required) has not been provided."
+    if author
+      meta(name="author" content=author)
+    if googleAnalyticsCode
+      script #{googleAnalyticsCode}
+    if setFacebookAndTwitterCards
+      meta(name="twitter:card" content="summary_large_image")
+      if websiteTwitterHandle
+        meta(name="twitter:site" content=websiteTwitterHandle)
+      meta(name="twitter:title" content=title)
+      meta(name="twitter:description" content=description)
+      if contentCreatorTwitterHandle
+        meta(name="twitter:creator" content=contentCreatorTwitterHandle)
+      if twitterFacebookImageURL
+        meta(name="twitter:image" content=twitterFacebookImageURL)
+      meta(property="og:title" content=title)
+      meta(property="og:description" content=description)
+      meta(property="og:type" content="website")
+      if webpageURL
+        meta(property="og:url" content=webpageURL)
+      if twitterFacebookImageURL
+        meta(property="og:image" content=twitterFacebookImageURL)
+      if facebookSiteName
+        meta(property="og:site_name" content=facebookSiteName)
+    if canonicalLinkURL
+      link(rel="canonical" href=canonicalLinkURL)
+    if webAppManifestPath
+      link(rel="manifest" href=webAppManifestPath)
+    if styleSheetPaths
+      each stylesheetPath in styleSheetPaths
+        link(rel="stylesheet" href=stylesheetPath)
+    if faviconPath
+      link(rel="shortcut icon" href=faviconPath type="image/x-icon") 

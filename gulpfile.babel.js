@@ -12,8 +12,8 @@ import postcss from 'gulp-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
 import cssnano from 'cssnano';
 import rename from 'gulp-rename';
-import webpack from 'webpack-stream';
 import eslint from 'gulp-eslint';
+import webpack from 'webpack-stream';
 
 const browserSync = require('browser-sync').create();
 

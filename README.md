@@ -8,11 +8,11 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
 * compile scss files
 * include sourcemaps for scss (maybe js files too)
 * postcss (autoprefix, polyfills, linting, use future css tech)
-concatenating js files
+* concatenating js files
 * transpile js files with babel
 * minify all static files (html, css, js)
 * minify all images
-* eventually: html template (pug or handlebars)
+* html template engine (pug)
 
 
 ### Gulp:
