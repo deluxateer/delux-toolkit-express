@@ -1,39 +1,41 @@
 //-
   Variable data for head:
-    * Title => string
-    * set facebook and twitter cards => boolean
-    * description (meta, twitter, facebook) => string
-    * keywords => string
-    * author => string (optional)
-    * google analytics code => string (optional)
-    * canonical link url => string (optional)
-    * web app manifest path => string (optional)
-    * stylesheet path => string [array]
-    * favicon path => string
-    * twitter/facebook image url => string
-    * twitter website handle => string
-    * twitter content creator handle => string
-    * webpage url => string
-    * facebook site name => string
-mixin head(headProps)
+    * (string) title => Title for title tag
+    * (boolean) setFacebookAndTwitterCards => determine if facebook and twitter cards are desired
+    * (string) description => description used for meta, twitter, facebook
+    * (string) keywords => keywords for metatag
+    * (string, optional) author => author of the webpage
+    * (string, optional) googleAnalyticsCode => google analytics javascript code 
+    * (string, optional) canonicalLinkURL => URL for canonical links
+    * (string, optional) webAppManifestPath => relative path to manifest.json
+    * (Array(string), optional) stylesheetPaths => all the relative paths to your stylesheets
+    * (string, optional) faviconPath => relative path to favicon
+    * (string, optional) twitterFacebookImageURL => URL to image used for twitter/facebook cards
+    * (string, optional) websiteTwitterHandle => twitter handle used for the website
+    * (string, optional) contentCreatorTwitterHandle => webpage author's twitter handle
+    * (string, optional) webpageURL => URL to be used by the webpage (for facebook)
+    * (string, optional) facebookSiteName => the name of your site (for facebook)
+mixin head(globalHeadProps, localHeadProps)
   -
     const {
-      title,
-      setFacebookAndTwitterCards,
-      description,
-      keywords,
       author,
       googleAnalyticsCode,
-      canonicalLinkURL,
-      webAppManifestPath,
-      styleSheetPaths,
-      faviconPath,
-      twitterFacebookImageURL,
+      setFacebookAndTwitterCards,
       websiteTwitterHandle,
       contentCreatorTwitterHandle,
+      twitterFacebookImageURL,
       webpageURL,
-      facebookSiteName
-    } = headProps;
+      facebookSiteName,
+      canonicalLinkURL,
+      webAppManifestPath,
+      faviconPath,
+    } = globalHeadProps;
+    const {
+      title,
+      description,
+      keywords,
+      stylesheetPaths,
+    } = localHeadProps;
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
@@ -77,8 +79,8 @@ mixin head(headProps)
       link(rel="canonical" href=canonicalLinkURL)
     if webAppManifestPath
       link(rel="manifest" href=webAppManifestPath)
-    if styleSheetPaths
-      each stylesheetPath in styleSheetPaths
+    if stylesheetPaths
+      each stylesheetPath in stylesheetPaths
         link(rel="stylesheet" href=stylesheetPath)
     if faviconPath
       link(rel="shortcut icon" href=faviconPath type="image/x-icon") 

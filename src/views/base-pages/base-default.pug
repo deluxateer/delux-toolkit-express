@@ -1,29 +1,15 @@
-//- base default code
-- 
-  const headProps = {
-    title: "Best Note Taking App - Organize Your Notes with Evernote",
-    description: "Our note taking app helps you capture and prioritize ideas, projects and to-do lists, so nothing falls through the cracks. Start your free trial today!",
-    keywords: "HTML, CSS, XML, JavaScript",
-    author: "Deluxateer",
-    googleAnalyticsCode: `(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='https://www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','UA-XXXXX-X');ga('send','pageview');`,
-    setFacebookAndTwitterCards: true,
-    websiteTwitterHandle: "@evernote",
-    contentCreatorTwitterHandle: "@deluxateer",
-    twitterFacebookImageURL: "https://evernote.com/img/meta/evernote-twitter.png",
-    webpageURL: "https://evernote.com",
-    facebookSiteName: "Evernote",
-    canonicalLinkURL: "https://evernote.com",
-    webAppManifestPath: "/web-app-manifest.json",
-    styleSheetPaths: [
-      "css/bootstrap.min.css",
-      "css/styles.min.css"
-    ],
-    faviconPath: "favicon.ico"
-  };
+include ../abstracts/variables
 include layout/head
+
+block localVariables
 
 doctype html
 html(lang="en")
-  +head(headProps)
+  +head(globalHeadProps, localHeadProps)
   body
-    h1 Hello Base Page
+    block content
+    if scriptPaths
+      each scriptPath in scriptPaths
+        script(src=scriptPath)
+    //- - for (let scriptPath in scriptPaths)
+    //-   script(src=scriptPaths[scriptPath])

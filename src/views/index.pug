@@ -1,48 +1,17 @@
-mixin card(cardData)
-  .card
-    .card-body
-      p= `Hello ${cardData.name}`
-      p= cardData.occupation
-      p= cardData.age
-    .card-footer
-      p= 'Member of Dank, Inc.'
+extend base-pages/base-default
 
-doctype html
-html(lang='en')
-  head
-    meta(charset='utf-8')
-    meta(name='viewport' content='width=device-width,initial-scale=1.0')
-    title My First Pug Template
-    link(rel='stylesheet' href='css/styles.min.css')
-  body
-    header
-      nav.my-nav
-        ul
-          each item in ['Logo', 'How It Works', 'About', 'Contact']
-            if item === 'Logo'
-              li.brand-item
-                a(href='#', style='color: red;')= item
-            else
-              li.nav-item
-                a(href='#')= item
-    main
-      section.hero
-        .container
-          h1 Hello There!
-          p.hero-text.
-            Buy now while you still can!
-      section.form-test
-        form#myForm
-          div
-            label(for='login') Login: 
-            input#login(type='text')
-          div
-            label(for='password') Password: 
-            input#password(type='password')
-          btn(type='submit') Login
-      section.dynamicTest
-        +card({ name: 'Steve', occupation: 'Developer', age: 999 })
-    - const styles = { 'background-color': 'goldenrod' }
-    footer(style=styles)
-      p.copyright TestSite, All Rights Reserved.
-    script(src='js/bundle.js')
+block localVariables
+  -
+    //- page-specific head configurations
+    const localHeadProps = {
+      title: "Best Note Taking App - Organize Your Notes with Evernote",
+      description: "Our note taking app helps you capture and prioritize ideas, projects and to-do lists, so nothing falls through the cracks. Start your free trial today!",
+      keywords: "HTML, CSS, XML, JavaScript",
+      stylesheetPaths: [
+        "css/styles.min.css",
+      ]
+    };
+    const scriptPaths = [
+      "js/bundle.js",
+      "js/vendor.js",
+    ];
