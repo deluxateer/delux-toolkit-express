@@ -18,6 +18,7 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
 ### Gulp:
 * linting for js (eslint)
 * unit testing
+  * low priority, probably won't be implemented for a while.
 * spin up browsersync
 * watch for changes for files
 
@@ -31,7 +32,7 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
 * 
 
 ## Issues
-* add some of the [sass-boilerplate](https://github.com/HugoGiraudel/sass-boilerplate)) to our code
+* add some of the [sass-boilerplate](https://github.com/HugoGiraudel/sass-boilerplate) to our code
 * find ways to additional style-guide rules into your scss-linter
 * gulp-eslint will not:
   * target all js files in all subdirectories except node_modules and dist/

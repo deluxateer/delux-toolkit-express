@@ -1,5 +1,7 @@
 include ../abstracts/variables
 include layout/head
+include layout/navbar
+include layout/footer
 
 block localVariables
 
@@ -8,8 +10,15 @@ html(lang="en")
   +head(globalHeadProps, localHeadProps)
   body
     block content
-    if scriptPaths
-      each scriptPath in scriptPaths
-        script(src=scriptPath)
+      block header
+        header
+          include navbar
+      block main
+      block footer
+        include footer
+    block scripts
+      if scriptPaths
+        each scriptPath in scriptPaths
+          script(src=scriptPath)
     //- - for (let scriptPath in scriptPaths)
     //-   script(src=scriptPaths[scriptPath])
