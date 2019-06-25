@@ -11,6 +11,7 @@ import postcssPresetEnv from 'postcss-preset-env';
 import cssnano from 'cssnano';
 import gulpStylelint from 'gulp-stylelint';
 import eslint from 'gulp-eslint';
+import imagemin from 'gulp-imagemin';
 
 const browserSync = require('browser-sync').create();
 
@@ -92,6 +93,12 @@ const processJs = () => (
     .pipe(dest(path.resolve(__dirname, 'dist', 'js')))
 );
 
+const minimizeImg = () => (
+  src('src/assets/img/*')
+    .pipe(imagemin())
+    .pipe(dest('dist/img/'))
+);
+
 const styles = series(lintScss, processScss);
 const js = series(lintJs, processJs);
 
@@ -104,7 +111,8 @@ const watchTask = () => {
   watch('src/scss/**/*.scss', styles);
   watch('*.js', lintJs);
   watch('src/js/*.js', js);
-  watch(['dist/css/*', 'dist/js/*', 'dist/*.html']).on('change', browserSync.reload);
+  watch('src/assets/img/*', minimizeImg);
+  watch(['dist/css/*', 'dist/js/*', 'dist/*.html', 'dist/img/*']).on('change', browserSync.reload);
 };
 
 const build = (
@@ -113,6 +121,7 @@ const build = (
       // views,
       styles,
       js,
+      minimizeImg,
     ),
     watchTask,
   )
@@ -122,6 +131,7 @@ const build = (
 exports.styles = styles;
 exports.lintjs = lintJs;
 exports.js = js;
+exports.minimg = minimizeImg;
 exports.watch = watchTask;
 
 exports.default = build;

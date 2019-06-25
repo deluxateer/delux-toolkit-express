@@ -9,6 +9,7 @@
     "lintjs": "./node_modules/.bin/eslint \"**/*.js\"",
     "gulp-lintjs": "gulp lintjs",
     "js": "gulp js",
+    "minimg": "gulp minimg",
     "watch": "gulp watch",
     "build": "gulp",
     "prod": "NODE_ENV=production gulp prod"
@@ -35,6 +36,7 @@
     "eslint-plugin-import": "^2.17.3",
     "gulp": "^4.0.2",
     "gulp-eslint": "^5.0.0",
+    "gulp-imagemin": "^6.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
