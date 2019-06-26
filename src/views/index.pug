@@ -1,0 +1,19 @@
+extend base-pages/base-default
+
+block localVariables
+  -
+    //- page-specific head configurations
+    const localHeadProps = {
+      title: "Best Note Taking App - Organize Your Notes with Evernote",
+      description: "Our note taking app helps you capture and prioritize ideas, projects and to-do lists, so nothing falls through the cracks. Start your free trial today!",
+      keywords: "HTML, CSS, XML, JavaScript",
+      //- paths of the stylesheets to use for this page
+      stylesheetPaths: [
+        "css/styles.min.css",
+      ]
+    };
+    //- paths of javascript files to use for this page
+    const scriptPaths = [
+      "js/bundle.js",
+      "js/vendor.js",
+    ];

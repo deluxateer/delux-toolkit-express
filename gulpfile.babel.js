@@ -2,23 +2,33 @@ import path from 'path';
 import fs from 'fs';
 // eslint-disable-next-line
 import { src, dest, series, parallel, watch } from 'gulp';
-import webpack from 'webpack-stream';
-import rename from 'gulp-rename';
+import pugLinter from 'gulp-pug-linter';
+import pugLintStylish from 'puglint-stylish';
+import pug from 'gulp-pug';
+import gulpStylelint from 'gulp-stylelint';
 import sourcemaps from 'gulp-sourcemaps';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
 import cssnano from 'cssnano';
-import gulpStylelint from 'gulp-stylelint';
+import rename from 'gulp-rename';
 import eslint from 'gulp-eslint';
+import webpack from 'webpack-stream';
 import imagemin from 'gulp-imagemin';
 
 const browserSync = require('browser-sync').create();
 
-// const views = () => (
-//   src(path.resolve(__dirname, 'src', 'views', '*.html'))
-//     .pipe(dest(path.resolve(__dirname, 'dist')))
-// );
+const views = () => (
+  src(path.resolve(__dirname, 'src', 'views', '*.pug'))
+    .pipe(pugLinter({
+      failAfterError: true,
+      reporter: pugLintStylish,
+    }))
+    .pipe(pug({
+      doctype: 'html',
+    }))
+    .pipe(dest(path.resolve(__dirname, 'dist')))
+);
 
 
 const lintScss = () => (
@@ -93,7 +103,7 @@ const processJs = () => (
     .pipe(dest(path.resolve(__dirname, 'dist', 'js')))
 );
 
-const minimizeImg = () => (
+const minimizeImgs = () => (
   src('src/assets/img/*')
     .pipe(imagemin())
     .pipe(dest('dist/img/'))
@@ -108,6 +118,7 @@ const watchTask = () => {
     open: 'external',
     port: 9000,
   });
+  watch('src/views/**/*.pug', views);
   watch('src/scss/**/*.scss', styles);
   watch('*.js', lintJs);
   watch('src/js/*.js', js);
@@ -118,20 +129,20 @@ const watchTask = () => {
 const build = (
   series(
     parallel(
-      // views,
+      views,
       styles,
       js,
-      minimizeImg,
+      minimizeImgs,
     ),
     watchTask,
   )
 );
 
-// exports.views = views;
+exports.views = views;
 exports.styles = styles;
 exports.lintjs = lintJs;
 exports.js = js;
-exports.minimg = minimizeImg;
+exports.minimgs = minimizeImgs;
 exports.watch = watchTask;
 
 exports.default = build;
