@@ -13,13 +13,14 @@
 @import 'base/helpers';
 
 @import 'layout/header';
-@import 'layout/navigation';
+@import 'layout/navbar';
 @import 'layout/footer';
 
 @import 'components/button';
+@import 'components/navigation';
 
 @import 'pages/home';
-@import 'pages/contact';
+@import 'pages/about';
 
-@import 'themes/theme';
+@import 'themes/default';
 @import 'themes/admin';

@@ -1,1 +1,15 @@
-//- mixin code
+//- -----------------------------------------------------------------------------
+//- This file contains all application-wide Pug mixins.
+//- -----------------------------------------------------------------------------
+
+//- outputs duplicate elements without explicitly writing them out
+//- @param {Number} count - the total number of elements desired
+//- @example making 10 paragraph elements
+//-   +loop(10)
+//-     p This will appear 10 times
+mixin loop(count)
+  - let n = 0
+  while n < count
+    block
+    - n++
+   

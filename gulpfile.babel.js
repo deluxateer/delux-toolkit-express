@@ -122,7 +122,7 @@ const watchTask = () => {
   watch('src/scss/**/*.scss', styles);
   watch('*.js', lintJs);
   watch('src/js/*.js', js);
-  watch('src/assets/img/*', minimizeImg);
+  watch('src/assets/img/*', minimizeImgs);
   watch(['dist/css/*', 'dist/js/*', 'dist/*.html', 'dist/img/*']).on('change', browserSync.reload);
 };
 

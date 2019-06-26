@@ -1,7 +1,12 @@
+//- -----------------------------------------------------------------------------
+//- This file contains all markup related to the generic base page of the site/application.
+//- The intention is to construct a generic webpage with a navbar, hero, content, footer.
+//- Vertical page flow.
+//- -----------------------------------------------------------------------------
+
+
 include ../abstracts/variables
 include layout/head
-include layout/navbar
-include layout/footer
 
 block localVariables
 
@@ -12,13 +17,13 @@ html(lang="en")
     block content
       block header
         header
-          include navbar
+          include layout/navbar
       block main
       block footer
-        include footer
+        include layout/footer
     block scripts
       if scriptPaths
         each scriptPath in scriptPaths
-          script(src=scriptPath)
+          script(src=scriptPath type="text/javascript")
     //- - for (let scriptPath in scriptPaths)
     //-   script(src=scriptPaths[scriptPath])
