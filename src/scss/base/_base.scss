@@ -5,6 +5,7 @@
 a {
   color: $primary-color;
   text-decoration: none;
+  cursor: pointer;
 
   @include on-event {
     color: tint($primary-color, 25%);

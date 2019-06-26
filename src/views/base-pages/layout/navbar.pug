@@ -2,13 +2,17 @@
 //- This file contains all markup related to the navbar.
 //- -----------------------------------------------------------------------------
 
+mixin navbar-items(text, link)
+  li
+    a.nav-link(href=link)= text
+
 nav.navbar
   .brand-logo
     a(href="!#") DeluxThreads
-  ul.menu
-    li
-      a.nav-link(href="!#") Portfolio
-      a.nav-link(href="!#") About
-      a.nav-link(href="!#") Services
-      a.nav-link(href="!#") Testimonials
-      a.nav-link(href="!#") Contact
+  ul.nav-menu
+    +navbar-items('Portfolio', '!#')
+    +navbar-items('About', '!#')
+    +navbar-items('Services', '!#')
+    +navbar-items('Testimonials', '!#')
+    +navbar-items('Contact', '!#')
+

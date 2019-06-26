@@ -9,36 +9,47 @@ mixin head(globalHeadProps, localHeadProps)
       //- author of the webpage
       //- @type string
       author,
+
       //- google analytics javascript code
       //- @type string
       googleAnalyticsCode,
+
       //- determine if facebook and twitter cards are desired
       //- @type boolean
       setFacebookAndTwitterCards,
+
       //- twitter handle used for the website
       //- @type string
       websiteTwitterHandle,
+
       //- webpage author's twitter handle
       //- @type string
       contentCreatorTwitterHandle,
+
       //- URL to image used for twitter/facebook cards
       //- @type string
       twitterFacebookImageURL,
+      
       //- URL to be used by the webpage (for facebook)
       //- @type string
       webpageURL,
+
       //- the name of your site (for facebook)
       //- @type string
       facebookSiteName,
+
       //- URL for canonical links
       //- @type string
       canonicalLinkURL,
+
       //- relative path to manifest.json
       //- @type string
       webAppManifestPath,
+
       //- relative path to favicon
       //- @type string
       faviconPath,
+      
     } = globalHeadProps;
   -
     //- head properties that will change from webpage to webpage.
@@ -48,17 +59,21 @@ mixin head(globalHeadProps, localHeadProps)
       //- @type string
       //- @required
       title,
+
       //- description used for meta, twitter, facebook
       //- @type string
       //- @required
       description,
+
       //- keywords for metatag 
       //- @type string
       //- @required
       keywords,
+
       //- all the relative paths to your stylesheets
       //- @type Array(string)
       stylesheetPaths,
+      
     } = localHeadProps;
 
   head
