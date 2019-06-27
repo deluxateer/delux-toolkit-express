@@ -44,3 +44,11 @@
 @function font($path, $base: $base-url) {
   @return asset($base, 'fonts/', $path);
 }
+
+/// friendlier function to work with breakpoints
+/// @param {String} $desired-breakpoint - the breakpoint that will be used
+/// @return {String}
+@function breakpoint($desired-breakpoint) {
+  @return map-get($breakpoints, $desired-breakpoint);
+}
+

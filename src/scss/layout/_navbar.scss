@@ -2,33 +2,87 @@
 // This file contains all styles related to the navbar.
 // -----------------------------------------------------------------------------
 
-.navbar {
+$nav-link-responsive-bg-color: hsl(0, 0%, 93%);
+$nav-link-hover-bg-color: hsl(0, 0%, 98%);
+
+.mobile-nav-display {
   display: flex;
   justify-content: space-between;
-  align-content: center;
-  background-color: $light-gray;
-  padding: 30px 25px;
+  align-items: center;
 }
 
-.brand-logo {
-  a {
-    font-size: 1.5rem;
-    font-weight: 700;
+.brand-logo,
+.navbar-toggle {
+  font-size: 1.875rem;
+}
+
+.navbar {
+  padding: 1rem;
+
+  &-toggle {
+    color: $primary-color;
+    cursor: pointer;
+    background-color: inherit;
+    border: 0;
+
+    @include on-event {
+      color: tint($primary-color, 35%);
+    }
+  }
+
+  &-submenu {
+    display: none;
+    list-style-type: none;
+  }
+
+  li { text-align: center; }
+
+  li + li { margin-top: 1.3rem; }
+
+  &-link {
+    display: block;
+    font-size: 1.5625rem;
+    background-color: $nav-link-responsive-bg-color;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  & &-active {
+    display: block;
+    margin-top: 15px;
   }
 }
 
-.nav-menu {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  list-style: none;
+@media screen and (min-width: 1200px) {
 
-  li + li {
-    margin-left: 20px;
-  }
+  .mobile-nav-display { display: initial; }
 
-  a {
-    font-size: 1.2rem;
-    padding: 15px;
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 88%;
+    padding: 2.6875rem 0;
+    margin: 0 auto;
+
+    &-toggle { display: none; }
+
+    & &-active,
+    &-submenu {
+      display: flex;
+    }
+
+    & &-active { margin-top: 0; }
+
+    &-link {
+      background-color: #fff;
+
+      @include on-event { background-color: $nav-link-hover-bg-color; }
+    }
+
+    li + li,
+    li:first-of-type {
+      margin: 0 1rem;
+    }
   }
 }

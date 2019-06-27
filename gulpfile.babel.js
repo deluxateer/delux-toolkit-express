@@ -38,7 +38,7 @@ const lintScss = () => (
       reportOutputDir: 'reports/',
       reporters: [
         {
-          formatter: 'verbose',
+          formatter: 'string',
           console: true,
           save: 'report-styles.txt',
         },

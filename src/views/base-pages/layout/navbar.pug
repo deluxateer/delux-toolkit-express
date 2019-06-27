@@ -4,15 +4,16 @@
 
 mixin navbar-items(text, link)
   li
-    a.nav-link(href=link)= text
+    a.navbar-link(href=link)= text
 
 nav.navbar
-  .brand-logo
-    a(href="!#") DeluxThreads
-  ul.nav-menu
+  .mobile-nav-display
+    a.brand-logo(href="!#") DeluxThreads
+    button.navbar-toggle
+      i.fas.fa-bars
+  ul.navbar-submenu
     +navbar-items('Portfolio', '!#')
     +navbar-items('About', '!#')
     +navbar-items('Services', '!#')
     +navbar-items('Testimonials', '!#')
     +navbar-items('Contact', '!#')
-

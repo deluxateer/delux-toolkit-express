@@ -12,12 +12,16 @@ block localVariables
       description: "Our store sells clothes so elegant and high-quality that you will be turning heads!",
       keywords: "shirt, pant, hats, shoes, style",
       //- paths of the stylesheets to use for this page
-      stylesheetPaths: [
-        "css/styles.min.css",
-      ]
+      //- stylesheetPaths: [
+      //-   "css/styles.min.css",
+      //- ]
     };
     //- paths of javascript files to use for this page
     const scriptPaths = [
       //- "js/vendor.js",
       "js/bundle.js",
     ];
+
+block stylesheets
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous')
+  link(rel='stylesheet' href='css/styles.min.css')

@@ -3,11 +3,11 @@
 // -----------------------------------------------------------------------------
 
 a {
+  transition: color 0.2s ease-in;
   color: $primary-color;
   text-decoration: none;
-  cursor: pointer;
 
   @include on-event {
-    color: tint($primary-color, 25%);
+    color: tint($primary-color, 35%);
   }
 }
