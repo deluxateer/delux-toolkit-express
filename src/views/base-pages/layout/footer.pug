@@ -3,4 +3,9 @@
 //- -----------------------------------------------------------------------------
 
 footer
-  p I am a footer.
+  .container
+    p.disclaimer DeluxThreads sources its resources responsibly.
+    .site-info
+      - const currDate = new Date().getFullYear();
+      p DeluxThreads, #{currDate}
+      a(href="!#") Sitemap

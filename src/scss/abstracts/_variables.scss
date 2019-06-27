@@ -5,7 +5,7 @@
 /// Regular font family
 /// @type List
 // $text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
-$text-font-stack: system-ui !default;
+$text-font-stack: 'Nunito', system-ui !default;
 
 /// Code (monospace) font family
 /// @type List
@@ -21,7 +21,7 @@ $primary-color: hsl(305, 61%, 32%) !default;
 
 /// Secondary (Accent) color
 /// @type Color
-$secondary-color: hsl(56, 66%, 48%) !default;
+$secondary-color: hsl(56, 70%, 52%) !default;
 
 /// Light gray
 /// @type Color
