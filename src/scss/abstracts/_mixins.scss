@@ -32,3 +32,19 @@
   }
 }
 
+/// Makes into a flex container and fully centers its children
+/// @author Deluxateer
+@mixin flex-center-children {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/// Makes into a flex container and centers its children
+/// with space between on the main axis
+/// @author Deluxateer
+@mixin flex-space-between-children {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

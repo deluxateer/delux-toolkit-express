@@ -6,9 +6,7 @@ $nav-link-responsive-bg-color: hsl(0, 0%, 93%);
 $nav-link-hover-bg-color: hsl(0, 0%, 98%);
 
 .mobile-nav-display {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @include flex-space-between-children;
 }
 
 .brand-logo,
@@ -63,9 +61,7 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
   .mobile-nav-display { display: initial; }
 
   .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-space-between-children;
     width: 88%;
     padding: 2.6875rem 0;
     margin: 0 auto;

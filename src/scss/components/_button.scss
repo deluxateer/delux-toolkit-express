@@ -1,7 +1,92 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
+// It is intended to work for a tags and button tags.
+// Most of the architecture is inspired from Hugo Giraudel
+// Source: https://hugogiraudel.com/2014/03/03/another-sass-button-library/
 // -----------------------------------------------------------------------------
+// configuration
+$btn-name: 'btn' !default;
+$btn-size-ratio: 1.2 !default;
+$btn-hover: saturate 25% !default;
+// $btn-border: darken 20% !default;
+$btn-border: false;
+$btn-text-color: #fff;
+$btn-background: (
+  'primary': $primary-color,
+  'secondary': $secondary-color,
+  'default': #565656,
+  'success': #468847,
+  'danger': #b94a48,
+  'warning': #c09853,
+  'info': #3a87ad
+) !default;
 
-.btn {
+// evaluates button color (bg, font, border)
+@mixin button-color($color) {
+  background-color: $color;
+
+  @include on-event {
+    color: $btn-text-color;
+    background: call(get-function(nth($btn-hover, 1)), $color, nth($btn-hover, 2));
+  }
+
+  /* stylelint-disable */
+  &:active {
+    background: call(get-function(shade), $color, nth($btn-hover, 2));
+    box-shadow: none;
+  }
+  /* stylelint-enable */
+
+  @if $btn-border != false {
+    border-color: call(get-function(nth($btn-border, 1)), $color, nth($btn-border, 2));
+  }
+}
+
+.#{$btn-name} {
+  // default styles
+  display: inline-block;
+  transition: background-color 0.15s ease-in;
+  color: $btn-text-color;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0.5em;
+  border: if($btn-border, 1px solid, none);
+  border-radius: 0.15em;
   outline: none;
+  margin-bottom: 1em;
+
+  // Modifiers
+  &-large {
+    font-size: 1em * $btn-size-ratio;
+    padding: 1rem 1.3rem;
+  }
+
+  &-small {
+    font-size: 1em / $btn-size-ratio;
+  }
+
+  &-bold {
+    font-weight: bold;
+  }
+
+  &-upper {
+    text-transform: uppercase;
+  }
+
+  &-block {
+    display: block;
+    width: 100%;
+  }
+
+  &-shadow {
+    box-shadow: 0 10px 20px hsla(0, 0%, 0%, 0.19), 0 6px 6px hsla(0, 0%, 0%, 0.23);
+  }
+
+  // Color schemes
+  @each $key, $value in $btn-background {
+    &-#{$key} {
+      @include button-color($value);
+    }
+  }
 }

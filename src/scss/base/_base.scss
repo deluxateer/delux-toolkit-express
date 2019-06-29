@@ -4,6 +4,8 @@
 
 body { color: $text-color; }
 
+code { font-family: $code-font-stack; }
+
 a {
   transition: color 0.2s ease-in;
   color: $primary-color;

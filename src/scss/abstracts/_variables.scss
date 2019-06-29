@@ -52,4 +52,4 @@ $breakpoints: (
 /// @type String
 /// @example scss - When using a CDN
 ///   $base-url: 'http://cdn.example.com/assets/';
-$base-url: 'src/assets/' !default;
+$base-url: '../' !default;
