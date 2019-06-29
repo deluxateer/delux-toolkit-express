@@ -17,6 +17,7 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
 }
 
 .navbar {
+  position: relative;
   padding: 1rem;
 
   &-toggle {
@@ -35,6 +36,15 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
     list-style-type: none;
   }
 
+  & &-active {
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    padding: 15px;
+  }
+
   li { text-align: center; }
 
   li + li { margin-top: 1.3rem; }
@@ -45,11 +55,6 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
     background-color: $nav-link-responsive-bg-color;
     padding: 10px;
     border-radius: 12px;
-  }
-
-  & &-active {
-    display: block;
-    margin-top: 15px;
   }
 }
 
@@ -70,6 +75,7 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
     & &-active,
     &-submenu {
       display: flex;
+      position: initial;
     }
 
     & &-active { margin-top: 0; }
