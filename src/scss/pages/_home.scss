@@ -8,13 +8,12 @@
 .about-info-container {
   @include flex-center-children;
   flex-direction: column;
-
-  h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-
+  
   p + p { margin-top: 1rem; }
+}
+
+.about-info {
+  width: 100%;
 }
 
 .about-img {

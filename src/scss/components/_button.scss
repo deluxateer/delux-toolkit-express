@@ -42,7 +42,7 @@ $btn-background: (
   }
 }
 
-.#{$btn-name} {
+%#{btn-name} {
   // default styles
   display: inline-block;
   transition: background-color 0.15s ease-in;
@@ -55,6 +55,10 @@ $btn-background: (
   border-radius: 0.15em;
   outline: none;
   margin-bottom: 1em;
+}
+
+.#{$btn-name} {
+  @extend %#{btn-name};
 
   // Modifiers
   &-large {
@@ -88,5 +92,47 @@ $btn-background: (
     &-#{$key} {
       @include button-color($value);
     }
+  }
+}
+
+// --- Specialty Buttons ---
+
+// Scroll Back To the Top Button
+.back-to-top-#{$btn-name} {
+  @extend %#{btn-name};
+
+  display: none;
+  position: fixed;
+  right: 20px;
+  bottom: 80px;
+  border: 1px #fff solid;
+  margin: 0;
+}
+
+.#{$btn-name}-enter { animation: enter 0.5s both; }
+
+.#{$btn-name}-exit { animation: exit 0.5s both; }
+
+@keyframes enter {
+  from {
+    transform: translate3d(0, 100%, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes exit {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  
+  to {
+    transform: translate3d(0, 100%, 0);
+    opacity: 0;
   }
 }

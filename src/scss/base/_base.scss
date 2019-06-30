@@ -2,6 +2,8 @@
 // This file contains very basic styles.
 // -----------------------------------------------------------------------------
 
+html { scroll-behavior: smooth; }
+
 body { color: $text-color; }
 
 section {
@@ -9,6 +11,11 @@ section {
 }
 
 code { font-family: $code-font-stack; }
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
 
 a {
   transition: color 0.2s ease-in;
