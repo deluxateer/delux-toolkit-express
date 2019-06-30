@@ -1,3 +1,42 @@
 // -----------------------------------------------------------------------------
 // This file contains styles that are specific to the home page.
 // -----------------------------------------------------------------------------
+
+// About Section
+.about { background-color: $off-white; }
+
+.about-info-container {
+  @include flex-center-children;
+  flex-direction: column;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p + p { margin-top: 1rem; }
+}
+
+.about-img {
+  margin-top: 1rem;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: breakpoint('medium')) {
+  .about-container {
+    display: flex;
+    flex-direction: row-reverse;
+
+    > * { flex: 1 1; }
+  }
+
+  .about-info-container { padding: 0 4rem; }
+
+  .about-img {
+    @include flex-center-children;
+  }
+}

@@ -11,17 +11,17 @@ $text-font-stack: 'Nunito', system-ui !default;
 /// @type List
 $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
 
-/// Copy text color
-/// @type Color
-$text-color: hsl(0, 0%, 44%) !default;
-
 /// Primary (Brand) color
 /// @type Color
 $primary-color: hsl(305, 61%, 32%) !default;
 
 /// Secondary (Accent) color
 /// @type Color
-$secondary-color: hsl(56, 70%, 52%) !default;
+$secondary-color: hsl(56, 70%, 59%) !default;
+
+/// Off-white
+/// @type Color
+$off-white: hsl(0%, 0%, 98%) !default;
 
 /// Light gray
 /// @type Color
@@ -29,11 +29,15 @@ $light-gray: hsl(0, 0%, 93%) !default;
 
 /// Medium gray
 /// @type Color
-$mid-gray: hsl(0, 0%, 60%) !default;
+$mid-gray: hsl(0, 0%, 44%) !default;
 
 /// Dark gray
 /// @type Color
 $dark-gray: hsl(0, 0%, 27%) !default;
+
+/// Copy text color
+/// @type Color
+$text-color: $mid-gray !default;
 
 /// Container's maximum width
 /// @type Length

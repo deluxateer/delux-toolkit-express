@@ -8,12 +8,11 @@ mixin navbar-items(text, link)
 
 nav.navbar
   .mobile-nav-display
-    a.brand-logo(href="!#") DeluxThreads
+    a.brand-logo(href="/") DeluxThreads
     button.navbar-toggle
       i.fas.fa-bars
   ul.navbar-submenu
-    +navbar-items('Portfolio', '!#')
-    +navbar-items('About', '!#')
-    +navbar-items('Services', '!#')
-    +navbar-items('Testimonials', '!#')
-    +navbar-items('Contact', '!#')
+    +navbar-items('About', '#about')
+    +navbar-items('Services', '#!')
+    +navbar-items('Testimonials', '#!')
+    +navbar-items('Contact', '#!')
