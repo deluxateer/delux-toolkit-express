@@ -7,6 +7,7 @@
 include ../abstracts/variables
 include ../abstracts/mixins
 include layout/head
+include layout/navbar
 
 block localVariables
 
@@ -17,7 +18,7 @@ html(lang="en")
     block content
       block header
         header
-          include layout/navbar
+          +navbar(navbarItems)
           button.back-to-top-btn.btn-primary.btn-large
             i.fas.fa-arrow-circle-up
       block main

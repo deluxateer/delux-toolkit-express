@@ -3,6 +3,7 @@
 //- -----------------------------------------------------------------------------
 
 extend base-pages/base-default
+include components/card
 
 block localVariables
   -
@@ -37,7 +38,8 @@ append main
       .about-img
         +image('tailoring.jpg', 'Tailoring Mannequin')
   section#services.services
-    h2 services
+    .container
+      h2 Our services will knock your socks off.
   section#testimonials.testimonials
     h2 testimonials
   section#contact.contact

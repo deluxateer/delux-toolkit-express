@@ -6,13 +6,12 @@ mixin navbar-items(text, link)
   li
     a.navbar-link(href=link)= text
 
-nav.navbar
-  .mobile-nav-display
-    a.brand-logo(href="/") DeluxThreads
-    button.navbar-toggle
-      i.fas.fa-bars
-  ul.navbar-submenu
-    +navbar-items('About', '#about')
-    +navbar-items('Services', '#services')
-    +navbar-items('Testimonials', '#testimonials')
-    +navbar-items('Contact', '#contact')
+mixin navbar(navbarItems)
+  nav.navbar
+    .mobile-nav-display
+      a.brand-logo(href="/") DeluxThreads
+      button.navbar-toggle
+        i.fas.fa-bars
+    ul.navbar-submenu
+      each value, key in navbarItems
+        +navbar-items(key, value)
