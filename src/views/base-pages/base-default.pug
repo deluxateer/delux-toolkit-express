@@ -12,7 +12,7 @@ include layout/navbar
 block localVariables
 
 doctype html
-html(lang="en")
+html(lang='en')
   +head(globalHeadProps, localHeadProps)
   body
     block content
@@ -28,6 +28,6 @@ html(lang="en")
     block scripts
       if scriptPaths
         each scriptPath in scriptPaths
-          script(src=scriptPath type="text/javascript")
+          script(src=scriptPath type='text/javascript')
     //- - for (let scriptPath in scriptPaths)
     //-   script(src=scriptPaths[scriptPath])

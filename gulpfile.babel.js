@@ -18,12 +18,16 @@ import imagemin from 'gulp-imagemin';
 
 const browserSync = require('browser-sync').create();
 
-const views = () => (
-  src(path.resolve(__dirname, 'src', 'views', '*.pug'))
+const lintViews = () => (
+  src(path.resolve(__dirname, 'src', 'views', '**', '*.pug'))
     .pipe(pugLinter({
-      failAfterError: true,
+      // failAfterError: true,
       reporter: pugLintStylish,
     }))
+);
+
+const processViews = () => (
+  src(path.resolve(__dirname, 'src', 'views', '*.pug'))
     .pipe(pug({
       doctype: 'html',
     }))
@@ -32,7 +36,7 @@ const views = () => (
 
 
 const lintScss = () => (
-  src(path.resolve(__dirname, 'src', 'scss', '**', '*'))
+  src(path.resolve(__dirname, 'src', 'scss', '**', '*.scss'))
     .pipe(gulpStylelint({
       failAfterError: true,
       reportOutputDir: 'reports/',
@@ -72,7 +76,7 @@ const lintJs = () => {
   if (!fs.existsSync('reports/')) {
     fs.mkdirSync('reports/');
   }
-  return src(['*.js', 'src/**/*.js'])
+  return src(['gulpfile.babel.js', 'src/**/*.js'])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.format('visualstudio', fs.createWriteStream('reports/report-js.txt')))
@@ -109,6 +113,7 @@ const minimizeImgs = () => (
     .pipe(dest('dist/img/'))
 );
 
+const views = series(lintViews, processViews);
 const styles = series(lintScss, processScss);
 const js = series(lintJs, processJs);
 
@@ -120,7 +125,7 @@ const watchTask = () => {
   });
   watch('src/views/**/*.pug', views);
   watch('src/scss/**/*.scss', styles);
-  watch('*.js', lintJs);
+  watch('gulpfile.babel.js', lintJs);
   watch('src/js/**/*.js', js);
   watch('src/assets/img/*', minimizeImgs);
   watch(['dist/css/*', 'dist/js/*', 'dist/*.html', 'dist/img/*']).on('change', browserSync.reload);

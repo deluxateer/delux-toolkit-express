@@ -2,6 +2,10 @@
 //- This file contains all markup related to the head tag of the site/application.
 //- -----------------------------------------------------------------------------
 
+//- Returns a head tag for each page with appropriate
+//- title tag, meta tags, link tags, etc.
+//- @param {Object} globalHeadProps - image path
+//- @param {Object} localHeadProps - text for the alt attribute
 mixin head(globalHeadProps, localHeadProps)
   -
     //- head properties that will appear on all webpages
@@ -77,51 +81,51 @@ mixin head(globalHeadProps, localHeadProps)
     } = localHeadProps;
 
   head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible" content="IE=Edge")
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible' content='IE=Edge')
     if title
       title #{title}
     else
-      - throw "Title (required) has not been provided."
+      - throw 'Title (required) has not been provided.'
     if description
-      meta(name="description" content=description)
+      meta(name='description' content=description)
     else
-      - throw "Description (required) has not been provided."
+      - throw 'Description (required) has not been provided.'
     if keywords
-      meta(name="keywords" content=keywords)
+      meta(name='keywords' content=keywords)
     else
-      - throw "Keywords (required) has not been provided."
+      - throw 'Keywords (required) has not been provided.'
     if author
-      meta(name="author" content=author)
+      meta(name='author' content=author)
     if googleAnalyticsCode
       script #{googleAnalyticsCode}
     if setFacebookAndTwitterCards
-      meta(name="twitter:card" content="summary_large_image")
+      meta(name='twitter:card" content="summary_large_image')
       if websiteTwitterHandle
-        meta(name="twitter:site" content=websiteTwitterHandle)
-      meta(name="twitter:title" content=title)
-      meta(name="twitter:description" content=description)
+        meta(name='twitter:site' content=websiteTwitterHandle)
+      meta(name='twitter:title' content=title)
+      meta(name='twitter:description' content=description)
       if contentCreatorTwitterHandle
-        meta(name="twitter:creator" content=contentCreatorTwitterHandle)
+        meta(name='twitter:creator' content=contentCreatorTwitterHandle)
       if twitterFacebookImageURL
-        meta(name="twitter:image" content=twitterFacebookImageURL)
-      meta(property="og:title" content=title)
-      meta(property="og:description" content=description)
-      meta(property="og:type" content="website")
+        meta(name='twitter:image' content=twitterFacebookImageURL)
+      meta(property='og:title' content=title)
+      meta(property='og:description' content=description)
+      meta(property='og:type' content='website')
       if webpageURL
-        meta(property="og:url" content=webpageURL)
+        meta(property='og:url' content=webpageURL)
       if twitterFacebookImageURL
-        meta(property="og:image" content=twitterFacebookImageURL)
+        meta(property='og:image' content=twitterFacebookImageURL)
       if facebookSiteName
-        meta(property="og:site_name" content=facebookSiteName)
+        meta(property='og:site_name' content=facebookSiteName)
     if canonicalLinkURL
-      link(rel="canonical" href=canonicalLinkURL)
+      link(rel='canonical' href=canonicalLinkURL)
     if webAppManifestPath
-      link(rel="manifest" href=webAppManifestPath)
+      link(rel='manifest' href=webAppManifestPath)
     block stylesheets
       if stylesheetPaths
         each stylesheetPath in stylesheetPaths
-          link(rel="stylesheet" href=stylesheetPath)
+          link(rel='stylesheet' href=stylesheetPath)
     if faviconPath
-      link(rel="shortcut icon" href=faviconPath type="image/x-icon") 
+      link(rel='shortcut icon' href=faviconPath type='image/x-icon')

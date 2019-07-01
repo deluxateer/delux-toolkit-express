@@ -1,3 +1,15 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to cards.
 // -----------------------------------------------------------------------------
+
+.card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+
+  &-content {
+    @include flex-center-children;
+
+    flex-direction: column;
+  }
+}
