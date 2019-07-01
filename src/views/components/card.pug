@@ -8,9 +8,9 @@
 //- @param {Array} content - all strings to be rendered as paragraphs
 //- @require baseURL
 mixin card(cardContent)
-  .card
+  .card.card-shadow
     .card-content
       i.card-icon(class=cardContent.iconClasses)
-      h3= cardContent.title
+      h3.card-title= cardContent.title
       each paragraphItem in cardContent.content
         p= paragraphItem

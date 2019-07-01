@@ -38,3 +38,6 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
   * the gulp src path needs to be refined
 * the path of the watch task for watching eslinting for all js files needs to be refined
 * there isn't a way to cleanly write the output of pug-lint to a file
+
+### Project-Specific
+* Try to make card grid friendly to IE
