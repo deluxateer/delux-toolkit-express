@@ -40,4 +40,4 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
 * there isn't a way to cleanly write the output of pug-lint to a file
 
 ### Project-Specific
-* Try to make card grid friendly to IE
+* Try to make card float up and down upon hover

@@ -74,5 +74,14 @@
     }
 
     .card + .card { margin: 0; }
+
+    .card {
+      transform: translateY(0);
+      transition: transform 0.25s ease-in;
+
+      @include on-event {
+        transform: translateY(-20px);
+      }
+    }
   }
 }
