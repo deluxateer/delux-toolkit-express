@@ -2,6 +2,13 @@
 // This file contains all styles related to the navbar.
 // -----------------------------------------------------------------------------
 
+// disables all animation on screen resize (particularly navbar collapse animation on resize)
+/* stylelint-disable */
+// body.stop-transitions * {
+//   transition: none !important;
+// }
+/* stylelint-enable */
+
 $nav-link-responsive-bg-color: hsl(0, 0%, 93%);
 $nav-link-hover-bg-color: hsl(0, 0%, 98%);
 
@@ -77,6 +84,9 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
     &-submenu {
       display: flex;
       position: initial;
+      transform: none;
+      transition: none;
+      visibility: visible;
       opacity: 1;
     }
 
