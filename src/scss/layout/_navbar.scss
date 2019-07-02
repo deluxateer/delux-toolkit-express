@@ -30,22 +30,22 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
   }
 
   &-submenu {
-    display: none;
-    transform: translateY(-20px);
-    transition: all 0.25s ease-in;
-    opacity: 0;
-    list-style-type: none;
-  }
-
-  & &-active {
-    display: block;
     position: absolute;
     right: 0;
     left: 0;
-    transform: translateY(0);
-    opacity: 1;
+    transform: translateY(-20px);
+    transition: all 0.35s ease-in;
+    visibility: hidden;
+    opacity: 0;
+    list-style-type: none;
     background-color: #fff;
     padding: 15px;
+  }
+
+  & &-active {
+    transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
   }
 
   li { text-align: center; }
@@ -85,7 +85,9 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
     &-link {
       background-color: #fff;
 
-      @include on-event { background-color: $nav-link-hover-bg-color; }
+      @include on-event {
+        background-color: $nav-link-hover-bg-color;
+      }
     }
 
     li + li,
