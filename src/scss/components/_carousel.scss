@@ -13,12 +13,15 @@
 
 .carousel-track-container {
   position: relative;
+  overflow: hidden;
   height: 100%;
-  background-color: hsl(120, 73%, 75%);
 }
 
 .carousel-track {
+  position: relative;
+  transition: transform 0.25s ease-in;
   list-style-type: none;
+  height: 100%;
   padding: 0;
   margin: 0;
 }
@@ -38,30 +41,24 @@
   background: transparent;
   border: 0;
 
-  &-left {
-    left: -40px;
-  }
+  &-left { left: -40px; }
 
-  &-right {
-    right: -40px;
-  }
+  &-right { right: -40px; }
 }
 
 .carousel-nav {
   @include flex-center-children;
-  // background: hsl(350, 100%, 88%);
   padding: 15px 10px;
 }
 
 .carousel-indicator {
   height: 15px;
   width: 15px;
+  cursor: pointer;
   background: hsla(0, 0, 0, 0.3);
   border: 0;
   border-radius: 50%;
   margin: 0 10px;
 
-  &-current {
-    background-color: hsla(0, 0, 0, 0.75);
-  }
+  &-current { background-color: hsla(0, 0, 0, 0.75); }
 }

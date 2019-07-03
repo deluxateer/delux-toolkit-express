@@ -12,7 +12,7 @@ mixin carousel(carouselItems)
       ul.carousel-track
         //- assign current-slide class to first slide,
         //- but the rest will not
-        li.carousel-slide.carousel-current-slide
+        li.carousel-slide.carousel-slide-current
           +image(carouselItems[0].img, carouselItems[0].alt)
         if carouselItems.length > 1
           each item in carouselItems.slice(1)
@@ -22,6 +22,6 @@ mixin carousel(carouselItems)
       i.fas.fa-chevron-right.fa-3x
     .carousel-nav
       if carouselItems.length > 1
-        .carousel-indicator.carousel-indicator-current
+        button.carousel-indicator.carousel-indicator-current
         +loop(carouselItems.length-1)
-          .carousel-indicator
+          button.carousel-indicator
