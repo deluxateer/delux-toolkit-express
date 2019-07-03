@@ -89,5 +89,17 @@ append main
     .container
       h2 Here's what our folks have to say!
       +carousel(testimonialItems)
+        block slides
+          mixin slideContent(item)
+            +image(item.img, item.alt)
+          //- assign current-slide class to first slide,
+          //- but the rest will not
+          each item, index in testimonialItems
+            if index === 0
+              li.carousel-slide.carousel-slide-current
+                +slideContent(item)
+            else
+              li.carousel-slide(item)
+                +slideContent(item)
   section#contact.contact
     h2 contact

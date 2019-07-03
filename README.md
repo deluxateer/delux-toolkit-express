@@ -41,6 +41,8 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
 * write a sass function to contrast text colors in response to background colors
   * make the text black on light bgc
   * make the text white on dark bgc
+* simplify the carousel component's architecture
+  * too much of the carousel's inner-workings markup is forcibly exposed when calling the mixin
 
 ### Project-Specific
 * Try to make card float up and down upon hover
