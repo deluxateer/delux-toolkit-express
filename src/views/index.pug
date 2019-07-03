@@ -4,6 +4,7 @@
 
 extend base-pages/base-default
 include components/card
+include components/carousel
 
 block localVariables
   -
@@ -46,6 +47,22 @@ block localVariables
         'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
       ],
     },]
+  -
+    //- items to use for testimonial carousel
+    const testimonialItems = [
+      {
+        img: 'folded-shirt-closeup.jpg',
+        alt: 'Folded Shirt Closeup'
+      },
+      {
+        img: 'stacked-jeans.jpg',
+        alt: 'Stacked Jeans'
+      },
+      {
+        img: 'suits.jpg',
+        alt: 'Suits'
+      },
+    ]
 
 prepend stylesheets
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous')
@@ -69,6 +86,8 @@ append main
         each cardContent in serviceCards
           +card(cardContent)
   section#testimonials.testimonials
-    h2 testimonials
+    .container
+      h2 Here's what our folks have to say!
+      +carousel(testimonialItems)
   section#contact.contact
     h2 contact

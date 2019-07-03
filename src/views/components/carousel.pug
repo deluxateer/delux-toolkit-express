@@ -1,0 +1,27 @@
+//- -----------------------------------------------------------------------------
+//- This file contains all markup related to carousels.
+//- Heavily inspired from Kevin Powell
+//- Source: https://www.youtube.com/watch?v=VYsVOamdB0g
+//- -----------------------------------------------------------------------------
+
+mixin carousel(carouselItems)
+  .carousel
+    button.carousel-button.carousel-button-left
+      i.fas.fa-chevron-left.fa-3x
+    .carousel-track-container
+      ul.carousel-track
+        //- assign current-slide class to first slide,
+        //- but the rest will not
+        li.carousel-slide.carousel-current-slide
+          +image(carouselItems[0].img, carouselItems[0].alt)
+        if carouselItems.length > 1
+          each item in carouselItems.slice(1)
+            li.carousel-slide
+              +image(item.img, item.alt)
+    button.carousel-button.carousel-button-right
+      i.fas.fa-chevron-right.fa-3x
+    .carousel-nav
+      if carouselItems.length > 1
+        .carousel-indicator.carousel-indicator-current
+        +loop(carouselItems.length-1)
+          .carousel-indicator
