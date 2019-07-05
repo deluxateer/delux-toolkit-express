@@ -23,6 +23,15 @@ const setSlidePosition = (slide, index) => { slide.style.left = `${slideWidth * 
 
 slides.forEach(setSlidePosition);
 
+// initialize the current slide and nav indicator on page load
+slides[0].classList.add('carousel-slide-current');
+navItems[0].classList.add('carousel-indicator-current');
+
+const currSlide = document.querySelector('.carousel-slide-current');
+if (currSlide !== slides[0]) {
+  moveToSlide(slides[0], currSlide);
+}
+
 // when I click right, move slides to the right
 nextButton.addEventListener('click', () => {
   const currentSlide = track.querySelector('.carousel-slide-current');

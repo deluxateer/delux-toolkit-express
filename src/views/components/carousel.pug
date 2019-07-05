@@ -11,18 +11,11 @@ mixin carousel(carouselItems)
     .carousel-track-container
       ul.carousel-track
         block
-        //- assign current-slide class to first slide,
-        //- but the rest will not
-          each item, index in carouselItems
-            if index === 0
-              li.carousel-slide.carousel-slide-current
-                +image(item.img, item.alt)
-            else
-              li.carousel-slide
-                +image(item.img, item.alt)
+        //- each item, index in testimonialItems
+        //-   li.carousel-slide
+        //-     +image(item.img, item.alt)
     button.carousel-button.carousel-button-right
       i.fas.fa-chevron-right.fa-3x
     .carousel-nav
-      button.carousel-indicator.carousel-indicator-current
-      +loop(carouselItems.length-1)
+      +loop(carouselItems.length)
         button.carousel-indicator

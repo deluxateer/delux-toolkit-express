@@ -1,25 +1,30 @@
+// -----------------------------------------------------------------------------
+// This file contains all generic styles related to carousels.
+// -----------------------------------------------------------------------------
+
+$carousel-height: 600px;
+$carousel-width: 90%;
+$track-transition: transform 0.25s ease-in;
+$indicator-width: 15px;
+$indicator-height: 15px;
+$indicator-color: hsla(0, 0, 0, 0.3);
+$indicator-color-current: opacify($indicator-color, $amount: 0.45);
+
 .carousel {
   position: relative;
-  height: 600px;
-  width: 90%;
+  height: $carousel-height;
+  width: $carousel-width;
   margin: 0 auto;
 }
 
-.carousel-slide img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
 .carousel-track-container {
-  position: relative;
   overflow: hidden;
   height: 100%;
 }
 
 .carousel-track {
   position: relative;
-  transition: transform 0.25s ease-in;
+  transition: $track-transition;
   list-style-type: none;
   height: 100%;
   padding: 0;
@@ -31,6 +36,12 @@
   top: 0;
   bottom: 0;
   width: 100%;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 
 .carousel-button {
@@ -52,13 +63,13 @@
 }
 
 .carousel-indicator {
-  height: 15px;
-  width: 15px;
+  height: $indicator-height;
+  width: $indicator-width;
   cursor: pointer;
-  background: hsla(0, 0, 0, 0.3);
+  background: $indicator-color;
   border: 0;
   border-radius: 50%;
   margin: 0 10px;
 
-  &-current { background-color: hsla(0, 0, 0, 0.75); }
+  &-current { background-color: $indicator-color-current; }
 }

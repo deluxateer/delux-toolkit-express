@@ -67,6 +67,9 @@ block localVariables
 prepend stylesheets
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous')
 
+mixin carouselSlideContent(item)
+  +image(item.img, item.alt)
+
 //- ---------------- MARKUP FOR PAGE ----------------
 
 append main
@@ -89,17 +92,8 @@ append main
     .container
       h2 Here's what our folks have to say!
       +carousel(testimonialItems)
-        block slides
-          mixin slideContent(item)
-            +image(item.img, item.alt)
-          //- assign current-slide class to first slide,
-          //- but the rest will not
-          each item, index in testimonialItems
-            if index === 0
-              li.carousel-slide.carousel-slide-current
-                +slideContent(item)
-            else
-              li.carousel-slide(item)
-                +slideContent(item)
+        each item, index in testimonialItems
+          li.carousel-slide
+            +carouselSlideContent(item)
   section#contact.contact
     h2 contact
