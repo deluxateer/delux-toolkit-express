@@ -1,3 +1,9 @@
 //- -----------------------------------------------------------------------------
 //- This file contains all markup related to the button component.
 //- -----------------------------------------------------------------------------
+
+mixin btn(text, ...classes)
+  button(class=classes)= text
+
+mixin link-btn(href, text, ...classes)
+  a(href=href, class=classes)= text

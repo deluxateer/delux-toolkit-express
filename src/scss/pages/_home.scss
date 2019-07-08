@@ -63,9 +63,7 @@ $testimonial-card-transition: opacity 0.6s ease-in;
 }
 
 @media screen and (min-width: breakpoint('medium')) {
-  .about {
-    padding-bottom: 250px;
-  }
+  .about { padding-bottom: 250px; }
 
   .services {
     .container { flex-direction: column-reverse; }
@@ -93,6 +91,8 @@ $testimonial-card-transition: opacity 0.6s ease-in;
 }
 
 // Testimonials Section
+.testimonials { padding-bottom: 95px; }
+
 .testimonials h2 {
   text-align: center;
   margin-bottom: 1.5rem;
@@ -176,9 +176,7 @@ $testimonial-card-transition: opacity 0.6s ease-in;
 .testimonial-info {
   color: $text-color;
 
-  > * {
-    margin-left: 2rem;
-  }
+  > * { margin-left: 2rem; }
 }
 
 .testimonial-name {

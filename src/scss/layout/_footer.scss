@@ -4,7 +4,7 @@
 
 footer {
   color: #fff;
-  background-color: $primary-color;
+  background-color: shade($primary-color, 20);
   padding: 25px 0;
 
   a {

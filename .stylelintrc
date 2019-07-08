@@ -2,6 +2,9 @@
   "extends": "stylelint-config-sass-guidelines",
   "rules": {
     "function-comma-space-before": "never",
+    "max-nesting-depth": [2, {
+      "ignore": ["pseudo-classes"]
+    }],
     "order/properties-alphabetical-order": null,
     "order/order": [
       "custom-properties",

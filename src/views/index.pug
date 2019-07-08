@@ -3,6 +3,7 @@
 //- -----------------------------------------------------------------------------
 
 extend base-pages/base-default
+
 include components/card
 include components/carousel
 
@@ -118,8 +119,8 @@ append main
         each item, index in testimonialItems
           li.carousel-slide
             +carouselSlideContent(item)
-  section#contact.contact
-    h2 contact
+  include base-pages/layout/contact-form
+
 append scripts
   script(type='text/javascript').
     // set carousel height to be the height of the largest testimonial card plus 2rem
