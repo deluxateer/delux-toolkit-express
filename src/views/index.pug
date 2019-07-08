@@ -22,8 +22,8 @@ block localVariables
   -
     //- paths of javascript files to use for this page
     const scriptPaths = [
-      //- "js/vendor.js",
-      "js/bundle.js",
+      //- 'js/vendor.js',
+      'js/bundle.js',
     ];
   -
     //- card items for services section
@@ -51,16 +51,31 @@ block localVariables
     //- items to use for testimonial carousel
     const testimonialItems = [
       {
-        img: 'folded-shirt-closeup.jpg',
-        alt: 'Folded Shirt Closeup'
+        picture: {
+          img: 'sam-connor.jpg',
+          alt: 'Sam Connor',
+        },
+        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, accusantium animi expedita architecto dolores vitae voluptate eveniet perspiciatis quidem provident.',
+        name: 'Sam Connor',
+        location: 'Houstan, TX',
       },
       {
-        img: 'stacked-jeans.jpg',
-        alt: 'Stacked Jeans'
+        picture: {
+          img: 'john-doe.jpg',
+          alt: 'John Doe',
+        },
+        quote: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates impedit fugiat consequuntur repellat.',
+        name: 'John Doe',
+        location: 'San Diego, CA',
       },
       {
-        img: 'suits.jpg',
-        alt: 'Suits'
+        picture: {
+          img: 'lorena-ipsona.jpg',
+          alt: 'Lorena Ipsona',
+        },
+        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sunt? Magni autem non minus excepturi velit.',
+        name: 'Lorena Ipsona',
+        location: 'New York, NY',
       },
     ]
 
@@ -68,7 +83,15 @@ prepend stylesheets
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous')
 
 mixin carouselSlideContent(item)
-  +image(item.img, item.alt)
+  .testimonial-card
+    blockquote.testimonial-quote
+      p= item.quote
+    footer.testimonial-footer
+      .testimonial-img
+        +image(item.picture.img, item.picture.alt)
+      .testimonial-info
+        p.testimonial-name= item.name
+        p.testimonial-location= item.location
 
 //- ---------------- MARKUP FOR PAGE ----------------
 
@@ -97,3 +120,12 @@ append main
             +carouselSlideContent(item)
   section#contact.contact
     h2 contact
+append scripts
+  script(type='text/javascript').
+    // set carousel height to be the height of the largest testimonial card plus 2rem
+    const carousel = document.querySelector('.testimonials .carousel');
+    const slides = Array.from(document.querySelectorAll('.testimonial-card'));
+    const slideHeights = slides.map(slide => slide.offsetHeight);
+    const largestHeight = Math.max(...slideHeights);
+
+    carousel.style.height = largestHeight + 80 + 'px';

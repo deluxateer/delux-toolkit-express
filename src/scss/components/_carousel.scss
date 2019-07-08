@@ -2,13 +2,13 @@
 // This file contains all generic styles related to carousels.
 // -----------------------------------------------------------------------------
 
-$carousel-height: 600px;
-$carousel-width: 90%;
-$track-transition: transform 0.25s ease-in;
-$indicator-width: 15px;
-$indicator-height: 15px;
-$indicator-color: hsla(0, 0, 0, 0.3);
-$indicator-color-current: opacify($indicator-color, $amount: 0.45);
+$carousel-height: 600px !default;
+$carousel-width: 90% !default;
+$track-transition: transform 0.45s ease-in !default;
+$indicator-width: 15px !default;
+$indicator-height: 15px !default;
+$indicator-color: hsla(0, 0, 0, 0.3) !default;
+$indicator-color-current: opacify($indicator-color, $amount: 0.45) !default;
 
 .carousel {
   position: relative;
@@ -52,9 +52,15 @@ $indicator-color-current: opacify($indicator-color, $amount: 0.45);
   background: transparent;
   border: 0;
 
-  &-left { left: -40px; }
+  &-left { left: -30px; }
 
-  &-right { right: -40px; }
+  &-right { right: -30px; }
+
+  @media screen and (min-width: breakpoint('medium')) {
+    &-left { left: -50px; }
+
+    &-right { right: -50px; }
+  }
 }
 
 .carousel-nav {
