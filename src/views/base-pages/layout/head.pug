@@ -54,6 +54,10 @@ mixin head(globalHeadProps, localHeadProps)
       //- @type string
       faviconPath,
       
+      //- color for header and address bar
+      //- @type string
+      themeColor,
+      
     } = globalHeadProps;
   -
     //- head properties that will change from webpage to webpage.
@@ -100,8 +104,10 @@ mixin head(globalHeadProps, localHeadProps)
       meta(name='author' content=author)
     if googleAnalyticsCode
       script #{googleAnalyticsCode}
+    if themeColor
+      meta(name='theme-color' content=themeColor)
     if setFacebookAndTwitterCards
-      meta(name='twitter:card" content="summary_large_image')
+      meta(name='twitter:card' content='summary_large_image')
       if websiteTwitterHandle
         meta(name='twitter:site' content=websiteTwitterHandle)
       meta(name='twitter:title' content=title)

@@ -46,5 +46,4 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
 * add comments to all mixins
 
 ### Project-Specific
-* Try to make card float up and down upon hover
 * Implement smooth-scroll for navbar that's cross-browser friendly

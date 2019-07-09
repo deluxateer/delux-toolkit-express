@@ -113,6 +113,8 @@ const minimizeImgs = () => (
     .pipe(dest('dist/img/'))
 );
 
+const favicon = () => src('favicon.ico').pipe(dest('dist/'));
+
 const views = series(lintViews, processViews);
 const styles = series(lintScss, processScss);
 const js = series(lintJs, processJs);
@@ -138,6 +140,7 @@ const build = (
       styles,
       js,
       minimizeImgs,
+      favicon,
     ),
     watchTask,
   )
@@ -148,6 +151,7 @@ exports.styles = styles;
 exports.lintjs = lintJs;
 exports.js = js;
 exports.minimgs = minimizeImgs;
+exports.favicon = favicon;
 exports.watch = watchTask;
 
 exports.default = build;

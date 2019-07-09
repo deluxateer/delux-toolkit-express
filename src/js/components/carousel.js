@@ -1,7 +1,7 @@
 const track = document.querySelector('.carousel-track');
 const slides = Array.from(track.children);
-const nextButton = document.querySelector('.carousel-button-right');
 const prevButton = document.querySelector('.carousel-button-left');
+const nextButton = document.querySelector('.carousel-button-right');
 const carouselNav = document.querySelector('.carousel-nav');
 const navItems = Array.from(carouselNav.children);
 

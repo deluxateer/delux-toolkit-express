@@ -10,6 +10,7 @@
     "gulp-lintjs": "gulp lintjs",
     "js": "gulp js",
     "minimgs": "gulp minimgs",
+    "favicon": "gulp favicon",
     "watch": "gulp watch",
     "build": "gulp",
     "prod": "NODE_ENV=production gulp prod"
