@@ -98,6 +98,10 @@ $testimonial-card-transition: opacity 0.6s ease-in;
   margin-bottom: 1.5rem;
 }
 
+.testimonials .carousel-track-container {
+  border-radius: 10px;
+}
+
 .testimonials .carousel-track {
   transition: $track-transition;
 }
@@ -136,13 +140,6 @@ $testimonial-card-transition: opacity 0.6s ease-in;
   font-weight: 500;
   line-height: 1.5;
 
-  &::before,
-  &::after {
-    font-size: 1.9rem;
-    font-weight: 700;
-    color: #000;
-  }
-
   &::before {
     content: '“';
     position: absolute;
@@ -155,6 +152,13 @@ $testimonial-card-transition: opacity 0.6s ease-in;
     line-height: 1;
     vertical-align: top;
     margin-left: 4px;
+  }
+
+  &::before,
+  &::after {
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #000;
   }
 }
 
