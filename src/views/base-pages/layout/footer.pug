@@ -5,6 +5,8 @@
 footer
   .container
     p.disclaimer DeluxThreads sources its resources responsibly.
+    block socialMediaNav
+      +social-media-nav(socialMediaItems)
     .site-info
       - const currDate = new Date().getFullYear();
       p DeluxThreads, #{currDate}

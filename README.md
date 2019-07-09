@@ -43,6 +43,7 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
   * make the text white on dark bgc
 * simplify the carousel component's architecture
   * too much of the carousel's inner-workings markup is forcibly exposed when calling the mixin
+* add comments to all mixins
 
 ### Project-Specific
 * Try to make card float up and down upon hover
