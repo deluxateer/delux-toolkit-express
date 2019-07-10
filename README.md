@@ -38,9 +38,6 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
   * the gulp src path needs to be refined
 * the path of the watch task for watching eslinting for all js files needs to be refined
 * there isn't a way to cleanly write the output of pug-lint to a file
-* write a sass function to contrast text colors in response to background colors
-  * make the text black on light bgc
-  * make the text white on dark bgc
 * simplify the carousel component's architecture
   * too much of the carousel's inner-workings markup is forcibly exposed when calling the mixin
 * implement lazy-loading for images

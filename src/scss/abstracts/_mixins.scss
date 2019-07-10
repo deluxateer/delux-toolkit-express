@@ -5,8 +5,9 @@
 /// helper that sets background color and text color (black | white) for you
 /// @author Deluxateer
 /// @param {Color} $bgc - background color
-@mixin text-color-bgc($bgc) {
-  color: text($bgc);
+/// @param {Color} $on-light [#000] - text color to use for light backgrounds
+@mixin text-color-bgc($bgc, $on-light: #000) {
+  color: contrast-text($bgc, $on-light);
   background-color: $bgc;
 }
 

@@ -9,8 +9,9 @@
 // }
 /* stylelint-enable */
 
-$nav-link-responsive-bg-color: hsl(0, 0%, 93%);
-$nav-link-hover-bg-color: hsl(0, 0%, 98%);
+$navbar-bgc: #fff;
+$nav-link-responsive-bg-color: $light-gray;
+$nav-link-hover-bg-color: $off-white;
 
 .mobile-nav-display {
   @include flex-space-between-children;
@@ -23,6 +24,7 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
 
 .navbar {
   position: relative;
+  background-color: $navbar-bgc;
   padding: 1rem;
 
   &-toggle {
@@ -45,7 +47,7 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
     visibility: hidden;
     opacity: 0;
     list-style-type: none;
-    background-color: #fff;
+    background-color: $navbar-bgc;
     padding: 15px;
   }
 
@@ -74,8 +76,7 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
 
   .navbar {
     @include flex-space-between-children;
-    width: 88%;
-    padding: 2.6875rem 0;
+    padding: 2.6875rem 6%;
     margin: 0 auto;
 
     &-toggle { display: none; }
@@ -93,7 +94,7 @@ $nav-link-hover-bg-color: hsl(0, 0%, 98%);
     & &-active { margin-top: 0; }
 
     &-link {
-      background-color: #fff;
+      background-color: $navbar-bgc;
 
       @include on-event {
         background-color: $nav-link-hover-bg-color;

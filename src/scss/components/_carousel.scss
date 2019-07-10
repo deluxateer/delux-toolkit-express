@@ -8,7 +8,7 @@ $track-transition: transform 0.45s ease-in !default;
 $indicator-width: 15px !default;
 $indicator-height: 15px !default;
 $indicator-color: hsla(0, 0, 0, 0.3) !default;
-$indicator-color-current: opacify($indicator-color, $amount: 0.45) !default;
+$indicator-color-current: opacify($indicator-color, 0.45) !default;
 
 .carousel {
   position: relative;

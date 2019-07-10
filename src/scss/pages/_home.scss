@@ -7,6 +7,7 @@ $testimonial-quotation-position-top: -10px;
 $testimonial-quotation-position-left: -17px;
 $track-transition: transform 0.75s ease-out;
 $testimonial-card-transition: opacity 0.6s ease-in;
+$testimonial-footer-bgc: inherit;
 
 // About Section
 .about { background-color: $off-white; }
@@ -46,7 +47,7 @@ $testimonial-card-transition: opacity 0.6s ease-in;
 
 // Services Section
 .services {
-  background-color: $primary-color;
+  @include text-color-bgc($primary-color);
 
   .container {
     display: flex;
@@ -54,7 +55,6 @@ $testimonial-card-transition: opacity 0.6s ease-in;
   }
 
   h2 {
-    color: #fff;
     text-align: center;
     margin-bottom: 2rem;
   }
@@ -158,14 +158,14 @@ $testimonial-card-transition: opacity 0.6s ease-in;
   &::after {
     font-size: 1.9rem;
     font-weight: 700;
-    color: #000;
+    color: shade($text-color, 30%);
   }
 }
 
 .testimonial-footer {
   @include flex-center-children;
 
-  background-color: inherit;
+  background-color: $testimonial-footer-bgc;
   padding: 0;
   margin-top: 2rem;
 }

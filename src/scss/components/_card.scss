@@ -3,7 +3,8 @@
 // -----------------------------------------------------------------------------
 
 .card {
-  background-color: #fff;
+  @include text-color-bgc(#fff, $text-color);
+  
   padding: 2rem;
   border-radius: 15px;
 
