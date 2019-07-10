@@ -14,14 +14,15 @@ $btn-text-color: #fff;
 $btn-background: (
   'primary': $primary-color,
   'secondary': $secondary-color,
-  'default': #565656,
-  'success': #468847,
-  'danger': #b94a48,
-  'warning': #c09853,
-  'info': #3a87ad
+  'default': hsl(0, 0%, 34%),
+  'success': hsl(121, 32%, 40%),
+  'danger': hsl(1, 45%, 50%),
+  'warning': hsl(38, 46%, 54%),
+  'info': hsl(200, 50%, 45%)
 ) !default;
 
 // evaluates button color (bg, font, border)
+/// @param {Color} $color - background color of the button
 @mixin button-color($color) {
   background-color: $color;
 

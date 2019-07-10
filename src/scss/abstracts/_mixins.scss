@@ -2,6 +2,14 @@
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
 
+/// helper that sets background color and text color (black | white) for you
+/// @author Deluxateer
+/// @param {Color} $bgc - background color
+@mixin text-color-bgc($bgc) {
+  color: text($bgc);
+  background-color: $bgc;
+}
+
 /// Event wrapper
 /// @author Harry Roberts
 /// @param {Bool} $self [false] - Whether or not to include current selector

@@ -18,6 +18,17 @@
   @return mix(black, $color, $percentage);
 }
 
+/// sets text color to black or white depending on the background color
+/// @param {Color} $bgc - background color
+/// @return {Color}
+@function constrast-text($bgc) {
+  @if (lightness($bgc) > 50) {
+    @return #000;
+  } @else {
+    @return #FFF;
+  }
+}
+
 /// Native `url(..)` function wrapper
 /// @param {String} $base - base URL for the asset
 /// @param {String} $type - asset type folder (e.g. `fonts/`)
