@@ -17,13 +17,14 @@ html(lang='en')
   +head(globalHeadProps, localHeadProps)
   body
     block content
-      block header
-        header
+      header
+        block header
           +navbar(navbarItems)
           button.back-to-top-btn.btn-primary.btn-large
             i.fas.fa-arrow-circle-up
-      block main
-        include layout/hero
+      main
+        block main
+          include layout/hero
       block footer
         include layout/footer
     block scripts

@@ -188,3 +188,65 @@ $testimonial-footer-bgc: inherit;
   font-weight: 700;
   margin-bottom: 0.3rem;
 }
+
+// Contact Section
+.contact {
+  @include text-color-bgc($primary-color);
+}
+
+.contact-form { margin-top: 3rem; }
+
+.form-item {
+  i { margin-right: 1rem; }
+
+  label {
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border: 0;
+    border-radius: 0.15rem;
+    outline: none;
+    margin-bottom: 0.9rem;
+  }
+}
+
+@media screen and (min-width: breakpoint('medium')) {
+  .contact-form {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-areas:
+      'name message'
+      'email message'
+      '. submit';
+    grid-gap: 1rem 3rem;
+
+    button {
+      grid-area: submit;
+      justify-self: end;
+    }
+  }
+
+  .form-item {
+    &.form-name { grid-area: name; }
+
+    &.form-email { grid-area: email; }
+    
+    &.form-message { grid-area: message; }
+
+    input,
+    textarea {
+      margin-bottom: 0;
+    }
+
+    textarea {
+      box-sizing: border-box;
+      max-height: 100%;
+    }
+  }
+}

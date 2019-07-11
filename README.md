@@ -29,7 +29,6 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
 
 ## Notes
 * Sass Architecture and Boilerplate based from Hugo Giraudel's [Style Guide](https://sass-guidelin.es/) and [Code](https://github.com/HugoGiraudel/sass-boilerplate).
-* 
 
 ## Issues
 * find ways to additional style-guide rules into your scss-linter
@@ -41,6 +40,7 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
 * simplify the carousel component's architecture
   * too much of the carousel's inner-workings markup is forcibly exposed when calling the mixin
 * implement lazy-loading for images
+* add styles for generic forms as _forms.scss
 
 ### Project-Specific
 * Implement smooth-scroll for navbar that's cross-browser friendly
