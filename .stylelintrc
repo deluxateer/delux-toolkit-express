@@ -5,6 +5,9 @@
     "max-nesting-depth": [2, {
       "ignore": ["pseudo-classes"]
     }],
+    "selector-no-qualifying-type": [true, {
+      "ignore": ["attribute"]
+    }],
     "order/properties-alphabetical-order": null,
     "order/order": [
       "custom-properties",

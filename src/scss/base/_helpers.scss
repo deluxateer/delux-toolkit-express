@@ -44,3 +44,12 @@
   margin: -1px;
   clip: rect(0 0 0 0);
 }
+
+/**
+ * basic placeholder styling for images that are being lazy-loaded.
+ */
+img[data-lazy] {
+  min-height: 10%;
+  min-width: 10%;
+  border: 1px solid hsl(0, 0%, 44%);
+}
