@@ -32,10 +32,6 @@ A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bun
 
 ## Issues
 * find ways to additional style-guide rules into your scss-linter
-* gulp-eslint will not:
-  * target all js files in all subdirectories except node_modules and dist/
-  * the gulp src path needs to be refined
-* the path of the watch task for watching eslinting for all js files needs to be refined
 * there isn't a way to cleanly write the output of pug-lint to a file
 * simplify the carousel component's architecture
   * too much of the carousel's inner-workings markup is forcibly exposed when calling the mixin

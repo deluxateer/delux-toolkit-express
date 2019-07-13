@@ -4,7 +4,6 @@
   "description": "A generic dev toolkit by Deluxateer. It automates several tasks, transpiles, bundles, launches a live server, etc.",
   "scripts": {
     "views": "gulp views",
-    "lintscss": "gulp lintScss",
     "styles": "gulp styles",
     "lintjs": "./node_modules/.bin/eslint \"**/*.js\"",
     "gulp-lintjs": "gulp lintjs",
@@ -13,7 +12,7 @@
     "favicon": "gulp favicon",
     "watch": "gulp watch",
     "build": "gulp",
-    "prod": "NODE_ENV=production gulp prod"
+    "build:prod": "cross-env NODE_ENV=production gulp"
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,7 @@
     "@babel/register": "^7.4.4",
     "babel-loader": "^8.0.6",
     "browser-sync": "^2.26.7",
+    "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -47,8 +47,10 @@
     "gulp-stylelint": "^9.0.0",
     "postcss-preset-env": "^6.6.0",
     "puglint-stylish": "^1.0.1",
+    "slash": "^3.0.0",
     "stylelint": "^10.1.0",
     "stylelint-config-sass-guidelines": "^6.0.0",
+    "through2": "^3.0.1",
     "webpack-cli": "^3.3.3",
     "webpack-stream": "^5.2.1"
   }

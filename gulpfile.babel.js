@@ -2,6 +2,8 @@ import path from 'path';
 import fs from 'fs';
 // eslint-disable-next-line
 import { src, dest, series, parallel, watch } from 'gulp';
+import through2 from 'through2'; // used for noop
+import slash from 'slash';
 import pugLinter from 'gulp-pug-linter';
 import pugLintStylish from 'puglint-stylish';
 import pug from 'gulp-pug';
@@ -18,32 +20,65 @@ import imagemin from 'gulp-imagemin';
 
 const browserSync = require('browser-sync').create();
 
+// used to build platform/os consistant globs
+const buildGlob = (...args) => slash(path.resolve(...args));
+
+// CONFIGURATION
+const production = process.env.NODE_ENV === 'production';
+const source = buildGlob(__dirname, 'src');
+const destination = buildGlob(__dirname, 'dist');
+// DESTINATION PATHS
+const destCss = buildGlob(destination, 'css');
+const destJs = buildGlob(destination, 'js');
+const destImg = buildGlob(destination, 'img');
+// SOURCE PATHS
+const pugPath = buildGlob(source, 'views', '*.pug');
+const pugPathAll = buildGlob(source, 'views', '**', '*.pug');
+const scssPath = buildGlob(source, 'scss', 'index.scss');
+const scssPathAll = buildGlob(source, 'scss', '**', '*.scss');
+const jsPath = buildGlob(source, 'js', 'index.js');
+const jsPathAll = buildGlob(source, 'js', '**', '*.js');
+const assetPath = buildGlob(source, 'assets');
+const imgPath = buildGlob(assetPath, 'img', '*');
+const faviconPath = buildGlob(__dirname, 'favicon.ico');
+const gulpPath = buildGlob(__dirname, 'gulpfile.babel.js');
+const watchPath = [
+  buildGlob(destCss, '*.css'),
+  buildGlob(destJs, '*.js'),
+  buildGlob(destination, '*.html'),
+  buildGlob(destImg, '*'),
+];
+
+// console.log('pugAll: ', buildGlob(pugPathAll));
+// console.log('gulpfilepath: ', buildGlob(gulpPath));
+
+// TASKS
 const lintViews = () => (
-  src(path.resolve(__dirname, 'src', 'views', '**', '*.pug'))
+  src(pugPathAll)
     .pipe(pugLinter({
-      // failAfterError: true,
+      failAfterError: production,
       reporter: pugLintStylish,
     }))
 );
 
 const processViews = () => (
-  src(path.resolve(__dirname, 'src', 'views', '*.pug'))
+  src(pugPath)
     .pipe(pug({
       doctype: 'html',
     }))
-    .pipe(dest(path.resolve(__dirname, 'dist')))
+    .pipe(dest(destination))
 );
 
 
 const lintScss = () => (
-  src(path.resolve(__dirname, 'src', 'scss', '**', '*.scss'))
+  src(scssPathAll)
     .pipe(gulpStylelint({
       failAfterError: true,
-      reportOutputDir: 'reports/',
+      reportOutputDir: buildGlob(__dirname, 'reports'),
       reporters: [
         {
           formatter: 'string',
-          console: true,
+          console: !production,
           save: 'report-styles.txt',
         },
         // {formatter: 'json', save: 'report.json'},
@@ -61,38 +96,39 @@ const processScss = () => {
     cssnano(),
   ];
   return (
-    src(path.resolve(__dirname, 'src', 'scss', 'index.scss'))
-      .pipe(sourcemaps.init({ loadMaps: true, largeFile: true }))
+    src(scssPath)
+      .pipe(!production ? sourcemaps.init({ loadMaps: true, largeFile: true }) : through2.obj())
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss(postCssPlugins))
       .pipe(rename('styles.min.css'))
-      .pipe(sourcemaps.write())
-      .pipe(dest(path.resolve(__dirname, 'dist', 'css')))
+      .pipe(!production ? sourcemaps.write() : through2.obj())
+      .pipe(dest(destCss))
   );
 };
 
 const lintJs = () => {
   // create report directory if it doesn't already exist
-  if (!fs.existsSync('reports/')) {
-    fs.mkdirSync('reports/');
+  const reportsPath = buildGlob(__dirname, 'reports');
+  if (!fs.existsSync(reportsPath)) {
+    fs.mkdirSync(reportsPath);
   }
-  return src(['gulpfile.babel.js', 'src/**/*.js'])
+  return src([gulpPath, jsPathAll])
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.format('visualstudio', fs.createWriteStream('reports/report-js.txt')))
+    .pipe(eslint.format('visualstudio', fs.createWriteStream(buildGlob(reportsPath, 'report-js.txt'))))
     .pipe(eslint.failAfterError());
 };
 
 const processJs = () => (
-  src(path.resolve(__dirname, 'src', 'js', 'index.js'))
+  src(jsPath)
     .pipe(webpack({
-      context: path.resolve(__dirname, 'src'),
+      context: path.normalize(source),
       entry: {
-        app: path.resolve(__dirname, 'src', 'js', 'index.js'),
+        app: path.normalize(jsPath),
       },
       output: { filename: 'bundle.js' },
-      mode: 'production',
-      devtool: 'source-map',
+      mode: production ? 'production' : 'development',
+      devtool: !production ? 'source-map' : false,
       module: {
         rules: [{
           test: /\.js$/,
@@ -104,16 +140,16 @@ const processJs = () => (
         }],
       },
     }))
-    .pipe(dest(path.resolve(__dirname, 'dist', 'js')))
+    .pipe(dest(destJs))
 );
 
 const minimizeImgs = () => (
-  src('src/assets/img/*')
+  src(imgPath)
     .pipe(imagemin())
-    .pipe(dest('dist/img/'))
+    .pipe(dest(destImg))
 );
 
-const favicon = () => src('favicon.ico').pipe(dest('dist/'));
+const favicon = () => src(faviconPath).pipe(dest(destination));
 
 const views = series(lintViews, processViews);
 const styles = series(lintScss, processScss);
@@ -125,12 +161,12 @@ const watchTask = () => {
     open: 'external',
     port: 9000,
   });
-  watch('src/views/**/*.pug', views);
-  watch('src/scss/**/*.scss', styles);
-  watch('gulpfile.babel.js', lintJs);
-  watch('src/js/**/*.js', js);
-  watch('src/assets/img/*', minimizeImgs);
-  watch(['dist/css/*', 'dist/js/*', 'dist/*.html', 'dist/img/*']).on('change', browserSync.reload);
+  watch(pugPathAll, views);
+  watch(scssPathAll, styles);
+  watch(gulpPath, lintJs);
+  watch(jsPathAll, js);
+  watch(imgPath, minimizeImgs);
+  watch(watchPath).on('change', browserSync.reload);
 };
 
 const build = (
