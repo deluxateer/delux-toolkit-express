@@ -5,12 +5,12 @@
   "scripts": {
     "views": "gulp views",
     "styles": "gulp styles",
-    "lintjs": "./node_modules/.bin/eslint \"**/*.js\"",
-    "gulp-lintjs": "gulp lintjs",
+    "lintjs": "gulp lintjs",
     "js": "gulp js",
     "minimgs": "gulp minimgs",
     "favicon": "gulp favicon",
     "watch": "gulp watch",
+    "clean": "gulp clean",
     "build": "gulp",
     "build:prod": "cross-env NODE_ENV=production gulp"
   },
@@ -32,6 +32,7 @@
     "browser-sync": "^2.26.7",
     "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
+    "del": "^5.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.3",

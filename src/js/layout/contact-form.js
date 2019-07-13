@@ -9,6 +9,7 @@ confirmEl.style.cssText = 'transition: all 0.5s; opacity: 0; visibility: 0; disp
 
 form.addEventListener('submit', e => {
   e.preventDefault();
+  form.reset();
 
   confirmEl.style.display = 'block';
   confirmEl.style.opacity = 1;

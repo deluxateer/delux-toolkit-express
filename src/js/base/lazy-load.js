@@ -1,3 +1,5 @@
+// Source from Kevin Powell: https://www.youtube.com/watch?v=mC93zsEsSrg
+
 const images = document.querySelectorAll('[data-lazy]');
 
 const preloadImage = img => {
