@@ -147,7 +147,9 @@ const minimizeImgs = () => (
     .pipe(dest(destImg))
 );
 
-const favicon = () => src(faviconPath).pipe(dest(destination));
+const favicon = () => src(faviconPath, {
+  allowEmpty: true,
+}).pipe(dest(destination));
 
 const views = series(lintViews, processViews);
 const styles = series(lintScss, processScss);

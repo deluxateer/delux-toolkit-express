@@ -81,33 +81,3 @@ $breakpoints: (
 // Nope
 $breakpoints: ( small: 767px, medium: 992px, large: 1200px );
 ```
-Adding to those CSS-related guidelines, we want to pay attention to:
-
-* local variables being declared before any declarations, then spaced from  declarations by a new line;
-* mixin calls with no @content coming before any declaration;
-* nested selectors always coming after a new line;
-* mixin calls with @content coming after any nested selector;
-* no new line before a closing brace (}).
-
-Illustration:
-
-```
-.foo, .foo-bar,
-.baz {
-  $length: 42em;
-
-  @include ellipsis;
-  @include size($length);
-  display: block;
-  overflow: hidden;
-  margin: 0 auto;
-
-  &:hover {
-    color: red;
-  }
-
-  @include respond-to('small') {
-    overflow: visible;
-  }
-}
-```
