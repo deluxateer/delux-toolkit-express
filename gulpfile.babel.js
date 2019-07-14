@@ -2,14 +2,12 @@ import path from 'path';
 import fs from 'fs';
 // eslint-disable-next-line
 import { src, dest, series, parallel, watch } from 'gulp';
-import through2 from 'through2'; // used for noop
 import slash from 'slash';
 import del from 'del';
 import pugLinter from 'gulp-pug-linter';
 import pugLintStylish from 'puglint-stylish';
 import pug from 'gulp-pug';
 import gulpStylelint from 'gulp-stylelint';
-import sourcemaps from 'gulp-sourcemaps';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
@@ -95,13 +93,11 @@ const processScss = () => {
     cssnano(),
   ];
   return (
-    src(scssSourcePath)
-      .pipe(!production ? sourcemaps.init({ loadMaps: true, largeFile: true }) : through2.obj())
+    src(scssSourcePath, { sourcemaps: !production })
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss(postCssPlugins))
       .pipe(rename('styles.min.css'))
-      .pipe(!production ? sourcemaps.write() : through2.obj())
-      .pipe(dest(destCss))
+      .pipe(dest(destCss, { sourcemaps: !production }))
   );
 };
 

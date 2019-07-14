@@ -44,14 +44,12 @@
     "gulp-pug-linter": "^1.1.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5",
     "gulp-stylelint": "^9.0.0",
     "postcss-preset-env": "^6.6.0",
     "puglint-stylish": "^1.0.1",
     "slash": "^3.0.0",
     "stylelint": "^10.1.0",
     "stylelint-config-sass-guidelines": "^6.0.0",
-    "through2": "^3.0.1",
     "webpack-cli": "^3.3.3",
     "webpack-stream": "^5.2.1"
   }
