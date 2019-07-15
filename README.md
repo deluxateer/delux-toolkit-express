@@ -61,7 +61,7 @@ Moves a copy of `favicon.ico` into the destination directory.
 
 The file structure heavily based on Hugo Giraudel's [7-1 Architecture Pattern](https://sass-guidelin.es/#the-7-1-pattern). A more detailed explanation about the structure can be found there.
 
-The views, styles, and functionality are decoupled as much as possible, where they are separated into global variables/functions, layout pieces, and reusable components. This makes it simple to add/remove code for your specific project or migrate them to another project. For instance, all of the baseline code for carousels can be found pertaining to its:
+The views, styles, and functionality are decoupled as much as possible, where they are separated into global variables & functions, layout pieces, and reusable components. This makes it simple to add/remove code for your specific project or migrate them to another project. For instance, all of the baseline code for carousels can be found pertaining to its:
 * __Views:__ `src/views/components/carousel.pug`
 * __Styles:__ `src/scss/components/_carousel.scss`
 * __Functionality:__ `src/js/components/carousel.js`
