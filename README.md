@@ -103,3 +103,4 @@ I would like to segregate these features between Webpack and Gulp, since the pur
 * there isn't a way to cleanly write the output of pug-lint to a file
 * simplify the carousel component's architecture
   * too much of the carousel's inner-workings markup has to be exposed when calling the Pug mixin
+* find a way to process inline script tags with the same treatment as the processJs task (ie transpile and minify).
