@@ -55,7 +55,7 @@ Spins up Browsersync and watches for changes to any source files. On change, the
 
 ### `npm run clean`
 
-Deletes the source directory and the reports directory.
+Deletes the destination directory and the reports directory.
 
 ### `npm run minimgs`
 
