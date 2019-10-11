@@ -21,12 +21,14 @@
 /// sets text color to black or white depending on the background color
 /// @param {Color} $bgc - background color
 /// @param {Color} $on-light [#000] - text color to use for light backgrounds
+/// @param {Color} $on-dark [#fff] - text color to use for dark backgrounds
+/// @param {Number} $threshold [50] - percentage where color changes should occur around 
 /// @return {Color}
-@function contrast-text($bgc, $on-light: #000) {
-  @if (lightness($bgc) > 50) {
+@function contrast-text($bgc, $on-light: #000, $on-dark: #fff, $threshold: 50) {
+  @if (lightness($bgc) > $threshold) {
     @return $on-light;
   } @else {
-    @return #FFF;
+    @return $on-dark;
   }
 }
 

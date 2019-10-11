@@ -6,8 +6,10 @@
 /// @author Deluxateer
 /// @param {Color} $bgc - background color
 /// @param {Color} $on-light [#000] - text color to use for light backgrounds
-@mixin text-color-bgc($bgc, $on-light: #000) {
-  color: contrast-text($bgc, $on-light);
+/// @param {Color} $on-dark [#fff] - text color to use for dark backgrounds
+/// @param {Number} $threshold [50] - percentage where color changes should occur around
+@mixin text-color-bgc($bgc, $on-light: #000, $on-dark: #fff, $threshold: 50) {
+  color: contrast-text($bgc, $on-light, $on-dark, $threshold);
   background-color: $bgc;
 }
 
