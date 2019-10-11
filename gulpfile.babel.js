@@ -178,6 +178,7 @@ const build = (
       styles,
       js,
       minimizeImgs,
+      // favicon,
     ),
   )
 );
@@ -190,6 +191,7 @@ const buildWatch = (
       styles,
       js,
       minimizeImgs,
+      // favicon,
     ),
     watchTask,
   )

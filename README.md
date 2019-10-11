@@ -19,7 +19,7 @@ A multi-purpose dev toolkit by Deluxateer. It is designed to streamline developm
 
 ### `npm run build`
 
-Builds the destination folder with static files __FOR DEVELOPMENT__. It runs tasks for `clean`, `views`, `styles`, `js`, `minimgs`, and `favicon`.
+Builds the destination folder with static files __FOR DEVELOPMENT__. It runs tasks for `clean`, `views`, `styles`, `js`, and `minimgs`. `favicon` can be included.
 
 ### `npm run buildwatch` or `npm run bw`
 
