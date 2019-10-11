@@ -178,7 +178,18 @@ const build = (
       styles,
       js,
       minimizeImgs,
-      favicon,
+    ),
+  )
+);
+
+const buildWatch = (
+  series(
+    clean,
+    parallel(
+      views,
+      styles,
+      js,
+      minimizeImgs,
     ),
     watchTask,
   )
@@ -194,3 +205,4 @@ exports.watch = watchTask;
 exports.clean = clean;
 
 exports.default = build;
+exports.buildwatch = buildWatch;

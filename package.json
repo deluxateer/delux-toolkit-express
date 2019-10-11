@@ -12,7 +12,11 @@
     "watch": "gulp watch",
     "clean": "gulp clean",
     "build": "gulp",
-    "build:prod": "cross-env NODE_ENV=production gulp"
+    "build:prod": "cross-env NODE_ENV=production gulp",
+    "buildwatch": "gulp buildwatch",
+    "buildwatch:prod": "cross-env NODE_ENV=production gulp buildwatch",
+    "bw": "npm run buildwatch",
+    "bwp": "npm run buildwatch:prod"
   },
   "repository": {
     "type": "git",

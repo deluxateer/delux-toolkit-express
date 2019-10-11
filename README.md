@@ -19,11 +19,19 @@ A multi-purpose dev toolkit by Deluxateer. It is designed to streamline developm
 
 ### `npm run build`
 
-Builds the destination folder with static files __FOR DEVELOPMENT__. It runs tasks for `clean`, `views`, `styles`, `js`, `minimgs`, `favicon` and `watch`.
+Builds the destination folder with static files __FOR DEVELOPMENT__. It runs tasks for `clean`, `views`, `styles`, `js`, `minimgs`, and `favicon`.
+
+### `npm run buildwatch` or `npm run bw`
+
+Same as `npm run build`, but also runs the `watch` task at the end.
 
 ### `npm run build:prod`
 
 Same as `npm run build` but for production. This means certain options like sourcemaps are not enabled.
+
+### `npm run buildwatch:prod` or `npm run bwp`
+
+Same as `npm run build:prod`, but also runs the `watch` task at the end.
 
 ### `npm run views`
 
