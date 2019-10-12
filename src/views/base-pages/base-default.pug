@@ -24,12 +24,9 @@ html(lang='en')
             i.fas.fa-arrow-circle-up
       main
         block main
-          include layout/hero
       block footer
         include layout/footer
     block scripts
       if scriptPaths
         each scriptPath in scriptPaths
           script(src=scriptPath type='text/javascript')
-    //- - for (let scriptPath in scriptPaths)
-    //-   script(src=scriptPaths[scriptPath])
