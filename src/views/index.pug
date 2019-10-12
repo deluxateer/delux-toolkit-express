@@ -1,20 +1,18 @@
 //- -----------------------------------------------------------------------------
-//- This file contains markup that is specific to the home page.
+//- This file contains markup that is specific to the DeluxThreads page.
 //- -----------------------------------------------------------------------------
 
-extend base-pages/base-default
+extend base-pages/base-full-page
 
 include components/card
-include components/carousel
-include components/form
 
 block localVariables
   -
     //- page-specific head configurations
     const localHeadProps = {
-      title: 'Finest Clothing Store - Wear Clothes of Deluxe Calibur.',
-      description: 'Our store sells clothes so elegant and high-quality that you will be turning heads!',
-      keywords: 'shirt, pant, hats, shoes, style',
+      title: 'Delux Toolkit by Deluxateer',
+      description: 'Landing page of the delux toolkit.',
+      keywords: 'webdev, pug, scss, sass, js, deluxateer',
       //- paths of the stylesheets to use for this page
       stylesheetPaths: [
         'https://fonts.googleapis.com/css?family=Nunito',
@@ -28,198 +26,21 @@ block localVariables
       'js/bundle.js',
     ];
   -
-    //- card items for services section
-    const serviceCards = [{
-      iconClasses: 'fas fa-user-tie fa-3x',
-      title: 'Custom Tailoring',
-      content: [
-        'Lorem ipsum dolor sit amet consectetur.',
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      ],
-    }, {
-      iconClasses: 'far fa-comment fa-3x',
-      title: 'Style Consultation',
-      content: [
-        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero, nemo molestias.',
-      ],
-    }, {
-      iconClasses: 'fas fa-store-alt fa-3x',
-      title: 'Premade Attire',
-      content: [
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      ],
-    },]
+    const pageName = 'home';
   -
-    //- items to use for testimonial carousel
-    const testimonialItems = [
-      {
-        picture: {
-          img: 'sam-connor.jpg',
-          alt: 'Sam Connor',
-        },
-        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, accusantium animi expedita architecto dolores vitae voluptate eveniet perspiciatis quidem provident.',
-        name: 'Sam Connor',
-        location: 'Houstan, TX',
-      },
-      {
-        picture: {
-          img: 'john-doe.jpg',
-          alt: 'John Doe',
-        },
-        quote: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates impedit fugiat consequuntur repellat.',
-        name: 'John Doe',
-        location: 'San Diego, CA',
-      },
-      {
-        picture: {
-          img: 'lorena-ipsona.jpg',
-          alt: 'Lorena Ipsona',
-        },
-        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sunt? Magni autem non minus excepturi velit.',
-        name: 'Lorena Ipsona',
-        location: 'New York, NY',
-      },]
-  -
-    //- contact form data
-    const contactFormData = {
-      attributeData: {
-        class: ['contact-form'],
-      },
-      button: {
-        text: 'Submit',
-        attributeData: {
-          class: ['btn', 'btn-secondary', 'btn-shadow'],
-          type: 'submit',
-        },
-      },
-      items: {
-        name: {
-          labelText: '<i class="fas fa-user"></i>Name',
-          tag: 'input',
-          attributeData: {
-            id: 'contact-name',
-            type: 'text',
-            name: 'name',
-            placeholder: 'John Doe',
-            required: true,
-          },
-        },
-        email: {
-          labelText: '<i class="fas fa-envelope"></i>Email',
-          tag: 'input',
-          attributeData: {
-            id: 'contact-email',
-            type: 'email',
-            name: 'email',
-            placeholder: 'johndoe@mail.com',
-            required: true,
-          },
-        },
-        message: {
-          labelText: '<i class="fas fa-comment-alt"></i>Message',
-          tag: 'textarea',
-          attributeData: {
-            id: 'contact-message',
-            name: 'message',
-            rows: '7',
-            placeholder: 'Your message here...',
-            required: true,
-          },
-        },
-      },
+    const cardContent = {
+      iconClasses: 'fas fa-check-circle fa-5x',
+      title: "You're good to go!",
+      content: [
+        'Your toolkit is working just fine now.',
+        'Enjoy!',
+      ],
     }
-
-//- describes custom markup for the carousel slides on this page
-//- @param {Object} item - data of each testimonial item to put in the slides
-mixin carouselSlideContent(item)
-  .testimonial-card
-    blockquote.testimonial-quote
-      p= item.quote
-    footer.testimonial-footer
-      .testimonial-img
-        +image(item.picture.img, item.picture.alt)
-      .testimonial-info
-        p.testimonial-name= item.name
-        p.testimonial-location= item.location
 
 //- ---------------- MARKUP FOR PAGE ----------------
 
 prepend stylesheets
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.2/css/all.css' integrity='sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay' crossorigin='anonymous')
 
-append main
-  section.hero
-    .hero-info-container
-      .hero-info
-        h1 Clothing of Deluxe Calibur
-        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi assumenda dolores accusantium quasi, possimus facilis.
-        a.btn.btn-secondary.btn-large.btn-shadow.btn-block(href='#contact') Send A Request
-    .lg-screen-img
-  section#about.about
-    .container.about-container
-      .about-info-container
-        .about-info
-          h2 Elegant clothes that actually fit.
-          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quasi exercitationem omnis! Aperiam, aliquid fugit voluptas nam voluptates eligendi! Fuga?
-          p Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, maxime!
-      .about-img
-        +image('tailoring.jpg', 'Tailoring Mannequin')
-  section#services.services
-    .container
-      h2 Our services will knock your socks off.
-      .cards
-        each cardContent in serviceCards
-          +card(cardContent)
-  section#testimonials.testimonials
-    .container
-      h2 Here's what our folks have to say!
-      +carousel(testimonialItems)
-        each item, index in testimonialItems
-          li.carousel-slide
-            +carouselSlideContent(item)
-  section#contact.contact
-    .container
-      h2 Contact Us
-      p Tell us what we can do for you (tailor appointments, style consulting, etc.) and we will get back to you within 48 hours.
-      +form(contactFormData)
-
-append scripts
-  //- Carousel functionality
-  script(type='text/javascript').
-    (function(){
-      // set carousel height to be the height of the largest testimonial card plus 2rem
-      const carousel = document.querySelector('.testimonials .carousel');
-      const slides = Array.from(document.querySelectorAll('.testimonial-card'));
-      const slideHeights = slides.map(slide => slide.offsetHeight);
-      const largestHeight = Math.max(...slideHeights);
-
-      carousel.style.height = largestHeight + 80 + 'px';
-    }())
-  //- Contact Form functionality
-  script(type='text/javascript').
-    (function(){
-      const form = document.querySelector('.contact-form');
-
-      const confirmMsg = 'Thank you for your submission';
-      const confirmEl = document.createElement('p');
-      confirmEl.innerText = confirmMsg;
-      confirmEl.style.cssText = 'transition: all 0.5s; opacity: 0; visibility: 0; display: none; background-color: rgb(44, 162, 46); padding: 1rem; border: 1px solid #fff; border-radius: 0.15rem; margin-top: 1rem;';
-
-      (form.parentNode).insertBefore(confirmEl, form);
-
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        form.reset();
-
-        confirmEl.style.display = 'block';
-        confirmEl.style.opacity = 1;
-        confirmEl.style.visibility = 1;
-
-        setTimeout(() => {
-          confirmEl.style.opacity = 0;
-          confirmEl.style.visibility = 0;
-
-          setTimeout(() => { confirmEl.style.display = 'none'; }, 500);
-        }, 5000);
-      });
-    }())
+block content
+  +card(cardContent)

@@ -16,6 +16,8 @@ window.addEventListener('scroll', () => {
   }
 });
 
-backToTopBtn.addEventListener('click', () => {
-  window.scrollTo(0, 0);
-});
+if (backToTopBtn) {
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo(0, 0);
+  });
+}
