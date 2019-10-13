@@ -6,6 +6,7 @@
 /// @param {Color} $color - color to tint
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color}
+/// @author Hugo Giraudel
 @function tint($color, $percentage) {
   @return mix(white, $color, $percentage);
 }
@@ -14,6 +15,7 @@
 /// @param {Color} $color - color to shade
 /// @param {Number} $percentage - percentage of `$color` in returned color
 /// @return {Color}
+/// @author Hugo Giraudel
 @function shade($color, $percentage) {
   @return mix(black, $color, $percentage);
 }
@@ -24,6 +26,7 @@
 /// @param {Color} $on-dark [#fff] - text color to use for dark backgrounds
 /// @param {Number} $threshold [50] - percentage where color changes should occur around 
 /// @return {Color}
+/// @author Deluxateer
 @function contrast-text($bgc, $on-light: #000, $on-dark: #fff, $threshold: 50) {
   @if (lightness($bgc) > $threshold) {
     @return $on-light;
@@ -37,6 +40,7 @@
 /// @param {String} $type - asset type folder (e.g. `fonts/`)
 /// @param {String} $path - asset path
 /// @return {Url}
+/// @author Hugo Giraudel
 @function asset($base, $type, $path) {
   @return url($base + $type + $path);
 }
@@ -46,6 +50,7 @@
 /// @param {String} $base [$base-url] - base URL
 /// @return {Url}
 /// @require $base-url
+/// @author Hugo Giraudel
 @function image($path, $base: $base-url) {
   @return asset($base, 'img/', $path);
 }
@@ -55,6 +60,7 @@
 /// @param {String} $base [$base-url] - base URL
 /// @return {Url}
 /// @require $base-url
+/// @author Hugo Giraudel
 @function font($path, $base: $base-url) {
   @return asset($base, 'fonts/', $path);
 }
@@ -62,6 +68,7 @@
 /// friendlier function to work with breakpoints
 /// @param {String} $desired-breakpoint - the breakpoint that will be used
 /// @return {String}
+/// @author Hugo Giraudel
 @function breakpoint($desired-breakpoint) {
   @return map-get($breakpoints, $desired-breakpoint);
 }

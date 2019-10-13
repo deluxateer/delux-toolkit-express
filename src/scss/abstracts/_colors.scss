@@ -1,0 +1,59 @@
+// -----------------------------------------------------------------------------
+// This file contains all stand-alone color variables. All other
+// colors to be used should be derived from these ones.
+// -----------------------------------------------------------------------------
+
+
+$gray: (
+  'base': hsl(0, 0%, 44%),
+  'off-white': hsl(0%, 0%, 98%),
+  'light': hsl(0, 0%, 93%),
+  'dark': hsl(0, 0%, 27%)
+) !default;
+
+$off-white: hsl(0%, 0%, 98%) !default;
+
+$light-gray: hsl(0, 0%, 93%) !default;
+
+$mid-gray: hsl(0, 0%, 44%) !default;
+
+$dark-gray: hsl(0, 0%, 27%) !default;
+
+$yellow: ('base': hsl(49, 90%, 51%)) !default;
+
+$purple: ('base': hsl(305, 61%, 32%)) !default;
+
+/********** SOCIAL MEDIA COLORS **********/
+
+$twitter: ('base': #00acee) !default;
+$instagram: ('base': radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #2859eb 90%)) !default;
+$facebook: ('base': #3b5998) !default;
+$pinterest: ('base': #e60023) !default;
+
+/********** END MEDIA COLORS **********/
+
+$colors: (
+  'gray': $gray,
+  'yellow': $yellow,
+  'purple': $purple,
+  'twitter': $twitter,
+  'instagram': $instagram,
+  'facebook': $facebook,
+  'pinterest': $pinterest
+) !default;
+
+/// to avoid to repeating map-get($colors, ...)
+/// @param {String} $color - name of base color
+/// @param {String} $type [base] - name of color modifier
+/// @author: Materialize
+@function color($color, $type: 'base') {
+  @if map-has-key($colors, $color) {
+    $curr-color: map-get($colors, $color);
+    @if map-has-key($curr_color, $type) {
+      @return map-get($curr_color, $type);
+    }
+  } @else {
+    @warn 'Unknown `#{$color}` - `#{$type}` in $colors.';
+    @return null;
+  }
+}
