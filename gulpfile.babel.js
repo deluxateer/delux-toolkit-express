@@ -39,7 +39,7 @@ const scssSourcePathAll = buildGlob(source, 'scss', '**', '*.scss');
 const jsSourcePath = buildGlob(source, 'js', 'index.js');
 const jsSourcePathAll = buildGlob(source, 'js', '**', '*.js');
 const assetPath = buildGlob(source, 'assets');
-const imgPath = buildGlob(assetPath, 'img', '*');
+const imgPath = buildGlob(assetPath, 'img', '**', '*');
 const faviconPath = buildGlob(__dirname, 'favicon.ico');
 const gulpPath = buildGlob(__dirname, 'gulpfile.babel.js');
 const watchPath = [
@@ -90,7 +90,9 @@ const processScss = () => {
     postcssPresetEnv({
       autoprefixer: { grid: true },
     }),
-    cssnano(),
+    production ? cssnano() : cssnano({
+      preset: ['default', { normalizeWhitespace: false }],
+    }),
   ];
   return (
     src(scssSourcePath, { sourcemaps: !production })
@@ -178,7 +180,7 @@ const build = (
       styles,
       js,
       minimizeImgs,
-      // favicon,
+      favicon,
     ),
   )
 );
@@ -191,7 +193,7 @@ const buildWatch = (
       styles,
       js,
       minimizeImgs,
-      // favicon,
+      favicon,
     ),
     watchTask,
   )

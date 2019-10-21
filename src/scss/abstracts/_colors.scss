@@ -3,6 +3,7 @@
 // colors to be used should be derived from these ones.
 // -----------------------------------------------------------------------------
 
+$white: ('base': #fff) !default;
 
 $gray: (
   'base': hsl(0, 0%, 44%),
@@ -11,35 +12,75 @@ $gray: (
   'dark': hsl(0, 0%, 27%)
 ) !default;
 
-$off-white: hsl(0%, 0%, 98%) !default;
+$red: ( 'base': hsl(0, 76%, 49%)) !default;
 
-$light-gray: hsl(0, 0%, 93%) !default;
+$pink: (
+  'base': hsl(319, 100%, 93%),
+  'light': hsl(312, 33%, 97%),
+  'dark': rgb(244, 183, 224),
+  'extra-dark': hsl(317, 100%, 80%)
+) !default;
 
-$mid-gray: hsl(0, 0%, 44%) !default;
+$purple: (
+  'base': hsl(305, 61%, 32%),
+  'light': hsl(305, 61%, 42%),
+  'dark': hsl(305, 61%, 17%)
+) !default;
 
-$dark-gray: hsl(0, 0%, 27%) !default;
+$orange: (
+  'base': hsl(45, 89%, 60%),
+  'dark': hsl(46, 99%, 44%)
+) !default;
 
-$yellow: ('base': hsl(49, 90%, 51%)) !default;
+$brown: ('base': hsl(38, 80%, 30%)) !default;
 
-$purple: ('base': hsl(305, 61%, 32%)) !default;
+$yellow: (
+  'base': hsl(49, 90%, 51%),
+  'extra-light': hsl(50, 100%, 85%),
+  'light': hsl(51, 79%, 76%),
+  'dark': hsl(50, 96%, 11%)
+) !default;
+
+$green: (
+  'base': hsl(162, 53%, 41%),
+  'light': hsl(163, 100%, 94%),
+  'seagreen': hsl(163, 82%, 89%),
+  'lime': hsl(72, 91%, 56%),
+  'dark': hsl(163, 100%, 16%)
+) !default;
+
+$blue: (
+  'base': hsl(198, 78%, 58%),
+  'light': hsl(199, 100%, 95%),
+  'dark': hsl(197, 64%, 21%)
+) !default;
+
+$violet: ('base': hsl(250, 53%, 41%)) !default;
 
 /********** SOCIAL MEDIA COLORS **********/
 
-$twitter: ('base': #00acee) !default;
-$instagram: ('base': radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #2859eb 90%)) !default;
-$facebook: ('base': #3b5998) !default;
-$pinterest: ('base': #e60023) !default;
+$social: (
+  'twitter': #00acee,
+  'instagram': radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #2859eb 90%),
+  'facebook': #3b5998,
+  'pinterest': #e60023
+) !default;
 
-/********** END MEDIA COLORS **********/
+/********** END SOCIAL MEDIA COLORS **********/
 
 $colors: (
+  'white': $white,
   'gray': $gray,
-  'yellow': $yellow,
+  'red': $red,
+  'pink': $pink,
   'purple': $purple,
-  'twitter': $twitter,
-  'instagram': $instagram,
-  'facebook': $facebook,
-  'pinterest': $pinterest
+  'orange': $orange,
+  'brown': $brown,
+  'yellow': $yellow,
+  'green': $green,
+  'blue': $blue,
+  'violet': $violet,
+  'social': $social
 ) !default;
 
 /// to avoid to repeating map-get($colors, ...)

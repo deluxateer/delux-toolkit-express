@@ -17,3 +17,7 @@ a {
     color: tint($primary-color, 35%);
   }
 }
+
+@include respond-to('extra-large') {
+  html { font-size: 22px; }
+}

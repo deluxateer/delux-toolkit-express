@@ -11,6 +11,7 @@ mixin btn(text, ...classes)
 //- markup for button with a tag
 //- @param {String} href - link that the tag points to
 //- @param {String} text - text for the button
+//- @param {Boolean} newTab - should this link open in a new tab?
 //- @param {String} classes - CSS classes to use for the button
-mixin link-btn(href, text, ...classes)
-  a(href=href, class=classes)= text
+mixin link-btn(href, text, newTab, ...classes)
+  a(href=href, class=classes, target=(newTab ? '_blank' : null))= text

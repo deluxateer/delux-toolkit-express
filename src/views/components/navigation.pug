@@ -5,14 +5,16 @@
 //- Generates navlinks (li + a) with icons in the text
 //- @param {String} url - URL that the link points to
 //- @param {String} iconClasses - CSS classes for selecting the correct fontawesome icon
-mixin nav-items-icons(url, iconClasses)
+//- @param {Boolean} newTab [true] - does clicking the link open a new tab?
+//- @param {String} linkClasses - CSS classes for styling the a tag
+mixin nav-items-icons(url, iconClasses, newTab=true, linkClasses)
   li
-    a.nav-link(href=url) #[i(class=iconClasses)]
+    a.nav-link(href=url, target=(newTab ? '_blank' : null), class=linkClasses, rel='noopener' aria-label=`Link to ${url}`) #[i(class=iconClasses)]
 
 //- generic social media links
 //- @param {Array} navItems - data for each social media link you want to include
 mixin social-media-nav(navItems)
   nav.social-media-nav
     ul
-      each item in navItems
-        +nav-items-icons(item.url, item.icon)
+      each item, socialMediaName in navItems
+        +nav-items-icons(item.url, item.icon, true, socialMediaName)

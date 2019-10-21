@@ -26,107 +26,11 @@ block localVariables
     const scriptPaths = [
       'js/bundle.js',
     ];
-  -
-    //- card items for services section
-    const serviceCards = [{
-      iconClasses: 'fas fa-user-tie fa-3x',
-      title: 'Custom Tailoring',
-      content: [
-        'Lorem ipsum dolor sit amet consectetur.',
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      ],
-    }, {
-      iconClasses: 'far fa-comment fa-3x',
-      title: 'Style Consultation',
-      content: [
-        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero, nemo molestias.',
-      ],
-    }, {
-      iconClasses: 'fas fa-store-alt fa-3x',
-      title: 'Premade Attire',
-      content: [
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-      ],
-    },]
-  -
-    //- items to use for testimonial carousel
-    const testimonialItems = [
-      {
-        picture: {
-          img: 'sam-connor.jpg',
-          alt: 'Sam Connor',
-        },
-        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, accusantium animi expedita architecto dolores vitae voluptate eveniet perspiciatis quidem provident.',
-        name: 'Sam Connor',
-        location: 'Houstan, TX',
-      },
-      {
-        picture: {
-          img: 'john-doe.jpg',
-          alt: 'John Doe',
-        },
-        quote: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates impedit fugiat consequuntur repellat.',
-        name: 'John Doe',
-        location: 'San Diego, CA',
-      },
-      {
-        picture: {
-          img: 'lorena-ipsona.jpg',
-          alt: 'Lorena Ipsona',
-        },
-        quote: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sunt? Magni autem non minus excepturi velit.',
-        name: 'Lorena Ipsona',
-        location: 'New York, NY',
-      },]
-  -
-    //- contact form data
-    const contactFormData = {
-      attributeData: {
-        class: ['contact-form'],
-      },
-      button: {
-        text: 'Submit',
-        attributeData: {
-          class: ['btn', 'btn-secondary', 'btn-shadow'],
-          type: 'submit',
-        },
-      },
-      items: {
-        name: {
-          labelText: '<i class="fas fa-user"></i>Name',
-          tag: 'input',
-          attributeData: {
-            id: 'contact-name',
-            type: 'text',
-            name: 'name',
-            placeholder: 'John Doe',
-            required: true,
-          },
-        },
-        email: {
-          labelText: '<i class="fas fa-envelope"></i>Email',
-          tag: 'input',
-          attributeData: {
-            id: 'contact-email',
-            type: 'email',
-            name: 'email',
-            placeholder: 'johndoe@mail.com',
-            required: true,
-          },
-        },
-        message: {
-          labelText: '<i class="fas fa-comment-alt"></i>Message',
-          tag: 'textarea',
-          attributeData: {
-            id: 'contact-message',
-            name: 'message',
-            rows: '7',
-            placeholder: 'Your message here...',
-            required: true,
-          },
-        },
-      },
-    }
+
+    //- class to put on body tag for custom styling
+  - const pageName = '';
+    //- used to indicate this page is selected on the navbar item
+  - const activeNavbarItem = ''
 
 //- describes custom markup for the carousel slides on this page
 //- @param {Object} item - data of each testimonial item to put in the slides

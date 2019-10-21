@@ -4,6 +4,7 @@
 //- Vertical page flow.
 //- -----------------------------------------------------------------------------
 
+include ../abstracts/data
 include ../abstracts/variables
 include ../abstracts/mixins
 include layout/head
@@ -13,7 +14,7 @@ include ../components/navigation
 block localVariables
 
 doctype html
-html(lang='en')
+html(class=pageName lang='en')
   +head(globalHeadProps, localHeadProps)
   body
     block content

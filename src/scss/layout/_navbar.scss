@@ -10,8 +10,8 @@
 /* stylelint-enable */
 
 $navbar-bgc: #fff;
-$nav-link-responsive-bg-color: $light-gray;
-$nav-link-hover-bg-color: $off-white;
+$nav-link-responsive-bg-color: color('gray', 'light');
+$nav-link-hover-bg-color: color('gray', 'off-white');
 
 .mobile-nav-display {
   @include flex-space-between-children;
@@ -48,7 +48,7 @@ $nav-link-hover-bg-color: $off-white;
     opacity: 0;
     list-style-type: none;
     background-color: $navbar-bgc;
-    padding: 15px;
+    padding: 1rem;
   }
 
   & &-active {

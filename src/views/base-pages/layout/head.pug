@@ -129,9 +129,9 @@ mixin head(globalHeadProps, localHeadProps)
       link(rel='canonical' href=canonicalLinkURL)
     if webAppManifestPath
       link(rel='manifest' href=webAppManifestPath)
+    if faviconPath
+      link(rel='shortcut icon' href=faviconPath type='image/x-icon')
     block stylesheets
       if stylesheetPaths
         each stylesheetPath in stylesheetPaths
           link(rel='stylesheet' href=stylesheetPath)
-    if faviconPath
-      link(rel='shortcut icon' href=faviconPath type='image/x-icon')

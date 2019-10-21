@@ -8,7 +8,10 @@
 //- @param {String} activeNavbarItem - navbar item that is currently active
 mixin navbar-items(text, url, activeNavbarItem)
   li
-    a.navbar-link(href=url, class=(activeNavbarItem && text.toLowerCase() === activeNavbarItem.toLowerCase()) ? 'navbar-link-active' : null)= text
+    if activeNavbarItem && text.toLowerCase() === activeNavbarItem.toLowerCase()
+      span.navbar-link.navbar-link-active= text
+    else
+      a.navbar-link(href=url)= text
 
 //- Generates a generic navbar with hamburger menu and brand logo on mobile
 //- @param {Object} navbarItems - links to use for the navbar, excluding the logo
@@ -17,7 +20,7 @@ mixin navbar(navbarItems, activeNavbarItem)
   nav.navbar
     .mobile-nav-display
       a.brand-logo(href='/') DeluxThreads
-      button.navbar-toggle
+      button.navbar-toggle(aria-label='Navigation Bar Toggle')
         i.fas.fa-bars
     ul.navbar-submenu
       each value, key in navbarItems

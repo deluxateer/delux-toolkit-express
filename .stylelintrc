@@ -17,6 +17,18 @@
 	      hasBlock: false
       },
       "declarations",
+            {
+	      type: "at-rule",
+	      name: "if"
+      },
+      {
+	      type: "at-rule",
+	      name: "else"
+      },
+      {
+	      type: "at-rule",
+	      name: "each"
+      },
       "rules",
       {
 	      type: "at-rule",

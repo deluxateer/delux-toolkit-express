@@ -17,8 +17,60 @@ h2 {
 
 section { padding: 70px 0; }
 
+// Hero Section
+.hero {
+  height: 90vh;
+  background: linear-gradient(to bottom, rgba(color('gray', 'light'), 0.8), rgba(color('gray', 'light'), 0.9)), image('suits.jpg') no-repeat;
+  background-size: cover;
+  padding: 0;
+}
+
+.lg-screen-img { display: none; }
+
+.hero-info-container {
+  @include flex-center-children;
+  flex-direction: column;
+  height: 100%;
+  width: 82%;
+  margin: 0 auto;
+}
+
+.hero-info {
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  p { margin-bottom: 3rem; }
+
+  a {
+    max-width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@include respond-to('min-large') {
+  .hero {
+    display: flex;
+    background: #fff;
+
+    > * { flex: 1 1; }
+
+    &-info {
+      width: 82%;
+      margin: 0 auto;
+    }
+  }
+
+  .lg-screen-img {
+    display: initial;
+    background: image('suits.jpg') no-repeat;
+    background-size: cover;
+  }
+}
+
 // About Section
-.about { background-color: $off-white; }
+.about { background-color: color('gray', 'off-white'); }
 
 .about-info-container {
   @include flex-center-children;
@@ -38,7 +90,7 @@ section { padding: 70px 0; }
   }
 }
 
-@media screen and (min-width: breakpoint('medium')) {
+@include respond-to('min-medium') {
   .about-container {
     display: flex;
     flex-direction: row-reverse;
@@ -70,7 +122,7 @@ section { padding: 70px 0; }
   .card + .card { margin-top: 2rem; }
 }
 
-@media screen and (min-width: breakpoint('medium')) {
+@include respond-to('min-medium') {
   .about { padding-bottom: 250px; }
 
   .services {
@@ -204,7 +256,7 @@ section { padding: 70px 0; }
 
 .contact-form { margin-top: 3rem; }
 
-@media screen and (min-width: breakpoint('medium')) {
+@include respond-to('min-medium') {
   .contact-form {
     display: grid;
     grid-template-columns: auto;

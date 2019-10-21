@@ -4,26 +4,44 @@
 // Most of the architecture is inspired from Hugo Giraudel
 // Source: https://hugogiraudel.com/2014/03/03/another-sass-button-library/
 // -----------------------------------------------------------------------------
+
 // configuration
 $btn-name: 'btn' !default;
 $btn-size-ratio: 1.2 !default;
-$btn-hover: saturate 25% !default;
+$btn-hover: shade 5% !default;
 // $btn-border: darken 20% !default;
 $btn-border: false;
 $btn-bgc-default: hsl(0, 0%, 34%);
-$btn-background: (
+
+// initialize btn-colors with primary & secondary colors + variants
+$btn-colors: (
   'primary': $primary-color,
+  'primary-light': $primary-color-light,
+  'primary-dark': $primary-color-dark,
   'secondary': $secondary-color,
-  'success': hsl(121, 32%, 40%),
-  'danger': hsl(1, 45%, 50%),
-  'warning': hsl(38, 46%, 54%),
-  'info': hsl(200, 50%, 45%)
 ) !default;
 
-/// evaluates button color (bg, font, border)
+// remove social colors & instagram gradient for buttons, those will be handled with custom styles
+$colors-no-social: $colors;
+@if (map-has-key($colors-no-social, 'social')) {
+  $colors-no-social: map-remove($colors-no-social, 'social');
+}
+
+// add to btn-color map with color-codes based on existing colors map w/o social colors
+@each $color-name, $color-stack in $colors-no-social {
+  @each $color-modifier, $color-code in $color-stack {
+    $btn-colors: map-merge($btn-colors, ('#{$color-name}-#{$color-modifier}' : $color-code));
+  }
+}
+
+/// evaluates button color (bg, border)
 /// @param {Color} $bgc - background color of the button
 @mixin button-color($bgc) {
   @include text-color-bgc($bgc);
+
+  @if $btn-border != false {
+    border-color: call(get-function(nth($btn-border, 1)), $bgc, nth($btn-border, 2));
+  }
 
   &:hover,
   &:focus {
@@ -34,10 +52,6 @@ $btn-background: (
   &:active {
     background: call(get-function(shade), $bgc, nth($btn-hover, 2));
     box-shadow: none;
-  }
-
-  @if $btn-border != false {
-    border-color: call(get-function(nth($btn-border, 1)), $bgc, nth($btn-border, 2));
   }
 }
 
@@ -55,11 +69,29 @@ $btn-background: (
   border: if($btn-border, 1px solid, none);
   border-radius: 0.15em;
   outline: none;
-  margin-bottom: 1em;
 }
 
 .#{$btn-name} {
   @extend %#{btn-name};
+
+  // button background-color schemes
+  @each $key, $value in $btn-colors {
+    &-#{$key} {
+      @include button-color($value);
+    }
+  }
+
+  // button text-color schemes
+  @each $key, $value in $btn-colors {
+    &-text-#{$key} {
+      color: $value;
+
+      &:hover,
+      &:focus {
+        color: $value;
+      }
+    }
+  }
 
   // Modifiers
   &-large {
@@ -76,6 +108,8 @@ $btn-background: (
 
   &-upper { text-transform: uppercase; }
 
+  &-round { border-radius: 20px; }
+
   &-block {
     display: block;
     width: 100%;
@@ -83,13 +117,6 @@ $btn-background: (
 
   &-shadow {
     box-shadow: 0 10px 20px hsla(0, 0%, 0%, 0.19), 0 6px 6px hsla(0, 0%, 0%, 0.23);
-  }
-
-  // Color schemes
-  @each $key, $value in $btn-background {
-    &-#{$key} {
-      @include button-color($value);
-    }
   }
 }
 
@@ -106,6 +133,7 @@ $btn-background: (
   z-index: 5;
   background-color: transparentize($primary-color, 0.3);
   border: 1px solid;
+  border-radius: 20px;
   margin: 0;
 }
 
