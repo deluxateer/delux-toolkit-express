@@ -37,8 +37,8 @@
 .visually-hidden {
   position: absolute;
   overflow: hidden;
-  height: 1px;
   width: 1px;
+  height: 1px;
   padding: 0;
   border: 0;
   margin: -1px;
@@ -49,8 +49,8 @@
  * basic placeholder styling for images that are being lazy-loaded.
  */
 img[data-lazy] {
-  min-height: 10%;
   min-width: 10%;
+  min-height: 10%;
   border: 1px solid hsl(0, 0%, 44%);
 }
 

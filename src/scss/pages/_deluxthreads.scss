@@ -30,8 +30,8 @@ section { padding: 70px 0; }
 .hero-info-container {
   @include flex-center-children;
   flex-direction: column;
-  height: 100%;
   width: 82%;
+  height: 100%;
   margin: 0 auto;
 }
 
@@ -232,8 +232,8 @@ section { padding: 70px 0; }
 
 .testimonial-img img {
   display: block;
-  height: $testimonial-img-size;
   width: $testimonial-img-size;
+  height: $testimonial-img-size;
   border-radius: 50%;
 }
 

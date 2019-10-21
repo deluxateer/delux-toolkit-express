@@ -12,8 +12,8 @@ $indicator-color-current: opacify($indicator-color, 0.45) !default;
 
 .carousel {
   position: relative;
-  height: $carousel-height;
   width: $carousel-width;
+  height: $carousel-height;
   margin: 0 auto;
 }
 
@@ -38,8 +38,8 @@ $indicator-color-current: opacify($indicator-color, 0.45) !default;
   width: 100%;
 
   img {
-    height: 100%;
     width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 }
@@ -69,8 +69,8 @@ $indicator-color-current: opacify($indicator-color, 0.45) !default;
 }
 
 .carousel-indicator {
-  height: $indicator-height;
   width: $indicator-width;
+  height: $indicator-height;
   cursor: pointer;
   background: $indicator-color;
   border: 0;

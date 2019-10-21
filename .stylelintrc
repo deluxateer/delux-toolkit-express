@@ -225,19 +225,19 @@
         ]
       },
       {
-        groupName: "height",
-        properties: [
-          "height",
-          "min-height",
-          "max-height"
-        ]
-      },
-      {
         groupName: "width",
         properties: [
           "width",
           "min-width",
           "max-width"
+        ]
+      },
+      {
+        groupName: "height",
+        properties: [
+          "height",
+          "min-height",
+          "max-height"
         ]
       },
       {
