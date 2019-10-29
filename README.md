@@ -1,6 +1,6 @@
-# Delux Toolkit
+# Delux Toolkit (v1)
 
-A multi-purpose dev toolkit by Deluxateer. It is designed to streamline development flow by automating common tasks (as listed in Features). Set up with the template engine Pug and preprocessor Sass for efficient view & style authorship. Implements various customizable linters to enforce good code practice. Optimizes files for production.
+A multi-purpose dev toolkit by Deluxateer. It is designed to streamline development flow by automating common tasks (as listed in Features). Set up with the template engine Pug and preprocessor Sass/SCSS for efficient view & style authorship. Implements various customizable linters to enforce good code practice. Optimizes files for production.
 
 ## Features
 
@@ -11,9 +11,6 @@ A multi-purpose dev toolkit by Deluxateer. It is designed to streamline developm
 4. __Sourcemaps:__ Included for SCSS and JS files during development mode.
 5. __Assets:__ Minifies images for production.
 6. __Live Server:__ Spin up Browsersync for cross-device service with hot-reloading.
-
-### To Be Implemented:
-* Unit Testing
 
 ## How To Use:
 
@@ -65,6 +62,28 @@ Minifies all images in the asset directory.
 
 Moves a copy of `favicon.ico` into the destination directory.
 
+## How To Customize:
+
+1. Modify package.json; adjust the name, description, author, and other key/value pairs you desire.
+2. Replace/remove favicon.ico
+3. Adjust task configurations in `gulpfile.babel.js` file to your liking.
+4. Inspect `.browserlistrc` for the browsers & versions you want to support. [Information on Queries](https://github.com/browserslist/browserslist#queries)
+5. `assets` directory
+    1. Replace/remove fonts directory
+    2. Replace/remove img directory
+6. `js` directory
+    1. Turn off the modules you won't need for your project in `index.js`
+    2. You can always add to the `js` directory as needed.
+7. Delete the `themes` directory in the `styles` and `views` directory. 95% of the time you won't need it.
+8. Strip off the partials in the `styles` directory that are irrelevant to your project and references to them, though keeping the components are recommended.
+    1. Most configurations will be found in the `abstract` and `base` directories.
+    2. Custom page style files will be in the `pages` directory, which has placeholder files that you should modify/delete now.
+9. `views` directory
+    1. `data.pug` will hold all of the global data that you will use for your markup (HTML) pages. It is intended for this setup to loop through the data you need and output HTML, in order to keep your markup code DRY and decoupled from hard-coded data.
+    2. `variables.pug` contains all of the global variables to be used between pug files. It contains options for global `<head>` tag attributes, with the optional ones already commented out. Navbar items and social-media hrefs are good ideas to put here.
+    3. Pug files at the base of the `views` directory are your "main" files that will compile into equivalant html files. They should extend from some `base-page`. List your page-specific head attributes, CDN links, and local data here. It's up to what you want to put here.
+10. Delete/modify README
+
 ## Architecture
 
 The file structure heavily based on Hugo Giraudel's [7-1 Architecture Pattern](https://sass-guidelin.es/#the-7-1-pattern). A more detailed explanation about the structure can be found there.
@@ -89,6 +108,9 @@ Sass Architecture and Boilerplate based from Hugo Giraudel's [Style Guide](https
 ## Goals
 
 I would like to segregate these features between Webpack and Gulp, since the purpose of Webpack is to be a bundler and Gulp to be a task runner.
+
+### To Be Implemented:
+* Unit Testing
 
 ### Webpack:
 * html template engine (pug)

@@ -22,7 +22,7 @@ const browserSync = require('browser-sync').create();
 // used to build platform/os-consistant globs
 const buildGlob = (...args) => slash(path.resolve(...args));
 
-// CONFIGURATION
+// ***************** CONFIGURATION ***************** //
 const production = process.env.NODE_ENV === 'production';
 const source = buildGlob(__dirname, 'src');
 const destination = buildGlob(__dirname, 'dist');
@@ -34,8 +34,8 @@ const destImg = buildGlob(destination, 'img');
 // SOURCE PATHS
 const pugSourcePath = buildGlob(source, 'views', '*.pug');
 const pugSourcePathAll = buildGlob(source, 'views', '**', '*.pug');
-const scssSourcePath = buildGlob(source, 'scss', 'index.scss');
-const scssSourcePathAll = buildGlob(source, 'scss', '**', '*.scss');
+const stylesSourcePath = buildGlob(source, 'styles', 'index.scss');
+const stylesSourcePathAll = buildGlob(source, 'styles', '**', '*.scss');
 const jsSourcePath = buildGlob(source, 'js', 'index.js');
 const jsSourcePathAll = buildGlob(source, 'js', '**', '*.js');
 const assetPath = buildGlob(source, 'assets');
@@ -48,6 +48,10 @@ const watchPath = [
   buildGlob(destination, '*.html'),
   buildGlob(destImg, '*'),
 ];
+
+const enableLinting = true;
+
+// ***************** END CONFIGURATION ***************** //
 
 // TASKS
 const lintViews = () => (
@@ -67,8 +71,8 @@ const processViews = () => (
 );
 
 
-const lintScss = () => (
-  src(scssSourcePathAll)
+const lintStyles = () => (
+  src(stylesSourcePathAll)
     .pipe(gulpStylelint({
       failAfterError: true,
       reportOutputDir: reportsPath,
@@ -85,7 +89,7 @@ const lintScss = () => (
     }))
 );
 
-const processScss = () => {
+const processStyles = () => {
   const postCssPlugins = [
     postcssPresetEnv({
       autoprefixer: { grid: true },
@@ -95,7 +99,7 @@ const processScss = () => {
     }),
   ];
   return (
-    src(scssSourcePath, { sourcemaps: !production })
+    src(stylesSourcePath, { sourcemaps: !production })
       .pipe(sass().on('error', sass.logError))
       .pipe(postcss(postCssPlugins))
       .pipe(rename('styles.min.css'))
@@ -149,9 +153,20 @@ const favicon = () => src(faviconPath, {
   allowEmpty: true,
 }).pipe(dest(destination));
 
-const views = series(lintViews, processViews);
-const styles = series(lintScss, processScss);
-const js = series(lintJs, processJs);
+// enable/disable linting depending on config
+let views;
+let styles;
+let js;
+
+if (enableLinting) {
+  views = series(lintViews, processViews);
+  styles = series(lintStyles, processStyles);
+  js = series(lintJs, processJs);
+} else {
+  views = processViews;
+  styles = processStyles;
+  js = processJs;
+}
 
 const watchTask = () => {
   browserSync.init({
@@ -160,7 +175,7 @@ const watchTask = () => {
     port: 9000,
   });
   watch(pugSourcePathAll, views);
-  watch(scssSourcePathAll, styles);
+  watch(stylesSourcePathAll, styles);
   watch(gulpPath, lintJs);
   watch(jsSourcePathAll, js);
   watch(imgPath, minimizeImgs);
