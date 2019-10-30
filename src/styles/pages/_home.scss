@@ -4,7 +4,7 @@
 
 .home body {
   @include flex-center-children;
-  background-color: adjust-color($primary-color, $saturation: -30%, $lightness: 62%);
+  background-color: tint($primary-color, 90);
   padding: 20px;
 
   p { margin-bottom: 0.5rem; }

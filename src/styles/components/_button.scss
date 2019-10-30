@@ -13,27 +13,6 @@ $btn-hover: shade 5% !default;
 $btn-border: false;
 $btn-bgc-default: hsl(0, 0%, 34%);
 
-// initialize btn-colors with primary & secondary colors + variants
-$btn-colors: (
-  'primary': $primary-color,
-  'primary-light': $primary-color-light,
-  'primary-dark': $primary-color-dark,
-  'secondary': $secondary-color,
-) !default;
-
-// remove social colors & instagram gradient for buttons, those will be handled with custom styles
-$colors-no-social: $colors;
-@if (map-has-key($colors-no-social, 'social')) {
-  $colors-no-social: map-remove($colors-no-social, 'social');
-}
-
-// add to btn-color map with color-codes based on existing colors map w/o social colors
-@each $color-name, $color-stack in $colors-no-social {
-  @each $color-modifier, $color-code in $color-stack {
-    $btn-colors: map-merge($btn-colors, ('#{$color-name}-#{$color-modifier}' : $color-code));
-  }
-}
-
 /// evaluates button color (bg, border)
 /// @param {Color} $bgc - background color of the button
 @mixin button-color($bgc) {
@@ -74,25 +53,6 @@ $colors-no-social: $colors;
 .#{$btn-name} {
   @extend %#{btn-name};
 
-  // button background-color schemes
-  @each $key, $value in $btn-colors {
-    &-#{$key} {
-      @include button-color($value);
-    }
-  }
-
-  // button text-color schemes
-  @each $key, $value in $btn-colors {
-    &-text-#{$key} {
-      color: $value;
-
-      &:hover,
-      &:focus {
-        color: $value;
-      }
-    }
-  }
-
   // Modifiers
   &-large {
     font-size: 1em * $btn-size-ratio;
@@ -125,13 +85,13 @@ $colors-no-social: $colors;
 // Scroll Back To the Top Button
 .back-to-top-#{$btn-name} {
   @extend %#{btn-name};
+  @include button-color(transparentize($primary-color, 0.3));
 
   display: none;
   position: fixed;
   right: 20px;
   bottom: 80px;
   z-index: 5;
-  background-color: transparentize($primary-color, 0.3);
   border: 1px solid;
   border-radius: 20px;
   margin: 0;

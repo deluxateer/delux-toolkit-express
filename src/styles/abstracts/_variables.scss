@@ -14,16 +14,16 @@ $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
 /// Primary (Brand) color
 /// @type Color
 $primary-color: color('purple') !default;
-$primary-color-light: color('pink', 'light') !default;
-$primary-color-dark: color('blue', 'dark') !default;
+$primary-color-light: color('pink', 'lighten-4') !default;
+$primary-color-dark: color('blue', 'darken-4') !default;
 
 /// Secondary (Accent) color
 /// @type Color
-$secondary-color: color('yellow') !default;
+$secondary-color: color('yellow', 'darken-1') !default;
 
 /// Copy text color
 /// @type Color
-$text-color: color('gray') !default;
+$text-color: color('gray', 'darken-2') !default;
 
 /// Container's maximum width
 /// @type Length

@@ -1,61 +1,326 @@
 // -----------------------------------------------------------------------------
 // This file contains all stand-alone color variables. All other
 // colors to be used should be derived from these ones.
+// Initial colors are taken from Material Design and Materialize.
+// These should be modified for your project's color palette.
 // -----------------------------------------------------------------------------
 
-$white: ('base': #fff) !default;
-
-$gray: (
-  'base': hsl(0, 0%, 44%),
-  'off-white': hsl(0%, 0%, 98%),
-  'light': hsl(0, 0%, 93%),
-  'dark': hsl(0, 0%, 27%)
-) !default;
-
-$red: ( 'base': hsl(0, 76%, 49%)) !default;
+$red: (
+  'base':       hsl(4, 90%, 58%),
+  'lighten-5':  hsl(351, 100%, 96%),
+  'lighten-4':  hsl(354, 100%, 90%),
+  'lighten-3':  hsl(0, 73%, 77%),
+  'lighten-2':  hsl(0, 69%, 67%),
+  'lighten-1':  hsl(1, 83%, 63%),
+  'darken-1':   hsl(1, 77%, 55%),
+  'darken-2':   hsl(0, 65%, 51%),
+  'darken-3':   hsl(0, 66%, 47%),
+  'darken-4':   hsl(0, 73%, 41%),
+  'accent-1':   hsl(5, 100%, 75%),
+  'accent-2':   hsl(0, 100%, 66%),
+  'accent-3':   hsl(348, 100%, 55%),
+  'accent-4':   hsl(0, 100%, 42%)
+);
 
 $pink: (
-  'base': hsl(319, 100%, 93%),
-  'light': hsl(312, 33%, 97%),
-  'dark': rgb(244, 183, 224),
-  'extra-dark': hsl(317, 100%, 80%)
-) !default;
+  'base':       hsl(340, 82%, 52%),
+  'lighten-5':  hsl(340, 80%, 94%),
+  'lighten-4':  hsl(339, 81%, 85%),
+  'lighten-3':  hsl(340, 82%, 76%),
+  'lighten-2':  hsl(340, 83%, 66%),
+  'lighten-1':  hsl(340, 82%, 59%),
+  'darken-1':   hsl(338, 78%, 48%),
+  'darken-2':   hsl(336, 78%, 43%),
+  'darken-3':   hsl(334, 79%, 38%),
+  'darken-4':   hsl(328, 81%, 29%),
+  'accent-1':   hsl(340, 100%, 75%),
+  'accent-2':   hsl(340, 100%, 63%),
+  'accent-3':   hsl(339, 100%, 48%),
+  'accent-4':   hsl(333, 84%, 42%)
+);
 
 $purple: (
-  'base': hsl(305, 61%, 32%),
-  'light': hsl(305, 61%, 42%),
-  'dark': hsl(305, 61%, 17%)
-) !default;
+  'base':       hsl(291, 64%, 42%),
+  'lighten-5':  hsl(292, 44%, 93%),
+  'lighten-4':  hsl(291, 46%, 83%),
+  'lighten-3':  hsl(291, 47%, 71%),
+  'lighten-2':  hsl(291, 47%, 60%),
+  'lighten-1':  hsl(291, 47%, 51%),
+  'darken-1':   hsl(287, 65%, 40%),
+  'darken-2':   hsl(282, 68%, 38%),
+  'darken-3':   hsl(277, 70%, 35%),
+  'darken-4':   hsl(267, 75%, 31%),
+  'accent-1':   hsl(291, 95%, 75%),
+  'accent-2':   hsl(291, 96%, 62%),
+  'accent-3':   hsl(291, 100%, 49%),
+  'accent-4':   hsl(280, 100%, 50%)
+);
 
-$orange: (
-  'base': hsl(45, 89%, 60%),
-  'dark': hsl(46, 99%, 44%)
-) !default;
+$deep-purple: (
+  'base':       hsl(262, 52%, 47%),
+  'lighten-5':  hsl(264, 45%, 94%),
+  'lighten-4':  hsl(261, 46%, 84%),
+  'lighten-3':  hsl(261, 46%, 74%),
+  'lighten-2':  hsl(262, 47%, 63%),
+  'lighten-1':  hsl(262, 47%, 55%),
+  'darken-1':   hsl(260, 54%, 45%),
+  'darken-2':   hsl(258, 58%, 42%),
+  'darken-3':   hsl(255, 61%, 39%),
+  'darken-4':   hsl(251, 69%, 34%),
+  'accent-1':   hsl(262, 100%, 77%),
+  'accent-2':   hsl(256, 100%, 65%),
+  'accent-3':   hsl(259, 100%, 56%),
+  'accent-4':   hsl(265, 100%, 46%)
+);
 
-$brown: ('base': hsl(38, 80%, 30%)) !default;
-
-$yellow: (
-  'base': hsl(49, 90%, 51%),
-  'extra-light': hsl(50, 100%, 85%),
-  'light': hsl(51, 79%, 76%),
-  'dark': hsl(50, 96%, 11%)
-) !default;
-
-$green: (
-  'base': hsl(162, 53%, 41%),
-  'light': hsl(163, 100%, 94%),
-  'seagreen': hsl(163, 82%, 89%),
-  'lime': hsl(72, 91%, 56%),
-  'dark': hsl(163, 100%, 16%)
-) !default;
+$indigo: (
+  'base':       hsl(231, 48%, 48%),
+  'lighten-5':  hsl(231, 44%, 94%),
+  'lighten-4':  hsl(232, 45%, 84%),
+  'lighten-3':  hsl(231, 44%, 74%),
+  'lighten-2':  hsl(230, 44%, 64%),
+  'lighten-1':  hsl(231, 44%, 56%),
+  'darken-1':   hsl(232, 50%, 45%),
+  'darken-2':   hsl(232, 54%, 41%),
+  'darken-3':   hsl(233, 57%, 37%),
+  'darken-4':   hsl(235, 66%, 30%),
+  'accent-1':   hsl(231, 100%, 77%),
+  'accent-2':   hsl(231, 99%, 66%),
+  'accent-3':   hsl(231, 99%, 62%),
+  'accent-4':   hsl(231, 99%, 59%)
+);
 
 $blue: (
-  'base': hsl(198, 78%, 58%),
-  'light': hsl(199, 100%, 95%),
-  'dark': hsl(197, 64%, 21%)
-) !default;
+  'base':       hsl(207, 90%, 54%),
+  'lighten-5':  hsl(205, 87%, 94%),
+  'lighten-4':  hsl(207, 89%, 86%),
+  'lighten-3':  hsl(207, 90%, 77%),
+  'lighten-2':  hsl(207, 89%, 68%),
+  'lighten-1':  hsl(207, 90%, 61%),
+  'darken-1':   hsl(208, 79%, 51%),
+  'darken-2':   hsl(210, 79%, 46%),
+  'darken-3':   hsl(212, 80%, 42%),
+  'darken-4':   hsl(216, 85%, 34%),
+  'accent-1':   hsl(217, 100%, 75%),
+  'accent-2':   hsl(218, 100%, 63%),
+  'accent-3':   hsl(218, 100%, 58%),
+  'accent-4':   hsl(224, 100%, 58%)
+);
 
-$violet: ('base': hsl(250, 53%, 41%)) !default;
+$light-blue: (
+  'base':       hsl(199, 98%, 48%),
+  'lighten-5':  hsl(199, 94%, 94%),
+  'lighten-4':  hsl(199, 92%, 85%),
+  'lighten-3':  hsl(199, 92%, 74%),
+  'lighten-2':  hsl(199, 91%, 64%),
+  'lighten-1':  hsl(199, 92%, 56%),
+  'darken-1':   hsl(200, 97%, 45%),
+  'darken-2':   hsl(201, 98%, 41%),
+  'darken-3':   hsl(202, 98%, 37%),
+  'darken-4':   hsl(206, 99%, 31%),
+  'accent-1':   hsl(198, 100%, 75%),
+  'accent-2':   hsl(199, 100%, 63%),
+  'accent-3':   hsl(199, 100%, 50%),
+  'accent-4':   hsl(203, 100%, 46%)
+);
+
+$cyan: (
+  'base':       hsl(187, 100%, 42%),
+  'lighten-5':  hsl(187, 72%, 93%),
+  'lighten-4':  hsl(187, 71%, 82%),
+  'lighten-3':  hsl(187, 72%, 71%),
+  'lighten-2':  hsl(187, 71%, 59%),
+  'lighten-1':  hsl(187, 71%, 50%),
+  'darken-1':   hsl(187, 100%, 38%),
+  'darken-2':   hsl(186, 100%, 33%),
+  'darken-3':   hsl(185, 100%, 28%),
+  'darken-4':   hsl(182, 100%, 20%),
+  'accent-1':   hsl(180, 100%, 76%),
+  'accent-2':   hsl(180, 100%, 55%),
+  'accent-3':   hsl(186, 100%, 50%),
+  'accent-4':   hsl(188, 100%, 42%)
+);
+
+$teal: (
+  'base':       hsl(174, 100%, 29%),
+  'lighten-5':  hsl(177, 41%, 91%),
+  'lighten-4':  hsl(175, 41%, 79%),
+  'lighten-3':  hsl(174, 42%, 65%),
+  'lighten-2':  hsl(174, 42%, 51%),
+  'lighten-1':  hsl(174, 63%, 40%),
+  'darken-1':   hsl(174, 100%, 27%),
+  'darken-2':   hsl(173, 100%, 24%),
+  'darken-3':   hsl(173, 100%, 21%),
+  'darken-4':   hsl(170, 100%, 15%),
+  'accent-1':   hsl(166, 100%, 83%),
+  'accent-2':   hsl(166, 100%, 70%),
+  'accent-3':   hsl(165, 82%, 51%),
+  'accent-4':   hsl(172, 100%, 37%)
+);
+
+$green: (
+  'base':       hsl(122, 39%, 49%),
+  'lighten-5':  hsl(125, 39%, 94%),
+  'lighten-4':  hsl(122, 38%, 84%),
+  'lighten-3':  hsl(122, 37%, 74%),
+  'lighten-2':  hsl(123, 38%, 64%),
+  'lighten-1':  hsl(123, 38%, 57%),
+  'darken-1':   hsl(123, 41%, 45%),
+  'darken-2':   hsl(123, 43%, 39%),
+  'darken-3':   hsl(123, 46%, 34%),
+  'darken-4':   hsl(124, 55%, 24%),
+  'accent-1':   hsl(137, 77%, 85%),
+  'accent-2':   hsl(151, 82%, 68%),
+  'accent-3':   hsl(151, 100%, 45%),
+  'accent-4':   hsl(145, 100%, 39%)
+);
+
+$light-green: (
+  'base':       hsl(88, 50%, 53%),
+  'lighten-5':  hsl(88, 52%, 94%),
+  'lighten-4':  hsl(88, 51%, 86%),
+  'lighten-3':  hsl(88, 50%, 76%),
+  'lighten-2':  hsl(88, 50%, 67%),
+  'lighten-1':  hsl(88, 50%, 60%),
+  'darken-1':   hsl(89, 46%, 48%),
+  'darken-2':   hsl(92, 48%, 42%),
+  'darken-3':   hsl(95, 49%, 36%),
+  'darken-4':   hsl(103, 56%, 26%),
+  'accent-1':   hsl(88, 100%, 78%),
+  'accent-2':   hsl(88, 100%, 67%),
+  'accent-3':   hsl(93, 100%, 51%),
+  'accent-4':   hsl(97, 81%, 48%)
+);
+
+$lime: (
+  'base':       hsl(66, 70%, 54%),
+  'lighten-5':  hsl(66, 71%, 95%),
+  'lighten-4':  hsl(65, 69%, 86%),
+  'lighten-3':  hsl(66, 71%, 77%),
+  'lighten-2':  hsl(66, 70%, 68%),
+  'lighten-1':  hsl(66, 70%, 61%),
+  'darken-1':   hsl(64, 60%, 50%),
+  'darken-2':   hsl(62, 61%, 44%),
+  'darken-3':   hsl(60, 63%, 38%),
+  'darken-4':   hsl(54, 70%, 30%),
+  'accent-1':   hsl(65, 100%, 75%),
+  'accent-2':   hsl(65, 100%, 63%),
+  'accent-3':   hsl(73, 100%, 50%),
+  'accent-4':   hsl(75, 100%, 46%)
+);
+
+$yellow: (
+  'base':       hsl(54, 100%, 62%),
+  'lighten-5':  hsl(55, 100%, 95%),
+  'lighten-4':  hsl(54, 100%, 88%),
+  'lighten-3':  hsl(54, 100%, 81%),
+  'lighten-2':  hsl(54, 100%, 73%),
+  'lighten-1':  hsl(54, 100%, 67%),
+  'darken-1':   hsl(49, 98%, 60%),
+  'darken-2':   hsl(43, 96%, 58%),
+  'darken-3':   hsl(37, 95%, 56%),
+  'darken-4':   hsl(28, 92%, 53%),
+  'accent-1':   hsl(60, 100%, 78%),
+  'accent-2':   hsl(60, 100%, 50%),
+  'accent-3':   hsl(55, 100%, 50%),
+  'accent-4':   hsl(50, 100%, 50%)
+);
+
+$amber: (
+  'base':       hsl(45, 100%, 51%),
+  'lighten-5':  hsl(46, 100%, 94%),
+  'lighten-4':  hsl(45, 100%, 85%),
+  'lighten-3':  hsl(45, 100%, 75%),
+  'lighten-2':  hsl(46, 100%, 65%),
+  'lighten-1':  hsl(45, 100%, 58%),
+  'darken-1':   hsl(42, 100%, 50%),
+  'darken-2':   hsl(38, 100%, 50%),
+  'darken-3':   hsl(34, 100%, 50%),
+  'darken-4':   hsl(26, 100%, 50%),
+  'accent-1':   hsl(48, 100%, 75%),
+  'accent-2':   hsl(47, 100%, 63%),
+  'accent-3':   hsl(46, 100%, 50%),
+  'accent-4':   hsl(40, 100%, 50%)
+);
+
+$orange: (
+  'base':       hsl(36, 100%, 50%),
+  'lighten-5':  hsl(37, 100%, 94%),
+  'lighten-4':  hsl(36, 100%, 85%),
+  'lighten-3':  hsl(36, 100%, 75%),
+  'lighten-2':  hsl(36, 100%, 65%),
+  'lighten-1':  hsl(36, 100%, 57%),
+  'darken-1':   hsl(33, 100%, 49%),
+  'darken-2':   hsl(30, 100%, 48%),
+  'darken-3':   hsl(27, 100%, 47%),
+  'darken-4':   hsl(21, 100%, 45%),
+  'accent-1':   hsl(38, 100%, 75%),
+  'accent-2':   hsl(34, 100%, 63%),
+  'accent-3':   hsl(34, 100%, 50%),
+  'accent-4':   hsl(26, 100%, 50%)
+);
+
+$deep-orange: (
+  'base':       hsl(14, 100%, 57%),
+  'lighten-5':  hsl(6, 71%, 95%),
+  'lighten-4':  hsl(14, 100%, 87%),
+  'lighten-3':  hsl(14, 100%, 78%),
+  'lighten-2':  hsl(14, 100%, 70%),
+  'lighten-1':  hsl(14, 100%, 63%),
+  'darken-1':   hsl(14, 91%, 54%),
+  'darken-2':   hsl(14, 80%, 50%),
+  'darken-3':   hsl(14, 82%, 46%),
+  'darken-4':   hsl(14, 88%, 40%),
+  'accent-1':   hsl(14, 100%, 75%),
+  'accent-2':   hsl(14, 100%, 63%),
+  'accent-3':   hsl(14, 100%, 50%),
+  'accent-4':   hsl(12, 100%, 43%)
+);
+
+$brown: (
+  'base':       hsl(16, 25%, 38%),
+  'lighten-5':  hsl(20, 16%, 93%),
+  'lighten-4':  hsl(16, 16%, 81%),
+  'lighten-3':  hsl(15, 15%, 69%),
+  'lighten-2':  hsl(16, 15%, 56%),
+  'lighten-1':  hsl(16, 18%, 47%),
+  'darken-1':   hsl(15, 25%, 34%),
+  'darken-2':   hsl(14, 26%, 29%),
+  'darken-3':   hsl(11, 26%, 24%),
+  'darken-4':   hsl(9, 28%, 19%)
+);
+
+$blue-gray: (
+  'base':       hsl(200, 18%, 46%),
+  'lighten-5':  hsl(204, 15%, 94%),
+  'lighten-4':  hsl(198, 16%, 84%),
+  'lighten-3':  hsl(200, 15%, 73%),
+  'lighten-2':  hsl(200, 16%, 62%),
+  'lighten-1':  hsl(200, 15%, 54%),
+  'darken-1':   hsl(199, 18%, 40%),
+  'darken-2':   hsl(199, 18%, 33%),
+  'darken-3':   hsl(200, 18%, 26%),
+  'darken-4':   hsl(200, 19%, 18%)
+);
+
+$gray: (
+  'base':       hsl(0, 0%, 62%),
+  'lighten-5':  hsl(0, 0%, 98%),
+  'lighten-4':  hsl(0, 0%, 96%),
+  'lighten-3':  hsl(0, 0%, 93%),
+  'lighten-2':  hsl(0, 0%, 88%),
+  'lighten-1':  hsl(0, 0%, 74%),
+  'darken-1':   hsl(0, 0%, 46%),
+  'darken-2':   hsl(0, 0%, 38%),
+  'darken-3':   hsl(0, 0%, 26%),
+  'darken-4':   hsl(0, 0%, 13%)
+);
+
+$shades: (
+  'black':        #000,
+  'white':        #fff,
+  'transparent':  transparent
+);
 
 /********** SOCIAL MEDIA COLORS **********/
 
@@ -69,17 +334,26 @@ $social: (
 /********** END SOCIAL MEDIA COLORS **********/
 
 $colors: (
-  'white': $white,
-  'gray': $gray,
   'red': $red,
   'pink': $pink,
   'purple': $purple,
-  'orange': $orange,
-  'brown': $brown,
-  'yellow': $yellow,
-  'green': $green,
+  'deep-purple': $deep-purple,
+  'indigo': $indigo,
   'blue': $blue,
-  'violet': $violet,
+  'light-blue': $light-blue,
+  'cyan': $cyan,
+  'teal': $teal,
+  'green': $green,
+  'light-green': $light-green,
+  'lime': $lime,
+  'yellow': $yellow,
+  'amber': $amber,
+  'orange': $orange,
+  'deep-orange': $deep-orange,
+  'brown': $brown,
+  'blue-gray': $blue-gray,
+  'gray': $gray,
+  'shades': $shades,
   'social': $social
 ) !default;
 
@@ -96,5 +370,53 @@ $colors: (
   } @else {
     @warn 'Unknown `#{$color}` - `#{$type}` in $colors.';
     @return null;
+  }
+}
+
+// Color Classes
+@each $color_name, $color in $colors {
+  @each $color_type, $color_value in $color {
+    @if $color_type == 'base' {
+      .#{$color_name} {
+        background-color: $color_value !important;
+      }
+
+      .#{$color_name}-text {
+        color: $color_value !important;
+      }
+    }
+    @else if $color_name != 'shades' or $color_name != 'social' {
+      .#{$color_name}.#{$color_type} {
+        background-color: $color_value !important;
+      }
+
+      .#{$color_name}-text.text-#{$color_type} {
+        color: $color_value !important;
+      }
+    }
+  }
+}
+
+// Shade classes
+@each $color, $color_value in $shades {
+  .#{$color} {
+    background-color: $color_value !important;
+  }
+
+  .#{$color}-text {
+    color: $color_value !important;
+  }
+}
+
+// Social classes
+@each $color, $color_value in $shades {
+  @if $color != 'instagram' {
+    .#{$color}-color-text {
+      color: $color_value !important;
+    }
+  }
+  
+  .bg-#{$color} {
+    background-color: $color_value !important;
   }
 }
