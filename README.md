@@ -62,7 +62,7 @@ Minifies all images in the asset directory.
 
 Moves a copy of `favicon.ico` into the destination directory.
 
-## How To Customize:
+## Customization Suggestions:
 
 1. Modify package.json; adjust the name, description, author, and other key/value pairs you desire.
 2. Replace/remove favicon.ico
