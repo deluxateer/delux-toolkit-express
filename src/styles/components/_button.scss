@@ -83,23 +83,23 @@ $btn-bgc-default: hsl(0, 0%, 34%);
 // --- Specialty Buttons ---
 
 // Scroll Back To the Top Button
-.back-to-top-#{$btn-name} {
+.back-to-top-btn {
   @extend %#{btn-name};
   @include button-color(transparentize($primary-color, 0.3));
 
-  display: none;
   position: fixed;
   right: 20px;
   bottom: 80px;
+  opacity: 0;
   z-index: 5;
   border: 1px solid;
   border-radius: 20px;
   margin: 0;
 }
 
-.#{$btn-name}-enter { animation: enter 0.5s both; }
+.btn-enter { animation: enter 0.5s both; }
 
-.#{$btn-name}-exit { animation: exit 0.5s both; }
+.btn-exit { animation: exit 0.5s both; }
 
 @keyframes enter {
   from {
