@@ -100,7 +100,7 @@ const processStyles = () => {
   ];
   return (
     src(stylesSourcePath, { sourcemaps: !production })
-      .pipe(sass().on('error', sass.logError))
+      .pipe(sass(production && { outputStyle: 'compressed' }).on('error', sass.logError))
       .pipe(postcss(postCssPlugins))
       .pipe(rename('styles.min.css'))
       .pipe(dest(destCss, { sourcemaps: !production }))
