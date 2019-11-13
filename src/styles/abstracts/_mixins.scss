@@ -81,15 +81,19 @@
 
 /// Add rules to initialize an element for animation
 /// @author Deluxateer
-/// @param {Number} $x - x coordinate
-/// @param {Number} $y - y coordinate
-/// @param {Number} $z - z coordinate
-/// @param {Number} $duration - time duration for animation
-/// @param {Number} $rotation - number of degrees to rotate
-/// @param {Number} $scale - percentage to scale (0 - 1)
-@mixin animate($x, $y: 0, $z: 0, $duration: 0.9s, $rotation: 0deg, $scale: 1) {
-  transform: translate3d($x, $y, $z) rotate($rotation) scale($scale);
-  transition: transform $duration, visibility $duration, opacity $duration ease-in-out;
+/// @param {List} $transition-options - specify transition duration and timing function
+//  
+//  Example:
+//  $transition-options: (
+//     'duration': 1s,
+//     'timing-function': ease-in-out,
+//  );
+// 
+@mixin transition-setup($transition-options) {
+  transition:
+    opacity map-get($transition-options, 'duration') map-get($transition-options, 'timing-function'),
+    visibility map-get($transition-options, 'duration') map-get($transition-options, 'timing-function'),
+    transform map-get($transition-options, 'duration') map-get($transition-options, 'timing-function');
   visibility: hidden;
   opacity: 0;
 }

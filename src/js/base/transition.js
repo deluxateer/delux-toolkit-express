@@ -1,12 +1,4 @@
-const items = document.querySelectorAll('[data-animate]');
-
-const animateItem = item => {
-  const shouldAnimate = item.getAttribute('data-animate');
-  if (shouldAnimate == null) return;
-
-  item.classList.add('animate');
-  item.removeAttribute('data-animate');
-};
+const items = document.querySelectorAll('.animate-on-scroll');
 
 const itemOptions = {
   threshold: 0.10,
@@ -15,10 +7,12 @@ const itemOptions = {
 
 const itemObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
+    const { target, isIntersecting } = entry;
 
-    animateItem(entry.target);
-    observer.unobserve(entry.target);
+    if (!isIntersecting) return;
+
+    target.classList.toggle('animate');
+    observer.unobserve(target);
   });
 }, itemOptions);
 

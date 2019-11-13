@@ -24,6 +24,6 @@ mixin loop(count)
 mixin image(path, altText='', shouldAnimate=false, lazyload=true, classes=null, base=baseURL)
   - const fullPath = `${base}img/${path}`;
   if lazyload
-    img(data-lazy=fullPath alt=altText class=classes data-animate=shouldAnimate)
+    img(data-lazy=fullPath alt=altText class=classes class=shouldAnimate && 'animate-on-scroll')
   else
-    img(src=fullPath alt=altText class=classes data-animate=shouldAnimate)
+    img(src=fullPath alt=altText class=classes class=shouldAnimate && 'animate-on-scroll')

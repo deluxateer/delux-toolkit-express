@@ -37,15 +37,25 @@ section { padding: 70px 0; }
 
 .hero-info {
   h1 {
+    @include transition-setup((duration: 1s, timing-function: ease-in-out));
+
+    transform: translateY(-250px);
     font-size: 3rem;
     margin-bottom: 1rem;
   }
 
-  p { margin-bottom: 3rem; }
+  p {
+    @include transition-setup((duration: 1s, timing-function: ease-in-out));
+
+    transform: translateX(-250px);
+    margin-bottom: 3rem;
+  }
 
   a {
+    @include transition-setup((duration: 1s, timing-function: ease-in-out));
     @include button-color($secondary-color);
 
+    transform: translateX(-250px);
     max-width: 50%;
     margin: 0 auto;
   }

@@ -58,7 +58,7 @@ img[data-lazy] {
  * activates the animation that was setup by the animate mixin
  */
 .animate {
-  transform: translate3d(0, 0, 0) rotate(0) scale(1) !important;
+  transform: translate(0) !important;
   visibility: visible !important;
   opacity: 1 !important;
 }
