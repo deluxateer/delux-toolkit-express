@@ -16,14 +16,20 @@ mixin loop(count)
 //- Returns URL to an image based on its path
 //- @param {String} path - image path
 //- @param {String} altText [''] - text for the alt attribute
-//- @param {Boolean} shouldAnimate [false] - should we animate the image?
+//- @param {Object} options - optional options which are listed below
 //- @param {Boolean} lazyload [true] - if lazyloading is desired, it will use a data-attribute instead of src
 //- @param {String} classes [null] - classes for the image
 //- @param {String} base [baseURL] - base URL
-//- @require baseURL
-mixin image(path, altText='', shouldAnimate=false, lazyload=true, classes=null, base=baseURL)
-  - const fullPath = `${base}img/${path}`;
-  if lazyload
-    img(data-lazy=fullPath alt=altText class=classes class=shouldAnimate && 'animate-on-scroll')
-  else
-    img(src=fullPath alt=altText class=classes class=shouldAnimate && 'animate-on-scroll')
+//- @require path, baseURL
+mixin image(path, altText='', options={})
+  -
+    const base = options.base || baseURL;
+    const fullPath = `${base}img/${path}`;
+    const lazyload = options.lazyload === false ? false : true;
+    const classes = options.classes || null;
+  
+  img(
+    src= lazyload ? null : fullPath
+    data-lazy= lazyload ? fullPath : null
+    alt=altText
+    class=classes)
