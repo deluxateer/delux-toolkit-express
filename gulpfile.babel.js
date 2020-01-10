@@ -27,6 +27,9 @@ const production = process.env.NODE_ENV === 'production';
 const source = buildGlob(__dirname, 'src');
 const destination = buildGlob(__dirname, 'dist');
 const reportsPath = buildGlob(__dirname, 'reports');
+
+const enableLinting = true;
+
 // DESTINATION PATHS
 const destCss = buildGlob(destination, 'css');
 const destJs = buildGlob(destination, 'js');
@@ -42,15 +45,12 @@ const assetPath = buildGlob(source, 'assets');
 const imgPath = buildGlob(assetPath, 'img', '**', '*');
 const faviconPath = buildGlob(__dirname, 'favicon.ico');
 const gulpPath = buildGlob(__dirname, 'gulpfile.babel.js');
-const watchPath = [
+const staticFilesPaths = [
   buildGlob(destCss, '*.css'),
   buildGlob(destJs, '*.js'),
   buildGlob(destination, '*.html'),
   buildGlob(destImg, '*'),
 ];
-
-const enableLinting = true;
-
 // ***************** END CONFIGURATION ***************** //
 
 // TASKS
@@ -179,7 +179,7 @@ const watchTask = () => {
   watch(gulpPath, lintJs);
   watch(jsSourcePathAll, js);
   watch(imgPath, minimizeImgs);
-  watch(watchPath).on('change', browserSync.reload);
+  watch(staticFilesPaths).on('change', browserSync.reload);
 };
 
 const clean = done => {

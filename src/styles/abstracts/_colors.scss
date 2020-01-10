@@ -373,8 +373,8 @@ $colors: (
   }
 }
 
-// Color Classes
-@each $color_name, $color in $colors {
+// Regular Color Classes
+@each $color_name, $color in map-remove($colors, 'shades', 'social') {
   @each $color_type, $color_value in $color {
     @if $color_type == 'base' {
       .#{$color_name} {
@@ -385,7 +385,7 @@ $colors: (
         color: $color_value !important;
       }
     }
-    @else if $color_name != 'shades' or $color_name != 'social' {
+    @else {
       .#{$color_name}.#{$color_type} {
         background-color: $color_value !important;
       }
@@ -409,14 +409,14 @@ $colors: (
 }
 
 // Social classes
-@each $color, $color_value in $shades {
+@each $color, $color_value in $social {
   @if $color != 'instagram' {
     .#{$color}-color-text {
       color: $color_value !important;
     }
   }
   
-  .bg-#{$color} {
+  .bgc-#{$color} {
     background-color: $color_value !important;
   }
 }
