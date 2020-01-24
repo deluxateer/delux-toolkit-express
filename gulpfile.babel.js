@@ -29,6 +29,7 @@ const destination = buildGlob(__dirname, 'dist');
 const reportsPath = buildGlob(__dirname, 'reports');
 
 const enableLinting = true;
+const enableReportToFile = false;
 
 // DESTINATION PATHS
 const destCss = buildGlob(destination, 'css');
@@ -75,12 +76,12 @@ const lintStyles = () => (
   src(stylesSourcePathAll)
     .pipe(gulpStylelint({
       failAfterError: true,
-      reportOutputDir: reportsPath,
+      reportOutputDir: enableReportToFile ? reportsPath : null,
       reporters: [
         {
           formatter: 'string',
           console: !production,
-          save: 'report-styles.txt',
+          save: enableReportToFile ? 'report-styles.txt' : null,
         },
         // {formatter: 'json', save: 'report.json'},
       ],
@@ -109,14 +110,22 @@ const processStyles = () => {
 
 const lintJs = () => {
   // create report directory if it doesn't already exist
-  if (!fs.existsSync(reportsPath)) {
+  if (!fs.existsSync(reportsPath) && enableReportToFile) {
     fs.mkdirSync(reportsPath);
   }
-  return src([gulpPath, jsSourcePathAll])
+
+  let lintStream = src([gulpPath, jsSourcePathAll])
     .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.format('visualstudio', fs.createWriteStream(buildGlob(reportsPath, 'report-js.txt'))))
-    .pipe(eslint.failAfterError());
+    .pipe(eslint.format());
+
+  if (enableReportToFile) {
+    lintStream = lintStream
+      .pipe(eslint.format('visualstudio', fs.createWriteStream(buildGlob(reportsPath, 'report-js.txt'))));
+  }
+
+  lintStream = lintStream.pipe(eslint.failAfterError());
+
+  return lintStream;
 };
 
 const processJs = () => (
