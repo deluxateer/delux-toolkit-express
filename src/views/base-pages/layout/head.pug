@@ -8,58 +8,6 @@
 //- @param {Object} localHeadProps - text for the alt attribute
 mixin head(globalHeadProps, localHeadProps)
   -
-    //- head properties that will appear on all webpages
-    const {
-      //- author of the webpage
-      //- @type string
-      author,
-
-      //- google analytics javascript code
-      //- @type string
-      googleAnalyticsCode,
-
-      //- determine if facebook and twitter cards are desired
-      //- @type boolean
-      setFacebookAndTwitterCards,
-
-      //- twitter handle used for the website
-      //- @type string
-      websiteTwitterHandle,
-
-      //- webpage author's twitter handle
-      //- @type string
-      contentCreatorTwitterHandle,
-
-      //- URL to image used for twitter/facebook cards
-      //- @type string
-      twitterFacebookImageURL,
-      
-      //- URL to be used by the webpage (for facebook)
-      //- @type string
-      webpageURL,
-
-      //- the name of your site (for facebook)
-      //- @type string
-      facebookSiteName,
-
-      //- URL for canonical links
-      //- @type string
-      canonicalLinkURL,
-
-      //- relative path to manifest.json
-      //- @type string
-      webAppManifestPath,
-
-      //- relative path to favicon
-      //- @type string
-      faviconPath,
-      
-      //- color for header and address bar
-      //- @type string
-      themeColor,
-      
-    } = globalHeadProps;
-  -
     //- head properties that will change from webpage to webpage.
     //- In order to be usable, they need to be instantiated on the page that implements them.
     const {
@@ -100,37 +48,14 @@ mixin head(globalHeadProps, localHeadProps)
       meta(name='keywords' content=keywords)
     else
       - throw 'Keywords (required) has not been provided.'
-    if author
-      meta(name='author' content=author)
-    if googleAnalyticsCode
-      script #{googleAnalyticsCode}
-    if themeColor
-      meta(name='theme-color' content=themeColor)
-    if setFacebookAndTwitterCards
-      meta(name='twitter:card' content='summary_large_image')
-      if websiteTwitterHandle
-        meta(name='twitter:site' content=websiteTwitterHandle)
-      meta(name='twitter:title' content=title)
-      meta(name='twitter:description' content=description)
-      if contentCreatorTwitterHandle
-        meta(name='twitter:creator' content=contentCreatorTwitterHandle)
-      if twitterFacebookImageURL
-        meta(name='twitter:image' content=twitterFacebookImageURL)
-      meta(property='og:title' content=title)
-      meta(property='og:description' content=description)
-      meta(property='og:type' content='website')
-      if webpageURL
-        meta(property='og:url' content=webpageURL)
-      if twitterFacebookImageURL
-        meta(property='og:image' content=twitterFacebookImageURL)
-      if facebookSiteName
-        meta(property='og:site_name' content=facebookSiteName)
-    if canonicalLinkURL
-      link(rel='canonical' href=canonicalLinkURL)
-    if webAppManifestPath
-      link(rel='manifest' href=webAppManifestPath)
-    if faviconPath
-      link(rel='shortcut icon' href=faviconPath type='image/x-icon')
+    if globalHeadProps.googleAnalyticsCode
+      script #{globalHeadProps.googleAnalyticsCode}
+    if globalHeadProps.meta
+      each metaTagContent, metaTagName in globalHeadProps.meta
+        meta(name=metaTagName content=metaTagContent)
+    if globalHeadProps.link
+      each linkTagAttributes, linkTagRel in globalHeadProps.link
+        link(rel=linkTagRel)&attributes(linkTagAttributes)
     block stylesheets
       if stylesheetPaths
         each stylesheetPath in stylesheetPaths
