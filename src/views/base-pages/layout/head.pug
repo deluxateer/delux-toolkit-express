@@ -2,35 +2,13 @@
 //- This file contains all markup related to the head tag of the site/application.
 //- -----------------------------------------------------------------------------
 
-//- Returns a head tag for each page with appropriate
-//- title tag, meta tags, link tags, etc.
-//- @param {Object} globalHeadProps - image path
-//- @param {Object} localHeadProps - text for the alt attribute
+//- Returns a head tag for each page with appropriate title tag, meta tags, link tags, etc.
+//- @param {Object} globalHeadProps - head properties that will appear on all webpages
+//- @param {Object} localHeadProps - head properties that will change from webpage to webpage.
 mixin head(globalHeadProps, localHeadProps)
-  -
-    //- head properties that will change from webpage to webpage.
-    //- In order to be usable, they need to be instantiated on the page that implements them.
-    const {
-      //- Title for title tag
-      //- @type string
-      //- @required
-      title,
-
-      //- description used for meta, twitter, facebook
-      //- @type string
-      //- @required
-      description,
-
-      //- keywords for metatag 
-      //- @type string
-      //- @required
-      keywords,
-
-      //- all the relative paths to your stylesheets
-      //- @type Array(string)
-      stylesheetPaths,
-      
-    } = localHeadProps;
+  - const { globalMeta, globalLink, googleAnalyticsCode, globalStylesheetPaths } = globalHeadProps;
+  //- In order to be usable, these need to be instantiated on the page that implements them.
+  - const { title, description, keywords, localStylesheetPaths } = localHeadProps;
 
   head
     meta(charset='UTF-8')
@@ -48,15 +26,18 @@ mixin head(globalHeadProps, localHeadProps)
       meta(name='keywords' content=keywords)
     else
       - throw 'Keywords (required) has not been provided.'
-    if globalHeadProps.googleAnalyticsCode
-      script #{globalHeadProps.googleAnalyticsCode}
-    if globalHeadProps.meta
-      each metaTagContent, metaTagName in globalHeadProps.meta
+    if googleAnalyticsCode
+      script #{googleAnalyticsCode}
+    if globalMeta
+      each metaTagContent, metaTagName in globalMeta
         meta(name=metaTagName content=metaTagContent)
-    if globalHeadProps.link
-      each linkTagAttributes, linkTagRel in globalHeadProps.link
+    if globalLink
+      each linkTagAttributes, linkTagRel in globalLink
         link(rel=linkTagRel)&attributes(linkTagAttributes)
     block stylesheets
-      if stylesheetPaths
-        each stylesheetPath in stylesheetPaths
+      if globalStylesheetPaths
+        each stylesheetPath in globalStylesheetPaths
+          link(rel='stylesheet' href=stylesheetPath)
+      if localStylesheetPaths
+        each stylesheetPath in localStylesheetPaths
           link(rel='stylesheet' href=stylesheetPath)
