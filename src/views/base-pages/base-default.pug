@@ -7,9 +7,8 @@
 include ../abstracts/data
 include ../abstracts/variables
 include ../abstracts/mixins
-include layout/head
-include layout/navbar
-include ../components/navigation
+include ../layout/head
+include ../layout/navbar
 
 block localVariables
 
@@ -18,15 +17,17 @@ html(class=pageName lang='en')
   +head(globalHeadProps, localHeadProps)
   body
     block content
-      header
-        block header
-          +navbar(navbarItems, activeNavbarItem)
-          button.back-to-top-btn.btn-primary.btn-large(style='display: none;')
-            i.fas.fa-arrow-circle-up
-      main
-        block main
+      block header
+        header
+          block headerContents
+            +navbar(navbarItems, activeNavbarItem)
+            button.back-to-top-btn.btn-primary.btn-large(style='display: none;')
+              i.fas.fa-arrow-circle-up
+      block main
+        main
+          block mainContent
       block footer
-        include layout/footer
+        include ../layout/footer
     block scripts
       if scriptPaths
         each scriptPath in scriptPaths

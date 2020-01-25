@@ -6,8 +6,7 @@
 include ../abstracts/data
 include ../abstracts/variables
 include ../abstracts/mixins
-include layout/head
-include ../components/navigation
+include ../layout/head
 
 block localVariables
 
@@ -16,10 +15,12 @@ html.full-page(class=pageName lang='en')
   +head(globalHeadProps, localHeadProps)
   body
     block content
-      header
-        block header
-      main
-        block main
+      block header
+        header
+          block headerContent
+      block main
+        main
+          block mainContent
       block footer
     block scripts
       if scriptPaths
