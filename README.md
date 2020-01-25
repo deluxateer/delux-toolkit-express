@@ -78,15 +78,10 @@ Moves a copy of `favicon.ico` into the destination directory.
 6. `js` directory
     1. Turn off the modules you won't need for your project in `index.js`
     2. You can always add to the `js` directory as needed.
-7. Delete the `themes` directory in the `styles` and `views` directory. 95% of the time you won't need it.
-8. Strip off the partials in the `styles` directory that are irrelevant to your project and references to them, though keeping the components are recommended.
+7. Strip off the partials in the `styles` directory that are irrelevant to your project and references to them, though keeping the components are recommended.
     1. Most configurations will be found in the `abstract` and `base` directories.
     2. Custom page style files will be in the `pages` directory, which has placeholder files that you should modify/delete now.
-9. `views` directory
-    1. `data.pug` will hold all of the global data that you will use for your markup (HTML) pages. It is intended for this setup to loop through the data you need and output HTML, in order to keep your markup code DRY and decoupled from hard-coded data.
-    2. `variables.pug` contains all of the global variables to be used between pug files. It contains options for global `<head>` tag attributes, with the optional ones already commented out. Navbar items and social-media hrefs are good ideas to put here.
-    3. Pug files at the base of the `views` directory are your "main" files that will compile into equivalant html files. They should extend from some `base-page`. List your page-specific head attributes, CDN links, and local data here. It's up to what you want to put here.
-10. Delete/modify README
+8. Delete/modify README
 
 ## Architecture
 
@@ -99,10 +94,13 @@ The views, styles, and functionality are decoupled as much as possible, where th
 
 ### Key Points
 
-* For the `views` directory, we have a somewhat different structure. All of the Pug files at the base of `views` will be the pages that will compile to the desired HTML files. They are all extensions of special pages called "base pages" found in the `base-pages` directory.
-  * Base pages are generic templates with some components but various layout pieces, which is why the `layout` directory in this case is a subdirectory of `base-pages` out of convenience. They have the basic skeletal structure that allows the developer to plug different parts into them for customization while keeping a desired structure. Examples would be default, full-page, horizontal-scroll, blog-post, etc.
-  * This is quite useful because it is very DRY (Don't Repeat Yourself). It saves the user from having to redeclare the same code for all pages like global head tags and footer, letting the developer just write the code/data that is specific to that page. Simply append, prepend, or completely overwrite a layout/section to customize it. Also since all pages extend the base pages, maintainability will be simpler as making a change in the base pages will reflect on all of its child pages.
-
+* For the `views` directory:
+  * We have a somewhat different structure. All of the Pug files at the base of `views` will be the pages that will compile to the desired HTML files. They are all extensions of special pages called "base pages" found in the `base-pages` directory.
+    * Base pages are generic templates with some components but various layout pieces. They have the basic skeletal structure that allows the developer to plug different parts into them for customization while keeping a desired structure. Examples would be default, full-page, horizontal-scroll, blog-post, etc.
+    * This is quite useful because it is very DRY (Don't Repeat Yourself). It saves the user from having to redeclare the same code for all pages like global head tags and footer, letting the developer just write the code/data that is specific to that page. Simply append, prepend, or completely overwrite a layout/section to customize it. Also since all pages extend the base pages, maintainability will be simpler as making a change in the base pages will reflect on all of its child pages.
+  * `data.pug` will hold all of the global data that you will use for your markup (HTML) pages. It is intended for this setup to loop through the data you need and output HTML, in order to keep your markup code DRY and decoupled from hard-coded data.
+  * `variables.pug` contains all of the global variables to be used between pug files. It contains options for global `<head>` tag attributes, with the optional ones already commented out. Navbar items and social-media hrefs are good ideas to put here.
+  * Pug files at the base of the `views` directory are your "main" files that will compile into equivalant html files. They should extend from some `base-page`. List your page-specific head attributes, CDN links, and local data here. It's up to what you want to put here.
 * For the `js` directory, we will not have a `pages` directory because we don't want page-specific JavaScript to be shared with other pages. In this case, it is better to simply append an inline `script` tag to the respective Pug page file.
 
 ## Notes
@@ -134,7 +132,6 @@ I would like to segregate these features between Webpack and Gulp, since the pur
 
 ## Issues
 * find ways to additional style-guide rules into scss-linter
-* there isn't a way to cleanly write the output of pug-lint to a file
 * simplify the carousel component's architecture
   * too much of the carousel's inner-workings markup has to be exposed when calling the Pug mixin
 * find a way to process inline script tags with the same treatment as the processJs task (ie transpile and minify).

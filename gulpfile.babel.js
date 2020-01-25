@@ -23,13 +23,13 @@ const browserSync = require('browser-sync').create();
 const buildGlob = (...args) => slash(path.resolve(...args));
 
 // ***************** CONFIGURATION ***************** //
+const enableLinting = true;
+const enableReportToFile = false;
+
 const production = process.env.NODE_ENV === 'production';
 const source = buildGlob(__dirname, 'src');
 const destination = buildGlob(__dirname, 'dist');
 const reportsPath = buildGlob(__dirname, 'reports');
-
-const enableLinting = true;
-const enableReportToFile = false;
 
 // DESTINATION PATHS
 const destCss = buildGlob(destination, 'css');
