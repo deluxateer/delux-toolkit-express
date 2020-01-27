@@ -14,8 +14,6 @@ $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
 /// Primary (Brand) color
 /// @type Color
 $primary-color: color('purple') !default;
-$primary-color-light: color('pink', 'lighten-4') !default;
-$primary-color-dark: color('blue', 'darken-4') !default;
 
 /// Secondary (Accent) color
 /// @type Color

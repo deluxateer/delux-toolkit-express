@@ -3,16 +3,16 @@
 //- -----------------------------------------------------------------------------
 
 mixin formBtn(btnData)
-  button&attributes(btnData.attributeData)= btnData.text
+  button(type='submit')&attributes(btnData.attributeData)= btnData.text
 
 mixin form(formData)
   -
     const {
-      attributeData,
+      formTagAttributes,
       button,
       items,
     } = formData
-  form&attributes(attributeData)
+  form&attributes(formTagAttributes)
     each itemData, itemName in items
       - const { labelText, tag, attributeData } = itemData
       - const { id } = attributeData

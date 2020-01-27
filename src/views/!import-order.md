@@ -4,4 +4,3 @@
     * Realize that base-pages are a special set of "pages", so you can style them with scss partials under `src/styles/base-pages`.
 3. `components/`
 4. `layout/`
-4. `themes/`
