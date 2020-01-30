@@ -6,7 +6,6 @@ import slash from 'slash';
 import del from 'del';
 import pugLinter from 'gulp-pug-linter';
 import pugLintStylish from 'puglint-stylish';
-import pug from 'gulp-pug';
 import gulpStylelint from 'gulp-stylelint';
 import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
@@ -16,6 +15,7 @@ import rename from 'gulp-rename';
 import eslint from 'gulp-eslint';
 import webpack from 'webpack-stream';
 import imagemin from 'gulp-imagemin';
+import { serverPort } from './config/port';
 
 const browserSync = require('browser-sync').create();
 
@@ -28,7 +28,7 @@ const enableReportToFile = false;
 
 const production = process.env.NODE_ENV === 'production';
 const source = buildGlob(__dirname, 'src');
-const destination = buildGlob(__dirname, 'dist');
+const destination = buildGlob(__dirname, 'public');
 const reportsPath = buildGlob(__dirname, 'reports');
 
 // DESTINATION PATHS
@@ -36,7 +36,6 @@ const destCss = buildGlob(destination, 'css');
 const destJs = buildGlob(destination, 'js');
 const destImg = buildGlob(destination, 'img');
 // SOURCE PATHS
-const pugSourcePath = buildGlob(source, 'views', '*.pug');
 const pugSourcePathAll = buildGlob(source, 'views', '**', '*.pug');
 const stylesSourcePath = buildGlob(source, 'styles', 'index.scss');
 const stylesSourcePathAll = buildGlob(source, 'styles', '**', '*.scss');
@@ -44,7 +43,7 @@ const jsSourcePath = buildGlob(source, 'js', 'index.js');
 const jsSourcePathAll = buildGlob(source, 'js', '**', '*.js');
 const assetPath = buildGlob(source, 'assets');
 const imgPath = buildGlob(assetPath, 'img', '**', '*');
-const faviconPath = buildGlob(__dirname, 'favicon.ico');
+const faviconPath = buildGlob(__dirname, 'src', 'favicon.ico');
 const gulpPath = buildGlob(__dirname, 'gulpfile.babel.js');
 const staticFilesPaths = [
   buildGlob(destCss, '*.css'),
@@ -62,15 +61,6 @@ const lintViews = () => (
       reporter: pugLintStylish,
     }))
 );
-
-const processViews = () => (
-  src(pugSourcePath)
-    .pipe(pug({
-      doctype: 'html',
-    }))
-    .pipe(dest(destination))
-);
-
 
 const lintStyles = () => (
   src(stylesSourcePathAll)
@@ -163,25 +153,24 @@ const favicon = () => src(faviconPath, {
 }).pipe(dest(destination));
 
 // enable/disable linting depending on config
-let views;
+let views = () => src('.', { allowEmpty: true }); // dummy task
 let styles;
 let js;
 
 if (enableLinting) {
-  views = series(lintViews, processViews);
+  views = lintViews;
   styles = series(lintStyles, processStyles);
   js = series(lintJs, processJs);
 } else {
-  views = processViews;
   styles = processStyles;
   js = processJs;
 }
 
 const watchTask = () => {
   browserSync.init({
-    server: 'dist',
     open: 'external',
     port: 9000,
+    proxy: `localhost:${serverPort}`,
   });
   watch(pugSourcePathAll, views);
   watch(stylesSourcePathAll, styles);
@@ -223,7 +212,7 @@ const buildWatch = (
   )
 );
 
-exports.views = views;
+exports.lintviews = lintViews;
 exports.styles = styles;
 exports.lintjs = lintJs;
 exports.js = js;
