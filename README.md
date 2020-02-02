@@ -1,5 +1,7 @@
 ## Todo: update document
 
+Inspiration from [this source](https://softwareontheroad.com/ideal-nodejs-project-structure/?utm_source=devto&utm_medium=post)
+
 # Delux Toolkit Express Version (v1)
 
 A multi-purpose dev toolkit by Deluxateer. It is designed to streamline development flow by automating common tasks (as listed in Features). Set up with the template engine Pug and preprocessor Sass/SCSS for efficient view & style authorship. Implements various customizable linters to enforce good code practice. Optimizes files for production.

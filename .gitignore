@@ -6,3 +6,6 @@ public/
 
 # debug
 reports/
+
+# environment variables
+.env

@@ -15,7 +15,7 @@ import rename from 'gulp-rename';
 import eslint from 'gulp-eslint';
 import webpack from 'webpack-stream';
 import imagemin from 'gulp-imagemin';
-import { serverPort } from './config/port';
+import { port } from './src/config';
 
 const browserSync = require('browser-sync').create();
 
@@ -27,7 +27,7 @@ const enableLinting = true;
 const enableReportToFile = false;
 
 const production = process.env.NODE_ENV === 'production';
-const source = buildGlob(__dirname, 'src');
+const source = buildGlob(__dirname, 'src', 'client');
 const destination = buildGlob(__dirname, 'public');
 const reportsPath = buildGlob(__dirname, 'reports');
 
@@ -43,7 +43,7 @@ const jsSourcePath = buildGlob(source, 'js', 'index.js');
 const jsSourcePathAll = buildGlob(source, 'js', '**', '*.js');
 const assetPath = buildGlob(source, 'assets');
 const imgPath = buildGlob(assetPath, 'img', '**', '*');
-const faviconPath = buildGlob(__dirname, 'src', 'favicon.ico');
+const faviconPath = buildGlob(source, 'favicon.ico');
 const gulpPath = buildGlob(__dirname, 'gulpfile.babel.js');
 const staticFilesPaths = [
   buildGlob(destCss, '*.css'),
@@ -170,7 +170,7 @@ const watchTask = () => {
   browserSync.init({
     open: 'external',
     port: 9000,
-    proxy: `localhost:${serverPort}`,
+    proxy: `localhost:${port}`,
   });
   watch(pugSourcePathAll, views);
   watch(stylesSourcePathAll, styles);
