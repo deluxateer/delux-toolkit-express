@@ -1,9 +1,10 @@
 const { Router } = require('express');
+const { routes: { api } } = require('../config');
 
 const router = Router();
 
 module.exports = (app) => {
-  app.use('/users', router);
+  app.use(api + '/users', router);
 
   // @route   GET /users
   // @desc    gets all users

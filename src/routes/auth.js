@@ -1,17 +1,17 @@
 const { Router } = require('express');
 const AuthService = require('../services/auth');
-const middlewares = require('./middleware');
+// const middlewares = require('./middleware');
+const { routes: { api } } = require('../config');
 
-const route = Router();
+const router = Router();
 
 module.exports = (app) => {
-  app.use('/auth', route);
+  app.use(api + '/auth', router);
 
-  route.post(
-    '/signup',
-    async (req, res, next) => {
+  router.post('/signup', async (req, res, next) => {
       try {
-        // const { user, token } = await authServiceInstance.SignUp(req.body);
+        const authServiceInstance = new AuthService({ username: 'username' });
+        await authServiceInstance.SignUp(req.body);
         return res.status(201).json({ user, token });
       } catch (err) {
         console.log(err);
@@ -20,12 +20,10 @@ module.exports = (app) => {
     },
   );
 
-  route.post(
-    '/signin',
-    async (req, res, next) => {
+  router.post('/signin', async (req, res, next) => {
       try {
         const { email, password } = req.body;
-        // const { user, token } = await authServiceInstance.SignIn(email, password);
+        const { user, token } = await authServiceInstance.SignIn(email, password);
         return res.json({ user, token }).status(200);
       } catch (err) {
         console.log(err);
@@ -33,13 +31,4 @@ module.exports = (app) => {
       }
     },
   );
-  
-  // route.post('/logout', middlewares.isAuth, (req, res, next) => {
-  //   try {
-  //     return res.status(200).end();
-  //   } catch (err) {
-  //     console.log(err);
-  //     return next(e);
-  //   }
-  // });
 };

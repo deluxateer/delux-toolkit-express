@@ -1,5 +1,7 @@
 ## Todo: update document
 
+* implement the pub/sub layer properly (make it work)
+
 Inspiration from [this source](https://softwareontheroad.com/ideal-nodejs-project-structure/?utm_source=devto&utm_medium=post)
 
 # Delux Toolkit Express Version (v1)

@@ -5,7 +5,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 const envFound = dotenv.config();
 if (envFound.error) {
-  // This error should crash whole process
+  // This error should crash the whole process
   throw envFound.error;
 }
 
@@ -17,6 +17,6 @@ module.exports = {
    * route configs
    */
   routes: {
-    prefix: '/api',
+    api: '/api',
   },
 };
