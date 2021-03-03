@@ -55,7 +55,7 @@
     "mongoose": "^5.8.11",
     "nodemon": "^2.0.2",
     "postcss-preset-env": "^6.6.0",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "puglint-stylish": "^1.0.1",
     "slash": "^3.0.0",
     "stylelint": "^10.1.0",
